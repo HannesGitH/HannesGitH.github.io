@@ -30,7 +30,7 @@
 </div>
 
 <style lang="scss">
-	h1 , #more_channels, #impressum_body {
+	h1 , #more_channels, #impressum_body, #content {
 		padding: $std-margin;
 	}
 	#impressum_body a {
