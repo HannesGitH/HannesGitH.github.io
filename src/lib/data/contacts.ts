@@ -25,6 +25,9 @@ export const email: ContactData = {
     link: 'mailto:contact@h-h.win'
 };
 
+//telegram//TODO
+
+
 const contacts: ContactData[] = [linkedin, github, email];
 
 export default contacts;

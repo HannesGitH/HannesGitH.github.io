@@ -7,10 +7,11 @@
 
 <div id="content" use:scrollRef={refs.projects}>
 	<h1>{$_('projects.title')}</h1>
+
 	<p>i'll fill in what i've done so far soon, but in the mean time feel free to checkout my <a href="https://github.com/HannesGitH">Github</a> and <a href="https://play.google.com/store/apps/developer?id=Hannepps">Play-Store entries</a></p>
 
-	<p>my newest project can be seen <a href="//sprit.vercel.app">here</a></p>
-	<p>
+	<!-- <p>my newest project can be seen <a href="//sprit.vercel.app">here</a></p> -->
+	<!-- <p>
 		Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi expedita eius ipsa impedit minima
 		pariatur eum dolore quas veniam, doloribus aut consectetur distinctio sed sint deserunt
 		voluptates facere nisi ducimus dolores explicabo totam. Unde ex libero, et deserunt voluptates
@@ -52,7 +53,7 @@
 		pariatur similique exercitationem perferendis iste aliquam quas vero rerum, dolore maiores
 		maxime ea est tempore libero enim eos laborum sed a. Eaque numquam quidem exercitationem nisi
 		eius!
-	</p>
+	</p> -->
 </div>
 
 <style lang="scss">
