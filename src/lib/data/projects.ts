@@ -19,7 +19,9 @@ const passcheck = {
 }
 
 
-const shownProjects : ProjectData[] = []
+const shownProjects : ProjectData[] = [
+    passcheck
+]
 
 export default shownProjects;
 
