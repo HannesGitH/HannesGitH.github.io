@@ -7,18 +7,34 @@
 </script>
 
 <div id="content" use:scrollRef={refs.contact}>
-	<h1 id="header">{$_('contact.title')}</h1>
-	<p>More channels coming soon..</p>
+	<h1 class="header" id="header">{$_('contact.title')}</h1>
+	<p id="more_channels">More channels coming soon..</p>
 	<div id="contacts">
 		{#each contacts as contact}
 			<Contact {contact} />
 		{/each}
 	</div>
+	<h1 class="header"  id="impressum_header">{$_('impress.title')}</h1>
+	<div id="impressum_body">
+		<p><strong>Hannepps</strong> by:</p>
+		<br>
+		<p>Hannes Hattenbach</p>
+		<p>Im Mühlenfelde 7, 14167 Berlin</p>
+		<br>
+		<p><a href="mailto:impressum@h-h.win">impressum@h-h.win</a></p>
+		<br>
+		<p>USt-Nr: </p> <!-- TODO -->
+		<br>
+		<br>
+	</div>
 </div>
 
 <style lang="scss">
-	* {
+	h1 , #more_channels, #impressum_body {
 		padding: $std-margin;
+	}
+	#impressum_body a {
+		color: aliceblue;
 	}
 
 	#contacts {
@@ -29,7 +45,7 @@
 		justify-self: stretch;
 	}
 
-	#header {
+	.header {
 		display: inline-block;
 		background: linear-gradient(0.1turn, $on-surface, $primary);
 		background-size: 100%;

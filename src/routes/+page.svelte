@@ -70,6 +70,18 @@
 	import { goto } from '$app/navigation';
 	import LogoWithBlob from '$lib/components/iconwithblob.svelte';
 
+
+	import { tweened } from 'svelte/motion';
+
+	const scrollY_tweened = tweened(0, {
+		duration: 50,
+		// easing: (t) => t
+	});
+
+	$: {
+		scrollY_tweened.set(scrollY);
+	}
+
 	const navBarScroll = {
 		startY: 100,
 		endY: 500,
@@ -77,7 +89,7 @@
 			return this.endY - this.startY;
 		},
 		progress: function (scroll: number) {
-			return Math.min(Math.max(0, scrollY - this.startY) / this.length, 1);
+			return Math.min(Math.max(0, scroll - this.startY) / this.length, 1);
 		}
 	};
 
@@ -127,7 +139,7 @@
 	rowSizeInPx={navBarSizeInPx}
 	color="#a7c347"
 >
-	<NavbarItem on:click={(e) => scrollTop()}>Home</NavbarItem>
+	<NavbarItem on:click={() => scrollTop()}>Home</NavbarItem>
 	{#each sections as section, i}
 		<div class="smooth" class:activated={activeSectionBools[i]}>
 			<NavbarItem bind:isCurrentlyActive={activeSectionBools[i]} scrollTo={section.id}>
@@ -136,6 +148,7 @@
 		</div>
 	{/each}
 </Navbar>
+
 <ScrollToTopButton />
 
 <svelte:window bind:scrollY />

@@ -13,5 +13,6 @@
 	"experience": { "title": "Erfahrung" },
 	"projects": { "title": "Projekte" },
 	"skills": { "title": "Fähigkeiten" },
-	"contact": { "title": "Kontakt" }
+	"contact": { "title": "Kontakt" },
+	"impress": { "title": "Impressum" }
 }

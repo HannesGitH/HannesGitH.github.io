@@ -24,13 +24,13 @@ const github : SkillData = {
 
 const ts : SkillData = {
     name: "TypeScript",
-    level: 8,
+    level: 5,
     iconClass: "devicon-typescript-plain",
 }
 
 const python : SkillData = {
     name: "Python",
-    level: 7,
+    level: 6,
     iconClass: "devicon-python-plain",
 }
 
@@ -48,7 +48,7 @@ const dart : SkillData = {
 
 const svelte : SkillData = {
     name: "Svelte",
-    level: 8,
+    level: 6,
     iconClass: "devicon-svelte-plain",
 }
 
@@ -92,7 +92,7 @@ const linux : SkillData = {
 
 const postgresql : SkillData = {
     name: "PostgreSQL",
-    level: 3,
+    level: 4,
     iconClass: "devicon-postgresql-plain",
 }
 
@@ -122,13 +122,13 @@ const unity : SkillData = {
 
 const latex : SkillData = {
     name: "LaTeX",
-    level: 7,
+    level: 9,
     iconClass: "devicon-latex-plain",
 }
 
 const rust : SkillData = {
     name: "Rust",
-    level: 5,
+    level: 4,
     iconClass: "devicon-rust-plain",
 }
 
@@ -162,5 +162,30 @@ const allSkills : SkillData[] = [
     rust,
 ]
 
-export default allSkills;
+
+const shownSkills : SkillData[] = [
+    vscode,
+    git,
+    github,
+    ts,
+    python,
+    flutter,
+    // dart,
+    svelte,
+    android,
+    // arduino,
+    bash,
+    // cpp,
+    sass,
+    linux,
+    postgresql,
+    // nodejs,
+    // swift,
+    // vue,
+    // unity,
+    latex,
+    rust,
+]
+
+export default shownSkills;
 

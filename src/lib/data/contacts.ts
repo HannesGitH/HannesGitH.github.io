@@ -22,9 +22,9 @@ export const github: ContactData = {
 export const email: ContactData = {
     name: 'Email',
     iconClass: 'fa-solid fa-envelope',
-    link: 'mailto:jobs.hannes.ha@gmail.com'
+    link: 'mailto:contact@h-h.win'
 };
 
-const contacts: ContactData[] = [linkedin, github];
+const contacts: ContactData[] = [linkedin, github, email];
 
 export default contacts;
