@@ -45,14 +45,14 @@
 			component: ExperienceSection
 		},
 		{
-			id: sectionrefs.skills,
-			name: 'skills',
-			component: SkillsSection
-		},
-		{
 			id: sectionrefs.projects,
 			name: 'projects',
 			component: ProjectsSection
+		},
+		{
+			id: sectionrefs.skills,
+			name: 'skills',
+			component: SkillsSection
 		},
 		{
 			id: sectionrefs.contact,

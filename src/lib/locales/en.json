@@ -11,7 +11,13 @@
 	},
 	"education": { "title": "Education" },
 	"experience": { "title": "Experience" },
-	"projects": { "title": "Projects" },
+	"projects": { 
+		"title": "Projects" ,
+		"checkout" : "more info",
+		"passcheck": {
+			"name": "Password Checker"
+		}
+	},
 	"skills": { "title": "Skills" },
 	"contact": { "title": "Contact" },
 	"impress": { "title": "Impressum" }
