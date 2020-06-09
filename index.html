@@ -88,9 +88,29 @@
       </g>
     </svg>
     <p>
-    <a href="https://www.linkedin.com/in/hannes-hattenbach-576310198/">Me</a>
+    <a style="color: #000000;" href="https://www.linkedin.com/in/hannes-hattenbach-576310198/"><h1>Me</h1></a>
   </p>
   </div>
+  <section id="projectsSection">
+  <a href="javascript:expandProjects()" style="font-size: small;">My Projects↴</a>
+<script>
+  var projectsIsExpanded=false;
+  function expandProjects(){
+    projectsIsExpanded^=true;
+    var projects=document.getElementById("projects");
+    //projects.hidden=projectsIsExpanded;
+    if (projectsIsExpanded) {
+      projects.classList.add("normal");   
+    } else {
+      projects.classList.remove("normal");
+    }
+  }
+  
+</script>
+<div id="projects" class="projects">
+  <a href="https://play.google.com/store/apps/details?id=tools.hannepps.kruemelreiten">A group-management-tool <p style="font-size: xx-small; font-weight: 100;">(specifically designed for my GF)</p></a>
+</div>
+  </section>
     
 </body>
 <style>
@@ -125,12 +145,52 @@
   text-align: center;
 }
 
-a{
+h1{
   font-style: italic;
-  color: #000000;
+  color: #000000 !important;
   font-size:1cm;
   font-weight:100;
   font-family: fantasy;
 }
+
+a{
+  font-style: italic;
+  color: #000000 !important;
+  font-weight:100;
+  font-family: fantasy;
+}
+
+section{
+  margin: 40 auto;
+}
+
+body{
+  text-align: center;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+p{
+  font-size: 11pt;
+}
+
+@keyframes moveIn {
+0%{
+  transform: rotateX(90deg);
+}
+100%{
+  transform: rotateX(0deg);
+}
+  
+}
+
+
+.projects{
+  margin-top: 1cm;
+  transition: all 0.4s;
+  transform: rotateX(90deg);
+}
+.normal{
+  transform: rotateX(0deg);
+}
+
 </style>
 </html>
