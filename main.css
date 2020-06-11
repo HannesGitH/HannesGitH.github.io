@@ -1,0 +1,59 @@
+.me {
+    margin: 50pt auto;
+    transform-origin: left bottom;
+    text-align: left;
+  }
+
+  h1 {
+    font-family: 'Abril Fatface', serif;
+    border: none;
+    text-decoration-line: none;
+    font-style: italic;
+    color: #000000 !important;
+    font-size: 3em;
+    font-weight: 800;
+  }
+
+  body {
+    background-color: #f3f3f3;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  p {
+    font-size: 11pt;
+  }
+
+  @keyframes moveIn {
+    0% {
+      transform: rotateX(90deg);
+    }
+
+    100% {
+      transform: rotateX(0deg);
+    }
+
+  }
+
+  .headline{
+      text-align: left;
+      box-sizing: border-box;
+      min-width: 10cm;
+      display: inline-block;
+  }
+
+  a{
+    color: #000000;
+    text-decoration-line: none;
+  }
+
+  .projects {
+    margin-top: 1cm;
+    transition: all 0.4s;
+    transform: rotateX(90deg);
+    color: black !important;
+  }
+
+  .normal {
+    transform: rotateX(0deg);
+  }
