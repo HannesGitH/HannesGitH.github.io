@@ -1,4 +1,6 @@
 body {
+  padding: 0;
+  margin: 0;
   background-color: #f3f3f3;
   text-align: center;
   font-family: 'Roboto', sans-serif;
@@ -32,6 +34,10 @@ header{
   background-color: white;
   border-bottom-left-radius: 2rem;
   box-shadow: .3em -.3em .8em grey;
+}
+
+#layer1{
+  background-color: rgba(240, 240, 240, 0.95);
 }
 
 .me {
