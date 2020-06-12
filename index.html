@@ -10,18 +10,24 @@
 </head>
 
 <body>
+  <header class="offset1">
+    <a class="bigButton" style="float: left;" href="https://www.linkedin.com/in/hannes-hattenbach-576310198/">
+      mich kontaktieren
+    </a>
+    <object id="small-main-icon" style="float:left; margin-top: -10px; margin-bottom: -10px;" data="/main-icon.html" type="image/svg+xml" width="75" height="75"></object>
+  </header>
   <div style="height:20vh"></div>
+
   <div class="me">
     <object id="main-icon" style="float:left;" data="/main-icon.html" type="image/svg+xml" width="262" height="262"></object>
     <div class="headline">
-
       <h1>Hey, <br> ich bin Hannes Hattenbach <br> und angehender Flutter-Developer</h1>
-      <a class="bigButton" href="https://www.linkedin.com/in/hannes-hattenbach-576310198/">
+      <a class="bigButton" style="margin-top: 0.5cm;" href="https://www.linkedin.com/in/hannes-hattenbach-576310198/">
         mich kontaktieren
       </a>
     </div>
-
   </div>
+
   <section id="projectsSection">
     <a href="javascript:expandProjects()" style="font-size: large;">Meine Projekte↴</a>
     <script>
@@ -56,22 +62,26 @@
       return elem.getBoundingClientRect().top-window.pageYOffset;
   }
   function distanceFromBottomtoTopInPx(elem){
-    console.log("bottom: "+elem.getBoundingClientRect().bottom);
+    //console.log("bottom: "+elem.getBoundingClientRect().bottom);
       return elem.getBoundingClientRect().bottom;//-window.pageYOffset+window.innerHeight;
+  }
+
+  function cutEnds(val, start, end){
+    let r = val>start?val:start;
+    return r<end?r:end;
+  }
+  function distanceFromBottomtoTopFactor(elem, triggerFactor){
+    let dist = distanceFromBottomtoTopInPx(elem)/window.outerHeight/(triggerFactor??1);
+    return cutEnds(dist,0,1);
   }
 
   let me = document.getElementsByClassName("me")[0];
   let meInitOff=distanceFromBottomtoTopInPx(me);
-  console.log(meInitOff);
   function rotateMeAway(){
-    
-    var off=distanceFromBottomtoTopInPx(me);
-    off=off>0?off:0;
-    off=off>400?400:off;
-    console.log(off);
-    var winkel =-(90-90*off/400)%360;
+    let winkel=-90+distanceFromBottomtoTopFactor(me,0.6)*90;
     me.style.transform="rotateZ("+winkel+"deg)"
     document.getElementById("main-icon").style.transform="scale("+(1+winkel/90)+")";
+    document.getElementsByClassName("offset1")[0].style.transform="translate("+(100+100*winkel/90)+"%)";
   }
 
   document.addEventListener("scroll",(e)=>{

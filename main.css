@@ -1,60 +1,100 @@
+body {
+  background-color: #f3f3f3;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+p {
+  font-size: 11pt;
+}
+
+h1 {
+  font-family: 'Abril Fatface', serif;
+  border: none;
+  text-decoration-line: none;
+  font-style: italic;
+  color: #000000 !important;
+  font-size: 3em;
+  font-weight: 800;
+}
+
+a{
+  color: #000000;
+  text-decoration-line: none;
+}
+
+header{
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: .4em .4em .5em 1em;
+  background-color: white;
+  border-bottom-left-radius: 2rem;
+  box-shadow: .3em -.3em .8em grey;
+}
+
 .me {
-    margin: 50pt auto;
-    transform-origin: left bottom;
-    text-align: left;
-    padding: 5rem;
-  }
+  transition: all 0.07s;
+  margin: 50pt auto;
+  transform-origin: left bottom;
+  text-align: left;
+  padding: 5rem;
+}
+.headline{
+  text-align: left;
+  box-sizing: border-box;
+  min-width: 7cm;
+  max-width: 70vw;
+  display: inline-block;
+}
 
-  h1 {
-    font-family: 'Abril Fatface', serif;
-    border: none;
-    text-decoration-line: none;
-    font-style: italic;
-    color: #000000 !important;
-    font-size: 3em;
-    font-weight: 800;
-  }
+.bigButton{
+  transition: color .5s, background-color .5s;
+  display: inline-block;
+  color: white;
+  background-color: #45aae4;
+  padding: 1em;
+  border-radius:5ch;
+}
+.bigButton:hover{
+  background-color: #1efefe;
+  color: #000000;
+}
+.bigButton:active{
+  background-color: #1ed31e;
+  color: #000000;
+}
+  
+.offset1{
+  transition: all 0.07s;
+  transform: translate(100%);
+}
 
-  body {
-    background-color: #f3f3f3;
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-  }
+.projects {
+  margin-top: 1cm;
+  transition: all 0.4s;
+  transform: rotateX(90deg);
+  color: black !important;
+}
 
-  p {
-    font-size: 11pt;
-  }
+.normal {
+  transform: rotateX(0deg);
+}
+  
 
-  @keyframes moveIn {
-    0% {
-      transform: rotateX(90deg);
-    }
 
-    100% {
-      transform: rotateX(0deg);
-    }
-
-  }
-
-  .headline{
-      text-align: left;
-      box-sizing: border-box;
-      min-width: 10cm;
-      display: inline-block;
-  }
-
-  a{
-    color: #000000;
-    text-decoration-line: none;
-  }
-
-  .projects {
-    margin-top: 1cm;
-    transition: all 0.4s;
+@keyframes moveIn {
+  0% {
     transform: rotateX(90deg);
-    color: black !important;
   }
-
-  .normal {
+  100% {
     transform: rotateX(0deg);
   }
+}
+
+  
+
+  
+
+  
