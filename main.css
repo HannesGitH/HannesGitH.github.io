@@ -71,6 +71,10 @@ header{
   transform: translate(100%);
 }
 
+#projectsSection{
+  margin-top: 25vh;
+}
+
 .projects {
   margin-top: 1cm;
   transition: all 0.4s;
