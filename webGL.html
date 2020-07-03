@@ -298,7 +298,7 @@
     //
     function drawScene(gl, programInfo, buffers, deltaTime) {
 
-        zRotation += 0;//deltaTime;
+        zRotation += deltaTime;
         xRotation = ((clientX||0)-canvas.clientWidth/2)/200;
         yRotation = ((clientY||0)-canvas.clientHeight/2)/200;
 
@@ -345,7 +345,7 @@
         mat4.rotate(modelViewMatrix,  // destination matrix
             modelViewMatrix,  // matrix to rotate
             zRotation,   // amount to rotate in radians
-            [0, 0, 1]);       // axis to rotate around
+            [0, 1, 1]);       // axis to rotate around
 
             mat4.rotate(modelViewMatrix,  
             modelViewMatrix, 
