@@ -9,13 +9,21 @@
 
 <body>
     <canvas id="glCanvas" width="1080" height="720"></canvas>
+    <button onclick="shouldpascalize^=true;console.log(shouldpascalize);main();">toggle hole</button>
+    <button onclick="rotateVonAllein^=true;main();">toggle rotation</button>
 </body>
 
 <script src="/matrizen.js"></script>
 
 <script>
+    var shouldpascalize=false;
+    var rotateVonAllein=true;
     var clientX, clientY;
     const canvas = document.querySelector('#glCanvas');
+    canvas.addEventListener('mousemove', function (e) {
+            clientX = e.clientX;
+            clientY = e.clientY;
+        });
     main();
     //
     // Start here
@@ -31,10 +39,7 @@
             return;
         }
 
-        canvas.addEventListener('mousemove', function (e) {
-            clientX = e.clientX;
-            clientY = e.clientY;
-        });
+        
 
         // Vertex shader program
 
@@ -88,7 +93,7 @@
     void main(void) {
 
         const lowp float u_Shininess = 0.8; 
-        const lowp vec3 lightLoc = vec3(3,0, -1);
+        const lowp vec3 lightLoc = vec3(3,0,-1);
         lowp vec3 to_light = normalize(lightLoc-v_Vertex);
 
         highp vec3 reflection = 2.0 * dot(v_Normal,to_light) * v_Normal - to_light;
@@ -228,14 +233,18 @@
         ];
 
         var vertexNormals = [
-            1.0, 1.0, 1.0,
+            -1.0, -1.0, 1.0,
             -1.0, 1.0, -1.0,
+            1.0, -1.0, -1.0,
+            1.0, 1.0, 1.0,
+            /*1.0, 1.0, 1.0,
             -1.0, -1.0, 1.0,
             1.0, -1.0, -1.0,
+            -1.0, 1.0, -1.0,*/
         ];
 
         var colors = [
-            0.5, 0.57, 0.7, 1.0,    //first vertice
+            0.7, 0.7, 0.7, 1.0,    //first vertice
             1.0, 0.0, 0.0, 0.9,    // next vertice
             0.0, 1.0, 0.0, 1.0,    // next vertice
             0.0, 0.0, 1.0, 1.0,    // next vertice
@@ -252,11 +261,14 @@
             //todo rekursiv
         }
 
-        var p=pascalize(positions,colors,vertexNormals,indices);
-        indices=p.nindis;
-        colors=p.colours;
-        vertexNormals=p.normals;
-        positions=p.npos;
+        if(shouldpascalize){
+            var p=pascalize(positions,colors,vertexNormals,indices);
+            indices=p.nindis;
+            colors=p.colours;
+            vertexNormals=p.normals;
+            positions=p.npos;
+        }
+
 
         console.log(p);
         // Now pass the list of positions into WebGL to build the
@@ -298,7 +310,7 @@
     //
     function drawScene(gl, programInfo, buffers, deltaTime) {
 
-        zRotation += deltaTime;
+        zRotation += rotateVonAllein? deltaTime:0;
         xRotation = ((clientX||0)-canvas.clientWidth/2)/200;
         yRotation = ((clientY||0)-canvas.clientHeight/2)/200;
 
@@ -345,7 +357,7 @@
         mat4.rotate(modelViewMatrix,  // destination matrix
             modelViewMatrix,  // matrix to rotate
             zRotation,   // amount to rotate in radians
-            [0, 1, 1]);       // axis to rotate around
+            [1, 1, 1]);       // axis to rotate around
 
             mat4.rotate(modelViewMatrix,  
             modelViewMatrix, 
@@ -442,7 +454,7 @@
             normalMatrix);
 
         {
-            const vertexCount = 48; //TODO:
+            const vertexCount = shouldpascalize?48:12; //TODO:
             const type = gl.UNSIGNED_SHORT;
             const offset = 0;
             gl.drawElements(gl.TRIANGLES, vertexCount, type, offset);
