@@ -1,22 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebGL test</title>
-</head>
-
-<body>
-    <canvas id="glCanvas" width="1080" height="720"></canvas>
-    <button onclick="shouldpascalize^=true;console.log(shouldpascalize);main();">toggle hole</button>
-    <button onclick="rotateVonAllein^=true;main();">toggle rotation</button>
-</body>
-
-<script src="/matrizen.js"></script>
-
-<script>
-    var shouldpascalize=false;
+var shouldpascalize=false;
     var rotateVonAllein=true;
     var clientX, clientY;
     const canvas = document.querySelector('#glCanvas');
@@ -515,7 +497,3 @@
 
         return shader;
     }
-
-</script>
-
-</html>
