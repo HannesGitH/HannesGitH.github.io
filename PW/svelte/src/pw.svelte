@@ -1,5 +1,5 @@
 <script>
-    import zxcvbn from 'zxcvbn'
+    import zxcvbn from './zxcvbn'
     let password = ''
     $: security = zxcvbn(password)
 </script>
