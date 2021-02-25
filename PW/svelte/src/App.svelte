@@ -41,7 +41,7 @@
 		font-weight: 100;
 	}
 
-	@media (min-width: 740px) {
+	@media (max-width: 740px) {
 		main {
 			max-width: none;
 		}
