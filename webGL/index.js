@@ -76,12 +76,9 @@ async function main() {
 //
 // initBuffers
 //
-// Initialize the buffers we'll need. For this demo, we just
-// have one object -- a simple two-dimensional square.
+// Initialize the buffers we'll need. 
 //
 function initBuffers(gl) {
-
-    // Create a buffer for the square's positions.
 
     const positionBuffer = gl.createBuffer();
 
@@ -90,7 +87,7 @@ function initBuffers(gl) {
 
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
 
-    // Now create an array of positions for the square.
+    // Now create an array of positions for the object.
 
     function pascalize(pos,colours,normals,indis){
         normals = normals.concat(normals,normals);
@@ -141,29 +138,33 @@ function initBuffers(gl) {
         return{npos,colours,normals,nindis};
     }
 
+    //the 4 corners of our pyramid
     var positions = [
-        -1.0, -1.0, 1.0,
+        -1.0, -1.0, 1.0, 
         -1.0, 1.0, -1.0,
         1.0, -1.0, -1.0,
         1.0, 1.0, 1.0,
     ];
 
     var vertexNormals = [
+        //the real normals 
+        //pointing in the same direction as the verteces do
         -1.0, -1.0, 1.0,
         -1.0, 1.0, -1.0,
         1.0, -1.0, -1.0,
         1.0, 1.0, 1.0,
+        //some funny stuff
         /*1.0, 1.0, 1.0,
         -1.0, -1.0, 1.0,
         1.0, -1.0, -1.0,
-        -1.0, 1.0, -1.0,*/
+        -1.0, 6.0, -1.0,*/
     ];
 
     var colors = [
-        0.7, 0.7, 0.7, 1.0,    //first vertice
-        1.0, 0.0, 0.0, 0.9,    // next vertice
-        0.0, 1.0, 0.0, 1.0,    // next vertice
-        0.0, 0.0, 1.0, 1.0,    // next vertice
+        0.7, 0.7, 0.7, 1.0,    //first vertice : grey
+        1.0, 0.0, 0.0, 0.9,    // next vertice : red
+        0.0, 1.0, 0.0, 1.0,    // next vertice : green
+        0.0, 0.0, 1.0, 1.0,    // next vertice : blue
     ];
 
     var indices = [
@@ -185,8 +186,6 @@ function initBuffers(gl) {
         positions=p.npos;
     }
 
-
-    console.log(p);
     // Now pass the list of positions into WebGL to build the
     // shape. We do this by creating a Float32Array from the
     // JavaScript array, then use it to fill the current buffer.
@@ -376,54 +375,4 @@ function drawScene(gl, programInfo, buffers, deltaTime) {
         gl.drawElements(gl.TRIANGLES, vertexCount, type, offset);
     }
 
-}
-
-//
-// Initialize a shader program, so WebGL knows how to draw our data
-//
-function initShaderProgram(gl, vsSource, fsSource) {
-    const vertexShader = loadShader(gl, gl.VERTEX_SHADER, vsSource);
-    const fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fsSource);
-
-    // Create the shader program
-
-    const shaderProgram = gl.createProgram();
-    gl.attachShader(shaderProgram, vertexShader);
-    gl.attachShader(shaderProgram, fragmentShader);
-    gl.linkProgram(shaderProgram);
-
-    // If creating the shader program failed, alert
-
-    if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
-        alert('Unable to initialize the shader program: ' + gl.getProgramInfoLog(shaderProgram));
-        return null;
-    }
-
-    return shaderProgram;
-}
-
-//
-// creates a shader of the given type, uploads the source and
-// compiles it.
-//
-function loadShader(gl, type, source) {
-    const shader = gl.createShader(type);
-
-    // Send the source to the shader object
-
-    gl.shaderSource(shader, source);
-
-    // Compile the shader program
-
-    gl.compileShader(shader);
-
-    // See if it compiled successfully
-
-    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        alert('An error occurred compiling the shaders: ' + gl.getShaderInfoLog(shader));
-        gl.deleteShader(shader);
-        return null;
-    }
-
-    return shader;
 }
