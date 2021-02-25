@@ -1,24 +1,25 @@
 <script lang="ts">
 	export let name: string;
 	import PWBar from './pw.svelte'
-	import crackseconds from './pw.svelte'
+	import {elapsed} from './store'
+	import {color, seconds} from './pw_store'
 </script>
 
-<main>
+<main style="background-color: #{$color};">
 	<h1>{name}</h1>
 	<PWBar/>
+	<p>{$elapsed>$seconds? "thats shorter than you've been here" : ""}</p>
 </main>
 
 <style>
 	main {
 		text-align: center;
 		padding: 1em;
-		max-width: 240px;
 		margin: 0 auto;
+		color: white;
 	}
 
 	h1 {
-		color: #ff3e00;
 		text-transform: uppercase;
 		font-size: 4em;
 		font-weight: 100;

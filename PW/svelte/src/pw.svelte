@@ -1,15 +1,26 @@
-<script>
-    import zxcvbn from './zxcvbn'
-    //import readable from 'svelte/store'
-    let password = ''
-    $: security = zxcvbn(password)
-    $: color = security.crack_times_seconds.offline_fast_hashing_1e10_per_second
-    
-    export const crackseconds = color
+<script  lang="ts" >
+    import {password,security} from './pw_store'
 </script>
   
-<input type=password bind:value={password}>
+<input type=password bind:value={$password}>
 
 <p>
-    {security.crack_times_display.offline_fast_hashing_1e10_per_second}
+    it takes
+    <b style="text-transform: uppercase;">
+        {$security.crack_times_display.offline_fast_hashing_1e10_per_second}
+    </b>
+    to break your password with a server farm
 </p>
+
+<style>
+    input {
+        margin: 0 auto;
+        width: 100%;
+        outline: none;
+        text-align: center;
+        border: none;
+    }
+    input:focus {
+        
+    }
+</style>
