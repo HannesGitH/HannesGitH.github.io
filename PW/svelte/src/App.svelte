@@ -3,18 +3,21 @@
 	import PWBar from './pw.svelte'
 	import {elapsed} from './store'
 	import {color, seconds, security} from './pw_store'
+	import { slide } from 'svelte/transition';
 
 	let hasFootNote:Boolean = true;
 </script>
 
-<main style="background-color: #{$color};">
+<main 
+	style="background-color: #{$color};"
+>
 	<h1>{name}</h1>
 	<PWBar withAsterix={hasFootNote}/>
-	<p mini>{$elapsed>$seconds? "(thats shorter than you've been here)" : ""}</p>
+	{#if $elapsed>$seconds }<p mini transition:slide="{{ duration: 1000 }}" >(thats shorter than you've been here)</p> {/if}
 </main>
 {#if hasFootNote}
 <p mini style="padding: 0 10em;">
-	* if using a normal PC trying around 10000000000 passwords per Second, on an online Service it would probably take like {$security.crack_times_display.online_no_throttling_10_per_second}
+	* if using a normal PC trying around 10000000000 passwords per second. On an online-service it would probably take like {$security.crack_times_display.online_no_throttling_10_per_second}
 
 </p>
 {/if}
@@ -26,6 +29,7 @@
 		margin: 1em ;
 		color: white;
 		border-radius: 2em;
+		transition: background-color 0.8s ease;
 	}
 	p[mini]{
 		font-size: 11px;
