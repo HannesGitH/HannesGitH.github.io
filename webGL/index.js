@@ -90,6 +90,13 @@ function initBuffers(gl) {
     // Now create an array of positions for the object.
 
     function pascalize(pos,colours,normals,indis){
+
+       /* var newPyras=[];
+
+        for (var i = 0; i<4; i++){
+            newPyras.pos = pos.map((e,i)=> e/2)
+        }*/
+
         normals = normals.concat(normals,normals);
         colours = colours.concat(colours,colours);
         let l= pos.length;
@@ -100,18 +107,18 @@ function initBuffers(gl) {
                 (pos[i-2]+pos[i==2?l-3:i-5])/2,
                 (pos[i-1]+pos[i==2?l-2:i-4])/2,
                 (pos[i-0]+pos[i==2?l-1:i-3])/2
-                );
+            );
         }
         npos.push(
-                (pos[8-2]+pos[0])/2,
-                (pos[8-1]+pos[1])/2,
-                (pos[8-0]+pos[2])/2
-                );
+            (pos[8-2]+pos[0])/2,
+            (pos[8-1]+pos[1])/2,
+            (pos[8-0]+pos[2])/2
+        );
         npos.push(
-                (pos[5-2]+pos[l-3])/2,
-                (pos[5-1]+pos[l-2])/2,
-                (pos[5-0]+pos[l-1])/2
-                );
+            (pos[5-2]+pos[l-3])/2,
+            (pos[5-1]+pos[l-2])/2,
+            (pos[5-0]+pos[l-1])/2
+        );
         
         var nindis=[
             0,5,8,
@@ -200,7 +207,6 @@ function initBuffers(gl) {
 
     const indexBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
-
     // Now send the element array to GL
 
     gl.bufferData(gl.ELEMENT_ARRAY_BUFFER,
