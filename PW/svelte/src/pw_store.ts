@@ -21,7 +21,6 @@ export const color = derived(
         const red   = "FF0000" 
         let ratio = between(0,Math.log10(Math.log10($seconds)),1);
         let color = getColorMix(green, red, ratio);
-        console.log({color, ratio})
         return color
     }
 );

@@ -41,9 +41,12 @@
 		font-weight: 100;
 	}
 
-	@media (min-width: 640px) {
+	@media (min-width: 740px) {
 		main {
 			max-width: none;
+		}
+		h1 {
+			font-size: 1.5em;
 		}
 	}
 </style>
