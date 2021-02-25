@@ -1,6 +1,7 @@
 <script lang="ts">
 	export let name: string;
 	import PWBar from './pw.svelte'
+	import crackseconds from './pw.svelte'
 </script>
 
 <main>
