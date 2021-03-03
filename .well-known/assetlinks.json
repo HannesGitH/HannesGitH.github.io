@@ -1,0 +1,7 @@
+[{
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+    "namespace": "android_app",
+    "package_name": "hannepps.tools.passwordchecker",
+     "sha256_cert_fingerprints": ["48:8D:7C:D4:BA:57:9C:72:95:CF:DE:7D:C0:E2:2B:0B:EC:89:B5:01:78:88:12:C4:44:D6:D4:31:97:52:73:8E"]}
+}]
