@@ -1,103 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hannes</title>
+    <link href="main.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Abril+Fatface|Roboto:300,700"
+      rel="stylesheet"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hannes</title>
-  <link href="main.css" rel="stylesheet" type="text/css" />
-	<link rel='icon' type='image/png' href='/favicon.png'>
-  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Roboto:300,700" rel="stylesheet">
-</head>
+  <body>
+    <div id="layer1">
+      <header class="offset1">
+        <a
+          class="bigButton"
+          style="float: left"
+          href="https://www.linkedin.com/in/hannes-hattenbach"
+        >
+          mich kontaktieren
+        </a>
+        <object
+          id="small-main-icon"
+          style="float: left; margin-top: -10px; margin-bottom: -10px"
+          data="/main-icon.html"
+          type="image/svg+xml"
+          width="75"
+          height="75"
+        ></object>
+      </header>
+      <div style="height: 20vh"></div>
 
-<body>
-  <div id="layer1">
-  <header class="offset1">
-    <a class="bigButton" style="float: left;" href="https://www.linkedin.com/in/hannes-hattenbach">
-      mich kontaktieren
-    </a>
-    <object id="small-main-icon" style="float:left; margin-top: -10px; margin-bottom: -10px;" data="/main-icon.html" type="image/svg+xml" width="75" height="75"></object>
-  </header>
-  <div style="height:20vh"></div>
+      <div class="me">
+        <object
+          id="main-icon"
+          style="float: left"
+          data="/main-icon.html"
+          type="image/svg+xml"
+          width="262"
+          height="262"
+        ></object>
+        <div class="headline">
+          <h1>
+            Hey, <br />
+            ich bin Hannes Hattenbach <br />
+            und momentan Informatik-Student
+          </h1>
+          <a
+            class="bigButton"
+            style="margin-top: 0.5cm"
+            href="https://www.linkedin.com/in/hannes-hattenbach"
+          >
+            mich kontaktieren
+          </a>
+        </div>
+      </div>
 
-  <div class="me">
-    <object id="main-icon" style="float:left;" data="/main-icon.html" type="image/svg+xml" width="262" height="262"></object>
-    <div class="headline">
-      <h1>Hey, <br> ich bin Hannes Hattenbach <br> und momentan Informatik-Student</h1>
-      <a class="bigButton" style="margin-top: 0.5cm;" href="https://www.linkedin.com/in/hannes-hattenbach">
-        mich kontaktieren
-      </a>
+      <section id="projectsSection">
+        <a href="javascript:expandProjects()" style="font-size: large"
+          >Meine Projekte↴</a
+        >
+        <script>
+          var projectsIsExpanded = true;
+          function expandProjects() {
+            projectsIsExpanded ^= true;
+            var projects = document.getElementById("projects");
+            //projects.hidden=projectsIsExpanded;
+            if (projectsIsExpanded) {
+              projects.classList.add("normal");
+            } else {
+              projects.classList.remove("normal");
+            }
+          }
+        </script>
+        <div id="projects" class="projects normal">
+          <a
+            href="https://play.google.com/store/apps/details?id=tools.hannepps.kruemelreiten"
+            >Ein Gruppen-Management-Tool
+            <p style="font-size: xx-small; font-weight: 100">
+              (speziell für private Zwecke gebaut)
+            </p></a
+          >
+        </div>
+      </section>
+
+      <div style="height: 100vh"></div>
+      <p>
+        den Bau dieser Website hab ich erstmal verschoben, da ich momentan mit
+        meiner Bachelor-Arbeit beschäftigt bin
+      </p>
     </div>
-  </div>
+  </body>
+  <style></style>
+  <script>
+    function distanceFromToptoTopInPx(elem) {
+      return elem.getBoundingClientRect().top - window.pageYOffset;
+    }
+    function distanceFromBottomtoTopInPx(elem) {
+      //console.log("bottom: "+elem.getBoundingClientRect().bottom);
+      return elem.getBoundingClientRect().bottom; //-window.pageYOffset+window.innerHeight;
+    }
 
-  <section id="projectsSection">
-    <a href="javascript:expandProjects()" style="font-size: large;">Meine Projekte↴</a>
-    <script>
-      var projectsIsExpanded = true;
-      function expandProjects() {
-        projectsIsExpanded ^= true;
-        var projects = document.getElementById("projects");
-        //projects.hidden=projectsIsExpanded;
-        if (projectsIsExpanded) {
-          projects.classList.add("normal");
-        } else {
-          projects.classList.remove("normal");
-        }
-      }
+    function cutEnds(val, start, end) {
+      let r = val > start ? val : start;
+      return r < end ? r : end;
+    }
+    function distanceFromBottomtoTopFactor(elem, triggerFactor) {
+      let dist =
+        distanceFromBottomtoTopInPx(elem) /
+        window.outerHeight /
+        (triggerFactor ?? 1);
+      return cutEnds(dist, 0, 1);
+    }
 
-    </script>
-    <div id="projects" class="projects normal">
-      <a href="https://play.google.com/store/apps/details?id=tools.hannepps.kruemelreiten">Ein Gruppen-Management-Tool <p
-          style="font-size: xx-small; font-weight: 100;">(speziell für private Zwecke gebaut)</p></a>
-    </div>
-  </section>
+    let me = document.getElementsByClassName("me")[0];
+    let meInitOff = distanceFromBottomtoTopInPx(me);
+    function rotateMeAway() {
+      let winkel = -90 + distanceFromBottomtoTopFactor(me, 0.6) * 90;
+      me.style.transform = "rotateZ(" + winkel + "deg)";
+      document.getElementById("main-icon").style.transform =
+        "scale(" + (1 + winkel / 90) + ")";
+      document.getElementsByClassName("offset1")[0].style.transform =
+        "translate(" + (100 + (100 * winkel) / 90) + "%)";
+    }
 
-  <div style="height:100vh">
-  </div><p>den Bau dieser Website hab ich erstmal verschoben, da ich momentan mit meiner Bachelor-Arbeit beschäftigt bin</p>
-</div>
-</body>
-<style>
+    document.addEventListener("scroll", (e) => {
+      rotateMeAway();
+    });
+  </script>
 
-</style>
-<script>
-  function distanceFromToptoTopInPx(elem){
-      return elem.getBoundingClientRect().top-window.pageYOffset;
-  }
-  function distanceFromBottomtoTopInPx(elem){
-    //console.log("bottom: "+elem.getBoundingClientRect().bottom);
-      return elem.getBoundingClientRect().bottom;//-window.pageYOffset+window.innerHeight;
-  }
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r99/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 
-  function cutEnds(val, start, end){
-    let r = val>start?val:start;
-    return r<end?r:end;
-  }
-  function distanceFromBottomtoTopFactor(elem, triggerFactor){
-    let dist = distanceFromBottomtoTopInPx(elem)/window.outerHeight/(triggerFactor??1);
-    return cutEnds(dist,0,1);
-  }
-
-  let me = document.getElementsByClassName("me")[0];
-  let meInitOff=distanceFromBottomtoTopInPx(me);
-  function rotateMeAway(){
-    let winkel=-90+distanceFromBottomtoTopFactor(me,0.6)*90;
-    me.style.transform="rotateZ("+winkel+"deg)"
-    document.getElementById("main-icon").style.transform="scale("+(1+winkel/90)+")";
-    document.getElementsByClassName("offset1")[0].style.transform="translate("+(100+100*winkel/90)+"%)";
-  }
-
-  document.addEventListener("scroll",(e)=>{
-    rotateMeAway();
-  })
-</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r99/three.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
-
-<script>
+  <script>
     var scene = new THREE.Scene();
 
-    var camera = new THREE.PerspectiveCamera(85, window.innerWidth / window.innerHeight, 0.1, 1000)
+    var camera = new THREE.PerspectiveCamera(
+      85,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
     camera.position.z = 7;
 
     var renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -106,76 +151,85 @@
 
     document.body.appendChild(renderer.domElement);
 
-    window.addEventListener('resize', () => {
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-    })
+    window.addEventListener("resize", () => {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+    });
 
     var raycaster = new THREE.Raycaster();
     var mouse = new THREE.Vector2();
 
     var geometry = new THREE.BoxGeometry(1, 1, 1);
-    var material = new THREE.MeshLambertMaterial({ color: 0x67F7F7 });
+    var material = new THREE.MeshLambertMaterial({ color: 0x67f7f7 });
 
     for (var i = 0; i < 15; i++) {
-        var mesh = new THREE.Mesh(geometry, material);
-        mesh.position.x = (Math.random() - 0.5) * 10;
-        mesh.position.y = (Math.random() - 0.8) * 18 - 10;
-        mesh.position.z = (Math.random() - 0.5) * 10;
-        scene.add(mesh);
+      var mesh = new THREE.Mesh(geometry, material);
+      mesh.position.x = (Math.random() - 0.5) * 10;
+      mesh.position.y = (Math.random() - 0.8) * 18 - 10;
+      mesh.position.z = (Math.random() - 0.5) * 10;
+      scene.add(mesh);
     }
 
-
-    var light = new THREE.PointLight(0xFFbFFF, 2, 100)
+    var light = new THREE.PointLight(0xffbfff, 2, 100);
     light.position.set(10, 10, 10);
     scene.add(light);
 
-    var light = new THREE.PointLight(0xF0FFFF, 3, 1000)
+    var light = new THREE.PointLight(0xf0ffff, 3, 1000);
     light.position.set(-0, 0, 25);
     scene.add(light);
 
     var render = function () {
-        requestAnimationFrame(render);
-        renderer.render(scene, camera);
-    }
+      requestAnimationFrame(render);
+      renderer.render(scene, camera);
+    };
 
     function onMouseMove(event) {
-        event.preventDefault();
+      event.preventDefault();
 
-        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-        raycaster.setFromCamera(mouse, camera);
+      raycaster.setFromCamera(mouse, camera);
 
-        var intersects = raycaster.intersectObjects(scene.children, true);
-        for (var i = 0; i < intersects.length; i++) {
-            this.tl = new TimelineMax();
-            let intersectedObj = intersects[i].object;
-            this.tl.to(intersectedObj.scale, 1, { x: 2, ease: Expo.easeOut })
-            this.tl.to(intersectedObj.scale, .5, { x: .5, ease: Expo.easeOut })
-            this.tl.to(intersectedObj.position, .5, { y: intersectedObj.position.y-2, ease: Expo.easeOut })
-            this.tl.to(intersectedObj.rotation, .5, { y: Math.PI * .5, ease: Expo.easeOut }, "=-1.5")
-        }
+      var intersects = raycaster.intersectObjects(scene.children, true);
+      for (var i = 0; i < intersects.length; i++) {
+        this.tl = new TimelineMax();
+        let intersectedObj = intersects[i].object;
+        this.tl.to(intersectedObj.scale, 1, { x: 2, ease: Expo.easeOut });
+        this.tl.to(intersectedObj.scale, 0.5, { x: 0.5, ease: Expo.easeOut });
+        this.tl.to(intersectedObj.position, 0.5, {
+          y: intersectedObj.position.y - 2,
+          ease: Expo.easeOut,
+        });
+        this.tl.to(
+          intersectedObj.rotation,
+          0.5,
+          { y: Math.PI * 0.5, ease: Expo.easeOut },
+          "=-1.5"
+        );
+      }
     }
 
-    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener("mousemove", onMouseMove);
     render();
 
-    window.addEventListener("wheel", event => {
-        const delta = Math.sign(event.deltaY);
-        this.tl = new TimelineMax();
-        this.tl.to(camera.position, 1.7, { y: camera.position.y-2*delta, ease: Expo.easeOut })
+    window.addEventListener("wheel", (event) => {
+      const delta = Math.sign(event.deltaY);
+      this.tl = new TimelineMax();
+      this.tl.to(camera.position, 1.7, {
+        y: camera.position.y - 2 * delta,
+        ease: Expo.easeOut,
+      });
     });
-</script>
-<style>
-  canvas {
-        top:0;
-        left:0;
-        position:fixed;
-        z-index: -1;
-        display: block;
+  </script>
+  <style>
+    canvas {
+      top: 0;
+      left: 0;
+      position: fixed;
+      z-index: -1;
+      display: block;
     }
-</style>
-
+  </style>
 </html>
