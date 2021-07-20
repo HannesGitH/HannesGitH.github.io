@@ -59,39 +59,77 @@
       </div>
 
       <section id="projectsSection">
-        <a href="javascript:expandProjects()" style="font-size: large"
-          >Meine Projekte↴</a
+        <a href="javascript:expandProjects()" class="title"
+          >Meine Projekte↴ </a
         >
         <script>
           var projectsIsExpanded = true;
           function expandProjects() {
             projectsIsExpanded ^= true;
-            var projects = document.getElementById("projects");
+            var projects = document.querySelectorAll("#projects>div");// .getElementById("projects");
+            console.log(projects)
             //projects.hidden=projectsIsExpanded;
             if (projectsIsExpanded) {
-              projects.classList.add("normal");
+              for (const project of projects) {
+                project.classList.add("normal");
+              }
             } else {
-              projects.classList.remove("normal");
+              for (const project of projects) {
+                project.classList.remove("normal");
+              }
             }
           }
+
+          let passwordcheck_isExpanded = false;
+          function expandIframe_passwordcheck(){
+            passwordcheck_isExpanded^=1;
+            if(passwordcheck_isExpanded){
+              document.getElementById('iframe_password-check').innerHTML = ''
+            }else{
+              document.getElementById('iframe_password-check').innerHTML = '<iframe src="https://hannesgith.github.io/password-check/" style="height:10.5cm" frameborder="0" scrolling="no" seamless="seamless"></iframe>';
+            }
+          }
+
         </script>
-        <div id="projects" class="projects normal">
+        <div id="projects" >
+          <div class="project normal">
           <a
             href="https://play.google.com/store/apps/details?id=tools.hannepps.kruemelreiten"
-            >Ein Gruppen-Management-Tool
+            >Ein Gruppen-Management-Tool (Flutter)
             <p style="font-size: xx-small; font-weight: 100">
               (speziell für private Zwecke gebaut)
             </p></a
           >
+        </div><div class="project normal">
+          <a
+            href="javascript:expandIframe_passwordcheck()"
+            >Eine Passwort Test PWA
+            <p style="font-size: xx-small; font-weight: 100">
+              (mit svelte)
+            </p></a
+          >
+          <div id="iframe_password-check"></div>
+          </div>
+          <div class="project normal sidenote">
+          <a
+            href="https://fuhannes.github.io/graph-drawing/"
+            >Film-Remake Visualisierung
+            <p style="font-size: xx-small; font-weight: 100">
+
+            </p></a
+          >
+        </div>
         </div>
       </section>
-
+      <!-- to have more place to scroll, can be removed rather soon -->
       <div style="height: 100vh"></div>
       <p>
         den Bau dieser Website hab ich erstmal verschoben, da ich momentan mit
-        meiner Bachelor-Arbeit beschäftigt bin
+        Uni-Zeug beschäftigt bin
       </p>
     </div>
+    <div id="blend_between"></div>
+    <div id="background_canvas"></div>
   </body>
   <style></style>
   <script>
@@ -135,6 +173,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 
   <script>
+    if (false){
     var scene = new THREE.Scene();
 
     var camera = new THREE.PerspectiveCamera(
@@ -149,7 +188,7 @@
     renderer.setClearColor("#f1f1f1");
     renderer.setSize(window.innerWidth, window.innerHeight);
 
-    document.body.appendChild(renderer.domElement);
+    document.getElementById('background_canvas').appendChild(renderer.domElement);
 
     window.addEventListener("resize", () => {
       renderer.setSize(window.innerWidth, window.innerHeight);
@@ -166,16 +205,16 @@
     for (var i = 0; i < 15; i++) {
       var mesh = new THREE.Mesh(geometry, material);
       mesh.position.x = (Math.random() - 0.5) * 10;
-      mesh.position.y = (Math.random() - 0.8) * 18 - 10;
+      mesh.position.y = (Math.random() - 0.5) * 18 - 10;
       mesh.position.z = (Math.random() - 0.5) * 10;
       scene.add(mesh);
     }
 
-    var light = new THREE.PointLight(0xffbfff, 2, 100);
+    var light = new THREE.PointLight(0xdfbfff, 2, 100);
     light.position.set(10, 10, 10);
     scene.add(light);
 
-    var light = new THREE.PointLight(0xf0ffff, 3, 1000);
+    var light = new THREE.PointLight(0x80f0ff, 3, 1000);
     light.position.set(-0, 0, 25);
     scene.add(light);
 
@@ -214,14 +253,17 @@
     window.addEventListener("mousemove", onMouseMove);
     render();
 
-    window.addEventListener("wheel", (event) => {
-      const delta = Math.sign(event.deltaY);
+    let lastKnownScrollPosition = 0;
+    document.addEventListener("scroll", (event) => {
+      let delta = lastKnownScrollPosition-window.scrollY;
+      lastKnownScrollPosition = window.scrollY;
       this.tl = new TimelineMax();
       this.tl.to(camera.position, 1.7, {
-        y: camera.position.y - 2 * delta,
+        y: lastKnownScrollPosition/1000*-5,//camera.position.y - 2 * delta,
         ease: Expo.easeOut,
       });
     });
+  }
   </script>
   <style>
     canvas {
