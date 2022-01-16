@@ -118,17 +118,15 @@ iframe::-webkit-scrollbar {
   transition: all 0.4s;
   transform: rotateX(-90deg);
   color: black !important;
-}
-
-.project:hover {
-  transform: scale(1.1);
-}
-#projects>div{
   background-color: white;
   margin: 1cm 0;
   padding : .7cm;
   border-radius: .7cm;
   box-shadow: 0.2cm 0.7cm 1cm -.8cm slategrey;
+}
+
+.project:hover {
+  transform: scale(1.1);
 }
 
 .normal {
