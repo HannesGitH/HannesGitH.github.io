@@ -79,7 +79,9 @@
               }
             }
           }
-
+          
+          /*
+          //href  javascript:expandIframe_passwordcheck()
           let passwordcheck_isExpanded = false;
           function expandIframe_passwordcheck(){
             passwordcheck_isExpanded^=1;
@@ -89,9 +91,20 @@
               document.getElementById('iframe_password-check').innerHTML = '<iframe src="https://hannesgith.github.io/password-check/" style="height:10.5cm" frameborder="0" scrolling="no" seamless="seamless"></iframe>';
             }
           }
+          */
 
         </script>
         <div id="projects" >
+          <div class="project normal">
+          <a
+            href="https://hannesgith.github.io/password-check/"
+            >Eine Passwort Test PWA
+            <p style="font-size: xx-small; font-weight: 100">
+              (mit svelte)
+            </p></a
+          >
+          <div id="iframe_password-check"></div>
+          </div>
           <div class="project normal">
           <a
             href="https://play.google.com/store/apps/details?id=tools.hannepps.kruemelreiten"
@@ -100,16 +113,7 @@
               (speziell für private Zwecke gebaut)
             </p></a
           >
-        </div><div class="project normal">
-          <a
-            href="javascript:expandIframe_passwordcheck()"
-            >Eine Passwort Test PWA
-            <p style="font-size: xx-small; font-weight: 100">
-              (mit svelte)
-            </p></a
-          >
-          <div id="iframe_password-check"></div>
-          </div>
+        </div>
           <div class="project normal sidenote">
           <a
             href="https://fuhannes.github.io/graph-drawing/"
