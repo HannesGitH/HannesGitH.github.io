@@ -4,7 +4,8 @@
 
 	const progress = tweened(0,{duration:1000});
 </script>
-<Icon animataionprogress={$progress} amplitude={1}/>
+<Icon animataionprogress={$progress} amplitude={.1} asymmetric/>
+<button on:click="{() => progress.set(-.5)}">-.5</button>
 <button on:click="{() => progress.set(0)}">0</button>
 <button on:click="{() => progress.set(.5)}">.5</button>
 <button on:click="{() => progress.set(1)}">1</button>
