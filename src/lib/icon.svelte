@@ -15,7 +15,7 @@
 	export let textColor = '#ffffff';
 </script>
 
-<svg class="main Icon" width="15em" height="15em" viewBox="0 0 80 95" version="1.1" id="svg75953" style="--text-color: {textColor}">
+<svg class="main Icon" width="100%" height="100%" viewBox="0 0 80 80" version="1.1" id="svg75953" style="--text-color: {textColor}">
 	<defs id="defs75947">
 		<clipPath id="clipPath-text-1" clipPathUnits="userSpaceOnUse">
 			<rect
@@ -114,5 +114,8 @@
 		fill: var(--text-color);
 		fill-opacity: 1;
 		stroke-width: 0.174872;
+	}
+	svg {
+		aspect-ratio: 1;
 	}
 </style>
