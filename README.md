@@ -1,3 +1,11 @@
+# idee und todo
+- schwarz weiß aktzent
+- main menu bar geht von unten nach links und wird dann zu einer art drawer, nice animiert unf erst rechts dann oben abgerundet und geht nocht bis zum rand
+- beim scrollen cool animiert springy wobble und oben droplets
+- während die zur seite geht, dreht sich von oben der content rein
+- mit parallax effect viel von den blob 
+- curvy übergang auch mit parralax und animierten svg curves
+
 # create-svelte
 
 Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
