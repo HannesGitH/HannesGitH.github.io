@@ -3,12 +3,15 @@
 	import KUTE from 'kute.js';
 
 	export let color = '#ffffff';
-	export let animataionprogress: number;
+	export let animationprogress: number;
 
 	let mounted = false;
 	let tween: any;
 	$: {
-		if (mounted) tween.update(Math.sin(animataionprogress * Math.PI));
+		// if (mounted) tween.update(Math.sin(animataionprogress * Math.PI));
+        if (mounted) {
+            tween.start(animationprogress).stop();
+        }
 	}
 
 	onMount(() => {
@@ -16,7 +19,7 @@
 			'#blob1',
 			{ path: '#blob1' },
 			{ path: '#blob2' },
-			{ path: '#blob3' },
+			// { path: '#blob3' },
 			// { path: '#blob4' },
 			// { path: '#blob5' },
 			// { duration: 1000, repeat: 1000, yoyo: true, easing: 'easingCubicOut' }

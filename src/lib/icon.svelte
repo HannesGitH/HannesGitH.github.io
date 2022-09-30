@@ -1,10 +1,10 @@
 <script lang="ts">
-	export let animataionprogress: number;
+	export let animationprogress: number;
 	export let amplitude: number = 1;
 	export let asymmetric: boolean = false;
 	export let withText: boolean = false;
 	// export let monochrome: boolean = false;
-	$: angle = (Math.sin(animataionprogress * Math.PI) % 2) / 2;
+	$: angle = (Math.sin(animationprogress * Math.PI) % 2) / 2;
 	$: lprogress = Math.asin(angle) * (amplitude * 95) + 30;
 	$: rprogress = Math.asin((asymmetric ? -1 : 1) * angle) * (amplitude * 95) + 30;
 	export let bgColor = '#000000';

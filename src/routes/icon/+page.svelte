@@ -6,8 +6,8 @@
 	const progress = tweened(0, { duration: 1000 });
 </script>
 
-<Icon animataionprogress={$progress} amplitude={0.1} asymmetric sideColor={color}/>
-<Blob animataionprogress={$progress} />
+<Icon animationprogress={$progress} amplitude={0.1} asymmetric sideColor={color}/>
+<Blob animationprogress={$progress} />
 <button on:click={() => progress.set(-0.5)}>-.5</button>
 <button on:click={() => progress.set(0)}>0</button>
 <button on:click={() => progress.set(0.5)}>.5</button>
