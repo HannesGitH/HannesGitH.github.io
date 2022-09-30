@@ -2,6 +2,7 @@
 	export let animataionprogress: number;
 	export let amplitude: number = 1;
 	export let asymmetric: boolean = false;
+	export let withText: boolean = false;
 	// export let monochrome: boolean = false;
 	$: angle = (Math.sin(animataionprogress * Math.PI) % 2) / 2;
 	$: lprogress = Math.asin(angle) * (amplitude * 95) + 30;
@@ -55,6 +56,7 @@
 					style="display:inline;fill:{sideColor};fill-opacity:1;stroke:none;stroke-width:0.517964px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
 					d="m 59.450961,143.0232 -25.76425,-14.875 25.76425,-14.875 z m -25.76425,-44.625004 25.76425,14.875004 -25.76425,14.875 z m 0,-44.625002 25.76425,14.875 -25.76425,14.875 z m 103.056979,0 25.76424,14.875 V 143.0232 l -25.76424,-14.875 z m -25.76425,14.875 25.76425,14.875 V 98.398196 L 110.97944,83.523194 Z m -25.764239,-44.625 25.764239,14.875 V 113.2732 L 85.215201,98.398196 Z"
 				/>
+				{#if withText}
 				<text
 					transform="skewY(-30)"
 					id="text77068"
@@ -75,6 +77,7 @@
 						></tspan
 					><tspan id="tspan77242" style="stroke-width:0.174872" y="71.571968" x="5.5889101" /></text
 				>
+				{/if}
 			</g>
 		</g>
 	</g>
