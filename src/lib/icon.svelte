@@ -2,9 +2,9 @@
     export let animataionprogress: number;
     export let amplitude: number = 1;
     export let asymmetric: boolean = false;
-    $:angle = (Math.asin(animataionprogress%2/2))*(amplitude*95)+30;
-    $:lprogress=(Math.asin(animataionprogress%2/2))*(amplitude*95)+30;
-    $:rprogress=(Math.asin((asymmetric?-1:1)*animataionprogress%2/2))*(amplitude*95)+30;;
+    $:angle = Math.sin(animataionprogress*Math.PI)%2/2;
+    $:lprogress=(Math.asin(angle))*(amplitude*95)+30;
+    $:rprogress=(Math.asin((asymmetric?-1:1)*angle))*(amplitude*95)+30;
 </script>
 
 <svg class="main Icon" width="15em" height="15em" viewBox="0 0 80 95" version="1.1" id="svg75953">
