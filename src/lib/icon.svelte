@@ -1,12 +1,13 @@
 <script lang="ts">
+	//TODO: clippath left side and reintroduce right and asyymetric
 	export let animationprogress: number;
 	export let amplitude: number = 1;
-	export let asymmetric: boolean = false;
+	// export let asymmetric: boolean = false;
 	export let withText: boolean = false;
 	// export let monochrome: boolean = false;
 	$: angle = (Math.sin(animationprogress * Math.PI) % 2) / 2;
 	$: lprogress = Math.asin(angle) * (amplitude * 95) + 30;
-	$: rprogress = Math.asin((asymmetric ? -1 : 1) * angle) * (amplitude * 95) + 30;
+	// $: rprogress = Math.asin((asymmetric ? -1 : 1) * angle) * (amplitude * 95) + 30;
 	export let bgColor = '#000000';
 	export let fgColor = '#ffffff';
 	export let sideColor = '#808080FF';
@@ -35,7 +36,7 @@
 			/>
 		</clipPath>
 	</defs>
-	<g id="layer1" transform="translate(7,-5.36218) scale(0.8)">
+	<g id="outer" transform="translate(7,-5.36218) scale(0.8)">
 		<g
 			id="logoSkewLeft"
 			class="logoSkewLeft"
@@ -94,7 +95,7 @@
 				</g>
 			</g>
 		</g>
-		<g
+		<!-- <g
 			id="logoSkewRight"
 			class="logoSkewRight"
 			style="display:inline ; "
@@ -119,7 +120,7 @@
 					transform="translate(69.757871,-96.93413)"
 				/>
 			</g>
-		</g>
+		</g> -->
 	</g>
 </svg>
 

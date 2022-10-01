@@ -21,7 +21,7 @@
         <Blob animationprogress={$progress} />
     </div>
     <div id="mainIcon">
-        <Icon animationprogress={$progress} amplitude={0.1} asymmetric sideColor={color} />
+        <Icon animationprogress={$progress} amplitude={0.1} sideColor={color} />
     </div>
 </div>
 
