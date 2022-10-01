@@ -13,6 +13,7 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
+		"@originjs/vite-plugin-commonjs": "^1.0.3",
 		"@playwright/test": "^1.25.0",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
@@ -32,6 +33,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"flubber": "github:ericbf/flubber#add-type-definitions"
+		"flubber2": "^0.4.5"
 	}
 }
