@@ -3,4 +3,4 @@
     let module = {}
 </script>
 
-<BlobIcon color="#c7f347" animationduration={1000} />
+<BlobIcon color="#c7f347" animationduration={4000} />
