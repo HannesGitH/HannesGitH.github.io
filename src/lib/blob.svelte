@@ -3,9 +3,7 @@
 	import KUTE from 'kute.js';
 	import { tweened } from 'svelte/motion';
 
-    // TODO: calculate tween in another thread
-    // import TweenCalculationWorker from "./path/to/worker.js?worker"
-    // new MyWorker()
+	import KUTEA from './asyncMorph/fromToAsync'
 
 	export let color = '#ffffff';
 	/**
@@ -32,8 +30,8 @@
 
 		for (let i = blobsCount-1; i >= 0; i--) { //backwards, since https://github.com/thednp/kute.js/issues/114
             console.log('calculating next tween')
-			let _tween = KUTE.fromTo(
-				`#blob0`,
+			let _tween = KUTEA.fromToAsync(
+				document.getElementById(`blob0`)!,
 				{ path: `#blob${i+1}` },
 				{ path: `#blob${(i+1)%blobsCount+1}` },
                 {duration : animationduration/blobsCount}
