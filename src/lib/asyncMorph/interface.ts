@@ -1,11 +1,15 @@
+import type { Shape } from 'flubber';
+
+export type { Shape } from 'flubber';
+
+export type Interpolator = (t: number) => string;
+
 export interface TweenResultMessage {
-	error?: String;
-	data?: KUTE.Tween;
+	error?: string;
+	data?: Interpolator;
 }
 
 export interface TweenInputMessage {
-	elem: Element;
-	from: KUTE.tweenProps;
-	to: KUTE.tweenProps;
-	opts?: KUTE.tweenOptions;
+	from: Shape;
+	to: Shape;
 }

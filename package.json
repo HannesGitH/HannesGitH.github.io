@@ -32,6 +32,6 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"kute.js": "^2.2.4"
+		"flubber": "github:ericbf/flubber#add-type-definitions"
 	}
 }

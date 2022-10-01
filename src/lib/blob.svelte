@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import KUTE from 'kute.js';
 	import { tweened } from 'svelte/motion';
 
-	import KUTEA from './asyncMorph/fromToAsync'
+	import AFlubber from './asyncMorph/fromToAsync'
 
 	export let color = '#ffffff';
 	/**
@@ -28,23 +27,9 @@
 	onMount(async ()=> {
 		const blobsCount = 5;
 
-		for (let i = blobsCount-1; i >= 0; i--) { //backwards, since https://github.com/thednp/kute.js/issues/114
-            console.log('calculating next tween')
-			let _tween = KUTEA.fromToAsync(
-				document.getElementById(`blob0`)!,
-				{ path: `#blob${i+1}` },
-				{ path: `#blob${(i+1)%blobsCount+1}` },
-                {duration : animationduration/blobsCount}
-			);
-            tween = (tween)? _tween.chain(tween) : _tween; //not `tween = (tween)? tween.chain(_tween) : _tween;` //see https://github.com/thednp/kute.js/issues/114
-            opacity.set(1-(i/blobsCount));
-		}
 		mounted = true;
 		console.log('mounted');
-		//TODO: dont autostart
-        setInterval(() => {
-            tween.start();
-        }, animationduration);
+
         // tween.reverse();
 	});
 </script>

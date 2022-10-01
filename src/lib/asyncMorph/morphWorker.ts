@@ -1,11 +1,11 @@
-import KUTE from 'kute.js';
+import {interpolate} from 'flubber';
 import type {TweenInputMessage, TweenResultMessage} from './interface';
 
 onmessage = (e:MessageEvent<TweenInputMessage>):void => {
-  const {elem, from, to, opts} = e.data;
+  const {from, to,} = e.data;
   try {
-    const tween = KUTE.fromTo(elem, from, to, opts)
-    postMessage({data: tween} as TweenResultMessage);
+    const interpolator = interpolate(from, to);
+    postMessage({data: interpolator} as TweenResultMessage);
   } catch (error) {
     postMessage({error} as TweenResultMessage);
   }
