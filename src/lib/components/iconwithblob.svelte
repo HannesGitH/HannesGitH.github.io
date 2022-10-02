@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Icon from '$lib/icon.svelte';
-	import Blob from '$lib/blob.svelte';
+	import Icon from '$lib/components/icon.svelte';
+	import Blob from '$lib/components/blob.svelte';
 	import { tweened } from 'svelte/motion';
 	export let color = '#c7f347';
     export let animationduration = 1000;

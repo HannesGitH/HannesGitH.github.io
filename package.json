@@ -10,11 +10,15 @@
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --plugin-search-dir . --check . && eslint .",
-		"format": "prettier --plugin-search-dir . --write ."
+		"format": "prettier --plugin-search-dir . --write .",
+		"prepare": "npm run smui-theme-light && npm run smui-theme-dark",
+		"smui-theme-light": "smui-theme compile static/smui.css -i src/theme",
+		"smui-theme-dark": "smui-theme compile static/smui-dark.css -i src/theme/dark"
 	},
 	"devDependencies": {
 		"@originjs/vite-plugin-commonjs": "^1.0.3",
 		"@playwright/test": "^1.25.0",
+		"@smui/fab": "^6.1.4",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
@@ -24,6 +28,7 @@
 		"eslint-plugin-svelte3": "^4.0.0",
 		"prettier": "^2.6.2",
 		"prettier-plugin-svelte": "^2.7.0",
+		"smui-theme": "^6.2.0",
 		"svelte": "^3.44.0",
 		"svelte-check": "^2.7.1",
 		"svelte-preprocess": "^4.10.6",
@@ -33,6 +38,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"flubber2": "^0.4.5"
+		"flubber2": "^0.4.5",
+		"svelte-scrolling": "^1.2.2"
 	}
 }

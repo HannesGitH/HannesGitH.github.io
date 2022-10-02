@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { tweened } from 'svelte/motion';
 
-	import { interpolateSequence} from 'flubber2';
+	import { interpolateSequence } from 'flubber2';
 	import type { Interpolator } from 'flubber2';
 
 	export let color = '#ffffff';
@@ -14,6 +14,8 @@
 	export let animationduration: number = 3000;
 
 	const opacity = tweened(0, { duration:5000 });
+
+	type Interpolator = (t: number) => string;
 
 	let interpolator: Interpolator = (_: number) =>
 		'M167.9 -198.8C235.1 -182.3 319.2 -156.7 340.9 -106.8C362.7 -56.9 322.1 17.3 296.5 96.4C270.9 175.6 260.4 259.7 213.5 285.6C166.5 311.6 83.3 279.3 19.6 252.3C-44.1 225.3 -88.2 203.7 -126.8 175.1C-165.5 146.5 -198.8 110.9 -248.1 57.4C-297.4 3.9 -362.7 -67.6 -362.2 -132.7C-361.7 -197.9 -295.5 -256.7 -224.2 -271.9C-152.8 -287 -76.4 -258.5 -13 -240.6C50.4 -222.6 100.7 -215.3 167.9 -198.8';

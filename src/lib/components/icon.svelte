@@ -10,7 +10,7 @@
 	// $: rprogress = Math.asin((asymmetric ? -1 : 1) * angle) * (amplitude * 95) + 30;
 	export let bgColor = '#000000';
 	export let fgColor = '#ffffff';
-	export let sideColor = '#808080FF';
+	export let sideColor: string | null = null;
 	export let textColorUserDevice = '#1ed31e';
 	export let textColorDirectory = '#45aae4';
 	export let textColor = '#ffffff';
@@ -22,9 +22,11 @@
 	viewBox="0 0 80 80"
 	version="1.1"
 	id="svg75953"
-	style="--text-color: {textColor}"
+	style="--text-color: {textColor};"
 >
 	<defs id="defs75947">
+		{#if sideColor}
+			<rect style="--side-color: {sideColor} " />{/if}
 		<clipPath id="clipPath-text-1" clipPathUnits="userSpaceOnUse">
 			<rect
 				y="1.5600179e-05"
@@ -61,7 +63,7 @@
 					/>
 					<path
 						id="path76540-4-1-9-04"
-						style="display:inline;fill:{sideColor};fill-opacity:1;stroke:none;stroke-width:0.517964px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+						style="display:inline;fill-opacity:1;stroke:none;stroke-width:0.517964px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
 						d="m 59.450961,143.0232 -25.76425,-14.875 25.76425,-14.875 z m -25.76425,-44.625004 25.76425,14.875004 -25.76425,14.875 z m 0,-44.625002 25.76425,14.875 -25.76425,14.875 z m 103.056979,0 25.76424,14.875 V 143.0232 l -25.76424,-14.875 z m -25.76425,14.875 25.76425,14.875 V 98.398196 L 110.97944,83.523194 Z m -25.764239,-44.625 25.764239,14.875 V 113.2732 L 85.215201,98.398196 Z"
 					/>
 					{#if withText}
@@ -125,6 +127,10 @@
 </svg>
 
 <style>
+	#path76540-4-1-9-04 {
+		transition: fill 0.5s;
+		fill: var(--mdc-theme-primary, --side-color, #a7c347);
+	}
 	tspan {
 		fill: var(--text-color);
 		fill-opacity: 1;
