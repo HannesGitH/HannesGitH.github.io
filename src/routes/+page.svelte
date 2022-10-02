@@ -1,8 +1,10 @@
 <script lang="ts">
-	import ScrollToTopButton from '$lib/components/scrollToTopButton.svelte';
+	import Navbar from '$lib/components/navbar/navbar.svelte';
+import ScrollToTopButton from '$lib/components/scrollToTopButton.svelte';
 </script>
 
 <ScrollToTopButton />
+<Navbar/>
 <p style="">
 	Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi nobis quam vel quasi dolorum
 	fugiat id veniam dolor ducimus aliquam necessitatibus sunt tempore rerum expedita blanditiis
