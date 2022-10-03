@@ -8,7 +8,8 @@
 	export const color = '#a7c347';
 	let paths = {
 		left: 'M-107.884 1120.17L-105.799-47.8354C-105.701-102.542-61.2735-146.811-6.56687-146.714L17.4523-146.671C72.159-146.573 116.428-102.145 116.331-47.4388L114.245 1120.57C114.148 1175.27 69.7198 1219.54 15.0132 1219.45L-9.00604 1219.4C-63.7127 1219.3-107.982 1174.88-107.884 1120.17Z',
-		bottomToLeft: "M-6.5625-146.719C-61.2692-146.816-105.715-102.55-105.812-47.8438C-105.812-47.8438-191.522 849.744-84.6475 1051.67C83.3629 1252.74 1090.94 1133.62 1090.94 1133.62C1145.64 1133.83 1190.17 1089.64 1190.38 1034.94L1190.44 1010.91C1190.64 956.2 1146.49 911.705 1091.78 911.5L581.081 909.589C323.465 908.625 115.001 699.003 115.464 441.385L116.344-47.4375C116.441-102.144 72.1442-146.559 17.4375-146.656L-6.5625-146.719Z",
+		bottomToLeft:
+			'M-6.5625-146.719C-61.2692-146.816-105.715-102.55-105.812-47.8438C-105.812-47.8438-191.522 849.744-84.6475 1051.67C83.3629 1252.74 1090.94 1133.62 1090.94 1133.62C1145.64 1133.83 1190.17 1089.64 1190.38 1034.94L1190.44 1010.91C1190.64 956.2 1146.49 911.705 1091.78 911.5L581.081 909.589C323.465 908.625 115.001 699.003 115.464 441.385L116.344-47.4375C116.441-102.144 72.1442-146.559 17.4375-146.656L-6.5625-146.719Z',
 		bottom:
 			'M-73.6978 920.009L1094.31 920.009C1149.02 920.009 1193.37 964.357 1193.37 1019.06L1193.37 1043.08C1193.37 1097.79 1149.02 1142.14 1094.31 1142.14L-73.6978 1142.14C-128.405 1142.14-172.753 1097.79-172.753 1043.08L-172.753 1019.06C-172.753 964.357-128.405 920.009-73.6978 920.009Z'
 	};
@@ -18,6 +19,12 @@
 		const pathls = [paths.bottom, paths.bottomToLeft, paths.left];
 		interpolator = await interpolateSequence(pathls, { loop: false });
 	});
+	const scaledToExponents = (x: number, l: number) => {
+		const val = x - l / 2;
+		if (val < 0) return 1 / (1-val);
+		else if(val==0) return 1;
+		else return val+1;
+	};
 	let slot: Element | null = null;
 	$: {
 		//TODO: damn this updates only on animationchange, kinda shitty
@@ -26,10 +33,11 @@
 			const rect = slot.getBoundingClientRect();
 			const clength = collection.length;
 			const calcXY = (index: number, progress: number) => {
+				const scaledProgress = progress**(scaledToExponents(index+1.5, clength)) * Math.PI / 2;
 				return {
-					x: (((1 - Math.sin(progress*Math.PI/2)) * (index+.5)) / (clength + 1)) * rect.width,
+					x: (((1 - Math.sin(scaledProgress)) * (index + 0.5)) / (clength + 1)) * rect.width,
 					y:
-						(((1 - Math.cos(progress*Math.PI/2)) * (clength - index )) / (clength + 1)) * rect.height +
+						(((1 - Math.cos(scaledProgress)) * (clength - index)) / (clength + 1)) * rect.height +
 						(svgSize - svgContentStart.whenBottom) / 2
 				};
 			};
@@ -39,12 +47,13 @@
 					const { x, y } = calcXY(i, scrollProgress);
 					const elemRect = element.getBoundingClientRect();
 					element.style.position = 'absolute';
-					element.style.bottom = `${y-elemRect.height/2}px`;
+					element.style.bottom = `${y - elemRect.height / 2}px`;
 					element.style.left = `${x}px`;
 				}
 			}
 		}
 	}
+	let window:any;
 </script>
 
 <div id="elemts-row" bind:this={slot}>
@@ -81,6 +90,8 @@
 		</g>
 	</svg>
 </div>
+
+<svelte:window bind:scrollY={window} bind:innerWidth={window}></svelte:window>
 
 <style lang="scss">
 	#wrapper {
