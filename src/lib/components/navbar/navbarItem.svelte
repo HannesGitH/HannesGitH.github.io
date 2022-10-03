@@ -11,7 +11,7 @@
 	}
 </script>
 
-<Button class="navElem" color="secondary" on:click={onClick}><Label><slot></slot></Label></Button>
+<Button class="navElem"  color="secondary" on:click={onClick}><Label><slot></slot></Label></Button>
 
 <style lang="scss">
 	@use '@material/button/index' as mdc-button;

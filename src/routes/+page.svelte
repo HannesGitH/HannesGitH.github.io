@@ -5,14 +5,27 @@
 	import { scrollTop } from 'svelte-scrolling';
 	import { goto } from '$app/navigation';
 
+	const navBarScroll = {
+		startY: 100,
+		endY: 500,
+		get length() {
+			return this.endY - this.startY;
+		},
+		progress: function (scroll: number) {
+			return Math.min(Math.max(0,scrollY - this.startY) / this.length, 1);
+		}
+	};
+
+	let scrollY = 0;
+	
 	function routeToPage(route: string, replaceState: boolean) {
 		goto(`/${route}`, { replaceState });
-	}
+	};
 </script>
 
-<Navbar>
+<Navbar scrollProgress={navBarScroll.progress(scrollY)}>
 	<NavbarItem on:click={(e) => scrollTop()}>Home</NavbarItem>
-	<NavbarItem on:click={(e) => routeToPage('icon',false)}>/Icon</NavbarItem>
+	<NavbarItem on:click={(e) => routeToPage('icon', false)}>/Icon</NavbarItem>
 </Navbar>
 <ScrollToTopButton />
 <p style="">
@@ -97,6 +110,8 @@
 	vitae sunt, voluptate, saepe error. Libero impedit id earum itaque possimus minima. Libero,
 	temporibus!
 </p>
+
+<svelte:window bind:scrollY />
 
 <style lang="scss">
 	:global(body, html) {

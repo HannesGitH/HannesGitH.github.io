@@ -39,7 +39,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"flubber2": "^0.4.5",
+		"flubber2": "^0.4.8",
 		"svelte-scrolling": "^1.2.2"
 	}
 }
