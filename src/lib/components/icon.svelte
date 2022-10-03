@@ -126,10 +126,10 @@
 	</g>
 </svg>
 
-<style>
+<style lang="scss">
 	#path76540-4-1-9-04 {
 		transition: fill 0.5s;
-		fill: var(--mdc-theme-primary, --side-color, #a7c347);
+		fill: var(--side-color,$primary);
 	}
 	tspan {
 		fill: var(--text-color);

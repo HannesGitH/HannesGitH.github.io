@@ -3,8 +3,8 @@
 import ScrollToTopButton from '$lib/components/scrollToTopButton.svelte';
 </script>
 
-<ScrollToTopButton />
 <Navbar/>
+<ScrollToTopButton />
 <p style="">
 	Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi nobis quam vel quasi dolorum
 	fugiat id veniam dolor ducimus aliquam necessitatibus sunt tempore rerum expedita blanditiis
@@ -87,3 +87,9 @@ import ScrollToTopButton from '$lib/components/scrollToTopButton.svelte';
 	vitae sunt, voluptate, saepe error. Libero impedit id earum itaque possimus minima. Libero,
 	temporibus!
 </p>
+
+<style lang="scss">
+    :global(body, html){
+        color: $on-surface;
+    }
+</style>

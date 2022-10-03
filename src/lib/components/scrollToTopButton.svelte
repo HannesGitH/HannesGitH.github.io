@@ -9,8 +9,8 @@
 </script>
 
 <div class="flexy">
-	<div class="margins">
-		<Fab color="primary" on:click={() => scrollTop()} {exited}>
+	<div class="wrapper">
+		<Fab on:click={() => scrollTop()} {exited}>
 			<Icon class="material-icons">arrow_upward</Icon>
 		</Fab>
 	</div>
@@ -18,14 +18,15 @@
 
 <svelte:window bind:scrollY/>
 
-<style>
+<style lang="scss">
     .flexy {
         position: fixed;
         bottom: 0;
         right: 0;
     }
-    .margins {
-        margin: 1rem;
+    .wrapper {
+        margin: $std-margin;
+        color: $primary !important;
     }
 </style>
 

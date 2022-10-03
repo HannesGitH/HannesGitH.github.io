@@ -1,10 +1,12 @@
-@forward 'sass:color';
+@use 'sass:color';
 
-@forward '@material/theme/color-palette';
+@use '@material/theme/color-palette';
+
+$primary: color-palette.$teal-a400;
 
 // Svelte Colors! (Dark Theme)
 @forward '@material/theme/index' with (
-  $primary: #a7c347,
+  $primary: $primary,
   $secondary: #676778,
   $surface: #1e1e1e,
   $background: #000,
@@ -21,13 +23,13 @@
   font-style: normal;
 }
 
-$test: color.scale(#676778, $whiteness: -10%);
+$std-margin: 1rem;
 
 html,
 body {
   font-family: 'JetBrainsMono','Roboto', sans-serif;
   background-color: #000;
-  color: theme.$on-surface;
+  // color: ;
 }
 
 a {
