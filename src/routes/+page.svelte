@@ -1,9 +1,19 @@
 <script lang="ts">
 	import Navbar from '$lib/components/navbar/navbar.svelte';
-import ScrollToTopButton from '$lib/components/scrollToTopButton.svelte';
+	import ScrollToTopButton from '$lib/components/scrollToTopButton.svelte';
+	import NavbarItem from '$lib/components/navbar/navbarItem.svelte';
+	import { scrollTop } from 'svelte-scrolling';
+	import { goto } from '$app/navigation';
+
+	function routeToPage(route: string, replaceState: boolean) {
+		goto(`/${route}`, { replaceState });
+	}
 </script>
 
-<Navbar/>
+<Navbar>
+	<NavbarItem on:click={(e) => scrollTop()}>Home</NavbarItem>
+	<NavbarItem on:click={(e) => routeToPage('icon',false)}>/Icon</NavbarItem>
+</Navbar>
 <ScrollToTopButton />
 <p style="">
 	Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi nobis quam vel quasi dolorum
@@ -89,7 +99,7 @@ import ScrollToTopButton from '$lib/components/scrollToTopButton.svelte';
 </p>
 
 <style lang="scss">
-    :global(body, html){
-        color: $on-surface;
-    }
+	:global(body, html) {
+		color: $on-surface;
+	}
 </style>

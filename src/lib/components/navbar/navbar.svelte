@@ -57,7 +57,7 @@
 		@include bottom;
 		height: $barheight;
 		display: flex;
-		justify-content: center;
+		justify-content: space-evenly;
 		align-items: center;
 		// background-color: #fff;
 		z-index: 1;

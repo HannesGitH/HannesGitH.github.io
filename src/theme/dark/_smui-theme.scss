@@ -3,13 +3,14 @@
 @use '@material/theme/color-palette';
 
 $primary: color-palette.$teal-a400;
+$surface: black;
 
 // Svelte Colors! (Dark Theme)
 @forward '@material/theme/index' with (
   $primary: $primary,
-  $secondary: #676778,
-  $surface: #1e1e1e,
-  $background: #000,
+  $secondary: color.scale($primary, $lightness: -30%, $saturation: -30%), //hm
+  $surface: $surface,
+  $background: $surface,
   $error: color-palette.$red-700
 );
 
