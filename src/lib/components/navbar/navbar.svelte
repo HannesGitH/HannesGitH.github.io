@@ -6,6 +6,7 @@
 	const svgContentStart = { whenBottom: 920, whenleft: 125 };
 
 	export const color = '#a7c347';
+	export const marginBetweenIconsInPercent = 2;
 	let paths = {
 		left: 'M-107.884 1120.17L-105.799-47.8354C-105.701-102.542-61.2735-146.811-6.56687-146.714L17.4523-146.671C72.159-146.573 116.428-102.145 116.331-47.4388L114.245 1120.57C114.148 1175.27 69.7198 1219.54 15.0132 1219.45L-9.00604 1219.4C-63.7127 1219.3-107.982 1174.88-107.884 1120.17Z',
 		bottomToLeft:
@@ -32,20 +33,24 @@
 			const collection = slot.children;
 			const rect = slot.getBoundingClientRect();
 			const clength = collection.length;
-			const calcXY = (index: number, progress: number) => {
+			const calcXY = (index: number, progress: number, x?:number) => {
 				const scaledProgress = progress**(scaledToExponents(index+1.5, clength)) * Math.PI / 2;
+				const modifiedX = x ? x/rect.width : (index + 0.5)/(clength + 1);
 				return {
-					x: (((1 - Math.sin(scaledProgress)) * (index + 0.5)) / (clength + 1)) * rect.width,
+					x: (1 - Math.sin(scaledProgress)) * modifiedX * rect.width,
 					y:
-						(((1 - Math.cos(scaledProgress)) * (clength - index)) / (clength + 1)) * rect.height +
+						(1 - Math.cos(scaledProgress)) * (clength - index) / (clength + 1) * rect.height +
 						(svgSize - svgContentStart.whenBottom) / 2
 				};
 			};
+			let widthAccu = 50;
 			for (let i = 0; i < collection.length; i++) {
+				
 				const element = collection[i];
 				if (element instanceof HTMLElement) {
-					const { x, y } = calcXY(i, scrollProgress);
 					const elemRect = element.getBoundingClientRect();
+					const { x, y } = calcXY(i, scrollProgress, widthAccu);
+					widthAccu += elemRect.width+marginBetweenIconsInPercent*rect.width/100;
 					element.style.position = 'absolute';
 					element.style.bottom = `${y - elemRect.height / 2}px`;
 					element.style.left = `${x}px`;
