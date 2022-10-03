@@ -1,21 +1,52 @@
 <script lang="ts">
-	import { onMount } from "svelte";
+	import { onMount } from 'svelte';
 	import { interpolateSequence } from 'flubber2';
+	const svgSize = 1024;
+	//this depends on the actual svg used for the bottom bar, it has a viewBoxHeight of 1024 and the actual content starts at 920
+	const svgContentStart = { whenBottom: 920, whenleft: 125 };
 
 	export const color = '#a7c347';
-    let paths = {
-        left: "M-107.884 1120.17L-105.799-47.8354C-105.701-102.542-61.2735-146.811-6.56687-146.714L17.4523-146.671C72.159-146.573 116.428-102.145 116.331-47.4388L114.245 1120.57C114.148 1175.27 69.7198 1219.54 15.0132 1219.45L-9.00604 1219.4C-63.7127 1219.3-107.982 1174.88-107.884 1120.17Z",
-        bottom: "M-73.6978 920.009L1094.31 920.009C1149.02 920.009 1193.37 964.357 1193.37 1019.06L1193.37 1043.08C1193.37 1097.79 1149.02 1142.14 1094.31 1142.14L-73.6978 1142.14C-128.405 1142.14-172.753 1097.79-172.753 1043.08L-172.753 1019.06C-172.753 964.357-128.405 920.009-73.6978 920.009Z" 
-    }
-    export let scrollProgress = 0;
-    let interpolator = (p:number)=>paths.bottom;
-    onMount(async () => {
+	let paths = {
+		left: 'M-107.884 1120.17L-105.799-47.8354C-105.701-102.542-61.2735-146.811-6.56687-146.714L17.4523-146.671C72.159-146.573 116.428-102.145 116.331-47.4388L114.245 1120.57C114.148 1175.27 69.7198 1219.54 15.0132 1219.45L-9.00604 1219.4C-63.7127 1219.3-107.982 1174.88-107.884 1120.17Z',
+		bottom:
+			'M-73.6978 920.009L1094.31 920.009C1149.02 920.009 1193.37 964.357 1193.37 1019.06L1193.37 1043.08C1193.37 1097.79 1149.02 1142.14 1094.31 1142.14L-73.6978 1142.14C-128.405 1142.14-172.753 1097.79-172.753 1043.08L-172.753 1019.06C-172.753 964.357-128.405 920.009-73.6978 920.009Z'
+	};
+	export let scrollProgress = 0;
+	let interpolator = (p: number) => paths.bottom;
+	onMount(async () => {
 		const pathls = [paths.bottom, paths.left];
-		interpolator = await interpolateSequence(pathls,{loop:false});
+		interpolator = await interpolateSequence(pathls, { loop: false });
 	});
+	let slot: Element | null = null;
+	$: {
+		//TODO: damn this updates only on animationchange, kinda shitty
+		if (slot) {
+			const collection = slot.children;
+			const rect = slot.getBoundingClientRect();
+			const clength = collection.length;
+			const calcXY = (index: number, progress: number) => {
+				return {
+					x: (((1 - Math.sin(progress*Math.PI/2)) * (index+.5)) / (clength + 1)) * rect.width,
+					y:
+						(((1 - Math.cos(progress*Math.PI/2)) * (clength - index )) / (clength + 1)) * rect.height +
+						(svgSize - svgContentStart.whenBottom) / 2
+				};
+			};
+			for (let i = 0; i < collection.length; i++) {
+				const element = collection[i];
+				if (element instanceof HTMLElement) {
+					const { x, y } = calcXY(i, scrollProgress);
+					const elemRect = element.getBoundingClientRect();
+					element.style.position = 'absolute';
+					element.style.bottom = `${y-elemRect.height/2}px`;
+					element.style.left = `${x}px`;
+				}
+			}
+		}
+	}
 </script>
 
-<div id="elemts-row">
+<div id="elemts-row" bind:this={slot}>
 	<slot>
 		<p>Lorem ipsum dolor sit amet.</p>
 	</slot>
@@ -26,7 +57,7 @@
 		stroke-miterlimit="10"
 		style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;"
 		version="1.1"
-		viewBox="0 0 1024 1024"
+		viewBox="0 0 {svgSize} {svgSize}"
 		preserveAspectRatio="none"
 		width="100%"
 		xmlns="http://www.w3.org/2000/svg"
@@ -51,29 +82,15 @@
 </div>
 
 <style lang="scss">
-	//this depends on the actual svg used for the bottom bar, it has a viewBoxHeight of 1024 and the actual content starts at 920
-	$svgVBHeight: 1024;
-	$svgContentStart: 920;
-	$barheight: calc(100% * (($svgVBHeight - $svgContentStart) / $svgVBHeight));
-
-	@mixin bottom {
-		position: fixed;
-		width: 100%;
-		bottom: 0;
-		left: 0;
-	}
 	#wrapper {
-		@include bottom;
-		height: 100%;
+		@include full;
 	}
 	#elemts-row {
-		@include bottom;
-		height: $barheight;
-		display: flex;
-		justify-content: space-evenly;
-		align-items: center;
-		// background-color: #fff;
+		@include full;
 		z-index: 1;
+	}
+	#elemts-row > * {
+		position: absolute;
 	}
 	#main {
 		// @include smui;

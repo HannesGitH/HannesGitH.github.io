@@ -24,7 +24,13 @@
 </script>
 
 <Navbar scrollProgress={navBarScroll.progress(scrollY)}>
+	
 	<NavbarItem on:click={(e) => scrollTop()}>Home</NavbarItem>
+	<NavbarItem on:click={(e) => ''}>Me</NavbarItem>
+	<NavbarItem on:click={(e) => ''}>Education</NavbarItem>
+	<NavbarItem on:click={(e) => ''}>Skills</NavbarItem>
+	<NavbarItem on:click={(e) => ''}>Experience</NavbarItem>
+	<NavbarItem on:click={(e) => ''}>Projects</NavbarItem>
 	<NavbarItem on:click={(e) => routeToPage('icon', false)}>/Icon</NavbarItem>
 </Navbar>
 <ScrollToTopButton />
