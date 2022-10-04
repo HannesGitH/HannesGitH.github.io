@@ -12,19 +12,18 @@
 			return this.endY - this.startY;
 		},
 		progress: function (scroll: number) {
-			return Math.min(Math.max(0,scrollY - this.startY) / this.length, 1);
+			return Math.min(Math.max(0, scrollY - this.startY) / this.length, 1);
 		}
 	};
 
 	let scrollY = 0;
-	
+
 	function routeToPage(route: string, replaceState: boolean) {
 		goto(`/${route}`, { replaceState });
-	};
+	}
 </script>
 
 <Navbar scrollProgress={navBarScroll.progress(scrollY)}>
-	
 	<NavbarItem on:click={(e) => scrollTop()}>Home</NavbarItem>
 	<NavbarItem on:click={(e) => ''}>Me</NavbarItem>
 	<NavbarItem on:click={(e) => ''}>Education</NavbarItem>
@@ -34,7 +33,7 @@
 	<NavbarItem on:click={(e) => routeToPage('icon', false)}>/Icon</NavbarItem>
 </Navbar>
 <ScrollToTopButton />
-<p style="">
+<p style="transform:rotateZ({navBarScroll.progress(scrollY)*90-90}deg)">
 	Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi nobis quam vel quasi dolorum
 	fugiat id veniam dolor ducimus aliquam necessitatibus sunt tempore rerum expedita blanditiis
 	exercitationem debitis culpa ut laboriosam deserunt, corrupti possimus placeat dolore itaque.

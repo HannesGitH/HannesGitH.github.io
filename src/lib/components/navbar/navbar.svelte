@@ -101,10 +101,12 @@
 <style lang="scss">
 	#wrapper {
 		@include full;
+		opacity: 0.5;
+		z-index: 4;
 	}
 	#elemts-row {
 		@include full;
-		z-index: 1;
+		z-index: 5;
 	}
 	#elemts-row > * {
 		position: absolute;
