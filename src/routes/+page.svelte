@@ -1,7 +1,6 @@
 <script lang="ts">
-	import Navbar from '$lib/components/navbar/navbar.svelte';
 	import ScrollToTopButton from '$lib/components/scrollToTopButton.svelte';
-	import NavbarItem from '$lib/components/navbar/navbarItem.svelte';
+	import Navbar, {NavbarItem} from 'svelte-navbar';
 	import { scrollTop } from 'svelte-scrolling';
 	import { goto } from '$app/navigation';
 	import LogoWithBlob from '$lib/components/iconwithblob.svelte';
@@ -25,7 +24,7 @@
 	}
 </script>
 
-<Navbar scrollProgress={navBarScroll.progress(scrollY)} rowSizeInPx={navBarSizeInPx}>
+<Navbar scrollProgress={navBarScroll.progress(scrollY)} rowSizeInPx={navBarSizeInPx} color="#a7c347">
 	<NavbarItem on:click={(e) => scrollTop()}>Home</NavbarItem>
 	<NavbarItem on:click={(e) => ''}>Me</NavbarItem>
 	<NavbarItem on:click={(e) => ''}>Education</NavbarItem>
