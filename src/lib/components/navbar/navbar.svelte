@@ -7,7 +7,7 @@
 
 	export const color = '#a7c347';
 	export const marginBetweenIconsInPercent = 2;
-	export const rowSizeInPx = 100;
+	export const rowSizeInPx : number = 70;
 	let paths = {
 		left: 'M-107.884 1120.17L-105.799-47.8354C-105.701-102.542-61.2735-146.811-6.56687-146.714L17.4523-146.671C72.159-146.573 116.428-102.145 116.331-47.4388L114.245 1120.57C114.148 1175.27 69.7198 1219.54 15.0132 1219.45L-9.00604 1219.4C-63.7127 1219.3-107.982 1174.88-107.884 1120.17Z',
 		bottomToLeft:
@@ -73,7 +73,11 @@
 		<p>Lorem ipsum dolor sit amet.</p>
 	</slot>
 </div>
-<div id="wrapper">
+<div id="wrapper" style="
+	--progress: {scrollProgress};
+	width: calc({((scrollProgress**7)*svgSize/svgContentStart.whenleft*rowSizeInPx)}px + {(1-scrollProgress**7)*100}%); 
+	height: calc({((1-scrollProgress**(1/7))*svgSize/(svgSize-svgContentStart.whenBottom)*rowSizeInPx)}px + {(scrollProgress**(1/7))*100}%);
+	">
 	<svg
 		height="100%"
 		stroke-miterlimit="10"
@@ -108,6 +112,7 @@
 <style lang="scss">
 	#wrapper {
 		@include full;
+		overflow: visible;
 		// opacity: 0.5;
 		z-index: 4;
 	}
@@ -118,8 +123,8 @@
 		overflow-x: auto;
 		white-space: nowrap;
 	}
-	#elemts-row > * {
-		position: absolute;
+	#elemts-row + * {
+		// position: absolute;
 	}
 	#main {
 		// @include smui;

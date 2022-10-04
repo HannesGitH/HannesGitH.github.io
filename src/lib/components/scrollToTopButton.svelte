@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Fab, { Icon } from '@smui/fab';
 	import { scrollTop } from 'svelte-scrolling';
-	export const showWhenScrolledPast = 200;
+	export const showWhenScrolledPast = 1000;
 	export const show: boolean | null = null;
 
 	let scrollY = 0;
@@ -20,6 +20,7 @@
 
 <style lang="scss">
     .flexy {
+		z-index: 10;
         position: fixed;
         bottom: 0;
         right: 0;
