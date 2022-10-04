@@ -7,6 +7,7 @@
 
 	export const color = '#a7c347';
 	export const marginBetweenIconsInPercent = 2;
+	export const rowSizeInPx = 100;
 	let paths = {
 		left: 'M-107.884 1120.17L-105.799-47.8354C-105.701-102.542-61.2735-146.811-6.56687-146.714L17.4523-146.671C72.159-146.573 116.428-102.145 116.331-47.4388L114.245 1120.57C114.148 1175.27 69.7198 1219.54 15.0132 1219.45L-9.00604 1219.4C-63.7127 1219.3-107.982 1174.88-107.884 1120.17Z',
 		bottomToLeft:
@@ -26,6 +27,7 @@
 		else if(val==0) return 1;
 		else return val+1;
 	};
+	$: elemtsrowStyle = (scrollProgress <= 0) ? `height:${rowSizeInPx}px` : (scrollProgress >= 1) ? `width:${rowSizeInPx}px` : 'overflow:hidden';
 	let slot: Element | null = null;
 	$: {
 		//TODO: damn this updates only on animationchange, kinda shitty
@@ -39,14 +41,13 @@
 				const modifiedY = y ? y/rect.height : (clength - index) / (clength + 1);
 				return {
 					x: (1 - Math.sin(scaledProgress)) * modifiedX * rect.width,
-					y:
-						(1 - Math.cos(scaledProgress)) * modifiedY * rect.height +
-						(svgSize - svgContentStart.whenBottom) / 2,
+					y: (1 - Math.cos(scaledProgress)) * modifiedY * rect.height,
+						// + (svgSize - svgContentStart.whenBottom) / 2,
 					rad: scaledProgress,
 				};
 			};
 			let widthAccu = 50;
-			let heightAccu = 50;
+			let heightAccu = rect.height - 100;
 			for (let i = 0; i < collection.length; i++) {
 				
 				const element = collection[i];
@@ -56,8 +57,9 @@
 					widthAccu += elemRect.width+marginBetweenIconsInPercent*rect.width/100;
 					heightAccu -= elemRect.height+marginBetweenIconsInPercent*rect.height/100;
 					element.style.position = 'absolute';
-					element.style.bottom = `${y - elemRect.height / 2}px`;
-					element.style.left = `${x}px`;
+					element.style.transformOrigin = 'bottom left';
+					element.style.bottom = `${y + 10}px`;
+					element.style.left = `${x+10}px`;
 					element.style.transform = `rotateZ(${rad}rad)`;
 				}
 			}
@@ -66,7 +68,7 @@
 	let window:any;
 </script>
 
-<div id="elemts-row" bind:this={slot}>
+<div id="elemts-row" bind:this={slot} style={elemtsrowStyle}>
 	<slot>
 		<p>Lorem ipsum dolor sit amet.</p>
 	</slot>
