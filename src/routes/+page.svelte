@@ -141,7 +141,7 @@
 		transform: rotateZ(calc(var(--scroll-prog)*90deg));
 
 		& + * {
-			margin-top: 100vh;
+			margin-top: calc(100vh - $logo-height);
 			position: relative;
 			z-index: 1;
 		}

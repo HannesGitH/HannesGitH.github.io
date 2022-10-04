@@ -33,27 +33,32 @@
 			const collection = slot.children;
 			const rect = slot.getBoundingClientRect();
 			const clength = collection.length;
-			const calcXY = (index: number, progress: number, x?:number) => {
+			const calcXY = (index: number, progress: number, x?:number, y?:number) => {
 				const scaledProgress = progress**(scaledToExponents(index+1.5, clength)) * Math.PI / 2;
 				const modifiedX = x ? x/rect.width : (index + 0.5)/(clength + 1);
+				const modifiedY = y ? y/rect.height : (clength - index) / (clength + 1);
 				return {
 					x: (1 - Math.sin(scaledProgress)) * modifiedX * rect.width,
 					y:
-						(1 - Math.cos(scaledProgress)) * (clength - index) / (clength + 1) * rect.height +
-						(svgSize - svgContentStart.whenBottom) / 2
+						(1 - Math.cos(scaledProgress)) * modifiedY * rect.height +
+						(svgSize - svgContentStart.whenBottom) / 2,
+					rad: scaledProgress,
 				};
 			};
 			let widthAccu = 50;
+			let heightAccu = 50;
 			for (let i = 0; i < collection.length; i++) {
 				
 				const element = collection[i];
 				if (element instanceof HTMLElement) {
 					const elemRect = element.getBoundingClientRect();
-					const { x, y } = calcXY(i, scrollProgress, widthAccu);
+					const { x, y , rad } = calcXY(i, scrollProgress, widthAccu, heightAccu);
 					widthAccu += elemRect.width+marginBetweenIconsInPercent*rect.width/100;
+					heightAccu -= elemRect.height+marginBetweenIconsInPercent*rect.height/100;
 					element.style.position = 'absolute';
 					element.style.bottom = `${y - elemRect.height / 2}px`;
 					element.style.left = `${x}px`;
+					element.style.transform = `rotateZ(${rad}rad)`;
 				}
 			}
 		}
@@ -101,18 +106,21 @@
 <style lang="scss">
 	#wrapper {
 		@include full;
-		opacity: 0.5;
+		// opacity: 0.5;
 		z-index: 4;
 	}
 	#elemts-row {
 		@include full;
 		z-index: 5;
+		width: 100%;
+		overflow-x: auto;
+		white-space: nowrap;
 	}
 	#elemts-row > * {
 		position: absolute;
 	}
 	#main {
 		// @include smui;
-		fill: $primary;
+		fill: $on-surface;
 	}
 </style>
