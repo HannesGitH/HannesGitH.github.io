@@ -21,6 +21,7 @@
 		"@smui/button": "^6.1.4",
 		"@smui/fab": "^6.1.4",
 		"@sveltejs/adapter-auto": "next",
+		"@sveltejs/adapter-static": "next",
 		"@sveltejs/kit": "next",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
 		"@typescript-eslint/parser": "^5.27.0",
@@ -39,7 +40,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"flubber2": "^0.4.8",
+		"flubber2": "^0.4.9",
 		"svelte-navbar": "file:../svelte-navbar/package",
 		"svelte-scrolling": "^1.2.2"
 	}

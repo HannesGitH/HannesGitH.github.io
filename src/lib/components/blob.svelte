@@ -11,7 +11,7 @@
 	 * currently does not work, animation runs & loops automatically
 	 */
 	export let animationprogress: number;
-	export let animationduration: number = 3000;
+	// export let animationduration: number = 3000;
 
 	const opacity = tweened(0, { duration:5000 });
 
@@ -38,7 +38,7 @@
 			'M187.1 -228.1C257 -206.7 338.2 -171.5 359 -114.9C379.8 -58.3 340.2 19.7 310.2 97.4C280.3 175.1 260.1 252.6 210 283.2C159.9 313.7 79.9 297.4 17.9 272.7C-44.1 248 -88.2 215 -132.7 182.7C-177.3 150.3 -222.3 118.6 -249 72.4C-275.8 26.2 -284.4 -34.5 -283.9 -109.7C-283.5 -184.8 -274 -274.4 -225.2 -302.7C-176.3 -331 -88.2 -298 -14.8 -277.7C58.6 -257.3 117.2 -249.6 187.1 -228.1',
 			'M162.4 -221.8C232.3 -172.7 325.8 -154.5 366.9 -101.8C408 -49.1 396.6 38 369.8 120C343 202.1 300.8 279 236.6 310.7C172.4 342.3 86.2 328.7 17.8 304.1C-50.5 279.6 -101.1 244.2 -159.4 210.6C-217.8 177.1 -283.9 145.4 -294.3 99C-304.7 52.6 -259.3 -8.4 -245.1 -88.1C-230.8 -167.7 -247.7 -265.9 -212 -326.1C-176.3 -386.4 -88.2 -408.7 -21 -379.8C46.2 -351 92.5 -271 162.4 -221.8'
 		];
-		interpolator = await interpolateSequence(paths,{loop:true});
+		interpolator = await interpolateSequence(paths,{loop:true}) as (p:number)=>string;
 	});
 </script>
 
