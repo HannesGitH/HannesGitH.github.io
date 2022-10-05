@@ -23,8 +23,8 @@
 		goto(`/${route}`, { replaceState });
 	}
 
-	const meSectionRef= 'section:me';
-	let meSectionActive=  false;
+	const meSectionRef = 'section:me';
+	let meSectionActive = false;
 </script>
 
 <Navbar
@@ -33,10 +33,7 @@
 	color="#a7c347"
 >
 	<NavbarItem on:click={(e) => scrollTop()}>Home</NavbarItem>
-	<div style={meSectionActive ? 'border: 2px solid red' : ''}>
-		<NavbarItem bind:isCurrentlyActive={meSectionActive} scrollTo={meSectionRef}>Me</NavbarItem>
-		<div use:scrollTo={{ref: meSectionRef,onStateChange: ({active}) => {console.log(active);},duration: 1000}}>hi</div>
-	</div>
+	<NavbarItem bind:isCurrentlyActive={meSectionActive} scrollTo={meSectionRef}>Me</NavbarItem>
 	<NavbarItem on:click={(e) => ''}>Education</NavbarItem>
 	<NavbarItem on:click={(e) => ''}>Skills</NavbarItem>
 	<NavbarItem on:click={(e) => ''}>Experience</NavbarItem>
@@ -962,14 +959,13 @@
 		Voluptas deserunt voluptate modi nemo? Rem itaque debitis sit explicabo dolore asperiores iure,
 		nostrum saepe expedita labore quaerat doloremque, earum cupiditate tempora quae distinctio
 		suscipit aliquam delectus beatae laborum enim fuga qui ut? Voluptatum cupiditate quos cum,
-		ducimus voluptate deserunt alias non labore vitae. Blanditiis repudiandae repellat dicta
-
-		harum quas omnis consectetur dicta numquam laborum dolore hic alias officiis pariatur
-		laudantium, facere repellendus. Eius quas cupiditate quaerat, nam fugiat maiores impedit!
-		Aspernatur at quas officia. Exercitationem dolor explicabo, cum aliquam praesentium inventore in
-		aperiam eos, nobis nostrum quibusdam iure quam tenetur. Alias minima molestias provident non?
-		Eligendi distinctio est itaque doloremque, impedit praesentium reiciendis voluptate in ea qui
-		magni aperiam similique velit, deserunt, omnis expedita ad.
+		ducimus voluptate deserunt alias non labore vitae. Blanditiis repudiandae repellat dicta harum
+		quas omnis consectetur dicta numquam laborum dolore hic alias officiis pariatur laudantium,
+		facere repellendus. Eius quas cupiditate quaerat, nam fugiat maiores impedit! Aspernatur at quas
+		officia. Exercitationem dolor explicabo, cum aliquam praesentium inventore in aperiam eos, nobis
+		nostrum quibusdam iure quam tenetur. Alias minima molestias provident non? Eligendi distinctio
+		est itaque doloremque, impedit praesentium reiciendis voluptate in ea qui magni aperiam
+		similique velit, deserunt, omnis expedita ad.
 	</p>
 </div>
 
