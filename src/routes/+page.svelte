@@ -49,6 +49,7 @@
 
 	let activeSectionBools: boolean[] = [false, false, false, false, false, false];
 
+	import Background from '$lib/components/background.svelte';
 	import ScrollToTopButton from '$lib/components/scrollToTopButton.svelte';
 	import Navbar, { NavbarItem, scrollTop, scrollRef, scrollTo } from 'svelte-navbar';
 	// import { scrollTop, scrollTo, scrollRef } from 'svelte-scrolling';
@@ -76,22 +77,7 @@
 	let meSectionActive = false;
 </script>
 
-<Navbar
-	scrollProgress={navBarScroll.progress(scrollY)}
-	rowSizeInPx={navBarSizeInPx}
-	color="#a7c347"
->
-	<NavbarItem on:click={(e) => scrollTop()}>Home</NavbarItem>
-	{#each sections as section, i}
-		<div class="smooth" class:activated={activeSectionBools[i]}>
-			<NavbarItem bind:isCurrentlyActive={activeSectionBools[i]} scrollTo={section.id}>
-				{section.name}</NavbarItem
-			>
-		</div>
-	{/each}
-</Navbar>
-<ScrollToTopButton />
-
+<Background />
 <div
 	id="body"
 	style="--scroll-prog: {navBarScroll.progress(scrollY)}; margin-left:{navBarScroll.progress(
@@ -109,6 +95,22 @@
 		</section>
 	{/each}
 </div>
+
+<Navbar
+	scrollProgress={navBarScroll.progress(scrollY)}
+	rowSizeInPx={navBarSizeInPx}
+	color="#a7c347"
+>
+	<NavbarItem on:click={(e) => scrollTop()}>Home</NavbarItem>
+	{#each sections as section, i}
+		<div class="smooth" class:activated={activeSectionBools[i]}>
+			<NavbarItem bind:isCurrentlyActive={activeSectionBools[i]} scrollTo={section.id}>
+				{section.name}</NavbarItem
+			>
+		</div>
+	{/each}
+</Navbar>
+<ScrollToTopButton />
 
 <svelte:window bind:scrollY />
 
