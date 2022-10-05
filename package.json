@@ -41,6 +41,6 @@
 	"type": "module",
 	"dependencies": {
 		"flubber2": "^0.4.9",
-		"svelte-navbar": "file:../svelte-navbar/package"
+		"svelte-navbar": "^0.0.6"
 	}
 }

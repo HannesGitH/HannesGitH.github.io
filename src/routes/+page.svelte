@@ -33,7 +33,9 @@
 	color="#a7c347"
 >
 	<NavbarItem on:click={(e) => scrollTop()}>Home</NavbarItem>
-	<NavbarItem bind:isCurrentlyActive={meSectionActive} scrollTo={meSectionRef}>Me</NavbarItem>
+	<div class="smooth" class:activated={meSectionActive}>
+		<NavbarItem bind:isCurrentlyActive={meSectionActive} scrollTo={meSectionRef}>Me</NavbarItem>
+	</div>
 	<NavbarItem on:click={(e) => ''}>Education</NavbarItem>
 	<NavbarItem on:click={(e) => ''}>Skills</NavbarItem>
 	<NavbarItem on:click={(e) => ''}>Experience</NavbarItem>
@@ -975,6 +977,18 @@
 	$logo-height: min(70vh, 70vw);
 	:global(body, html) {
 		color: $on-surface;
+	}
+
+	.activated {
+		scale: 1.4;
+		& * {
+			//todo: fix this is not workinf
+			color: $on-surface !important;
+			text-decoration: underline solid $on-surface 2px !important;
+		}
+	}
+	.smooth {
+		transition: scale 400ms, color 400ms;
 	}
 
 	#logo {
