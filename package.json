@@ -41,6 +41,7 @@
 	"type": "module",
 	"dependencies": {
 		"flubber2": "^0.4.9",
-		"svelte-navbar": "^0.0.7"
+		"svelte-glitch": "file:../svelte-glitch/package",
+		"svelte-navbar": "^0.0.9"
 	}
 }

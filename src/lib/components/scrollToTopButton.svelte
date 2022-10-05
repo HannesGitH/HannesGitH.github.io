@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Fab, { Icon } from '@smui/fab';
 	import { scrollTop } from 'svelte-navbar';
-	export const showWhenScrolledPast = 1000;
-	export const show: boolean | null = null;
+	export let showWhenScrolledPast = 1000;
+	export let show: boolean | null = null;
 
 	let scrollY = 0;
 	$: exited = !(show ?? scrollY > showWhenScrolledPast);
