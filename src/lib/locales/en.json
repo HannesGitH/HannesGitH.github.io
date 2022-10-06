@@ -7,6 +7,7 @@
 	},
 	"education": { "title": "Education" },
 	"experience": { "title": "Experience" },
+	"projects": { "title": "Projects" },
 	"skills": { "title": "Skills" },
 	"contact": { "title": "Contact" }
 }
