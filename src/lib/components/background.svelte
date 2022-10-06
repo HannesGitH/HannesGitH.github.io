@@ -21,7 +21,7 @@
 		font-size: xx-small;
 		pointer-events: none;
 		word-wrap: break-word;
-		overflow: hidden;
+		// overflow: hidden;
 		width: 120%;
 		left: -5%;
 		height: 110%;
