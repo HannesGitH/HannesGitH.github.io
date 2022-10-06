@@ -55,15 +55,15 @@
 	<g transform="translate(457.545794298902 440.49383887006405)" opacity={$opacity}>
 		<path id="blob0" d={interpolator(animationprogress%1)} fill={color} />
 	</g>
-	<g transform="rotate({animationprogress*0.2} 0 0) translate(457.545794298902 440.49383887006405) " opacity={$opacity}>
+	<g transform="rotate({animationprogress*360} 0 0) translate(457.545794298902 440.49383887006405) " opacity={$opacity}>
 		<path id="blob1" d={interpolator((animationprogress*1.7)%1)} fill={color} />
 	</g>
-	<g transform="rotate({Math.sin(animationprogress*0.3)} 0 0) translate(457.545794298902 440.49383887006405) " opacity={$opacity}>
+	<g transform="rotate({Math.sin(animationprogress*0.3)*360} 0 0) translate(457.545794298902 440.49383887006405) " opacity={$opacity}>
 		<path id="blob2" d={interpolator((animationprogress*1.25)%1)} fill={color} />
 	</g>
 </svg>
 
-<!-- <style lang="scss">
+<style lang="scss">
 	// #blob1,
 	// #blob2,
 	// #blob3,
@@ -72,7 +72,11 @@
 	// 	visibility: hidden;
 	// }
 
+	svg * {
+		transform-origin: center;
+	}
+
 	// #blob0 {
 	// 	backdrop-filter: blur(10px);
 	// }
-</style> -->
+</style>
