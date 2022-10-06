@@ -63,12 +63,16 @@
 	</g>
 </svg>
 
-<!-- <style>
-	#blob1,
-	#blob2,
-	#blob3,
-	#blob4,
-	#blob5 {
-		visibility: hidden;
-	}
+<!-- <style lang="scss">
+	// #blob1,
+	// #blob2,
+	// #blob3,
+	// #blob4,
+	// #blob5 {
+	// 	visibility: hidden;
+	// }
+
+	// #blob0 {
+	// 	backdrop-filter: blur(10px);
+	// }
 </style> -->

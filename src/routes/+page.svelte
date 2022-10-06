@@ -17,32 +17,32 @@
 	const sections: SectionData[] = [
 		{
 			id: sectionrefs.me,
-			name: 'Me',
+			name: 'me',
 			component: MeSection
 		},
 		{
 			id: sectionrefs.education,
-			name: 'Education',
+			name: 'education',
 			component: EducationSection
 		},
 		{
 			id: sectionrefs.experience,
-			name: 'Experience',
+			name: 'experience',
 			component: ExperienceSection
 		},
 		{
 			id: sectionrefs.skills,
-			name: 'Skills',
+			name: 'skills',
 			component: SkillsSection
 		},
 		{
 			id: sectionrefs.projects,
-			name: 'Projects',
+			name: 'projects',
 			component: ProjectsSection
 		},
 		{
 			id: sectionrefs.contact,
-			name: 'Contact',
+			name: 'contact',
 			component: ContactSection
 		}
 	];
@@ -75,9 +75,10 @@
 	}
 
 	let meSectionActive = false;
+	import { _ } from 'svelte-i18n'
 </script>
 
-<Background offsetTop={scrollY/30} animationprogress={scrollY/20}/>
+<Background offsetTop={scrollY/30}/>
 <div
 	id="body"
 	style="--scroll-prog: {navBarScroll.progress(scrollY)}; margin-left:{navBarScroll.progress(
@@ -105,7 +106,7 @@
 	{#each sections as section, i}
 		<div class="smooth" class:activated={activeSectionBools[i]}>
 			<NavbarItem bind:isCurrentlyActive={activeSectionBools[i]} scrollTo={section.id}>
-				{section.name}</NavbarItem
+				{$_(section.name+'.title')}</NavbarItem
 			>
 		</div>
 	{/each}
