@@ -77,7 +77,7 @@
 	let meSectionActive = false;
 </script>
 
-<Background />
+<Background offsetTop={scrollY/30} animationprogress={scrollY/20}/>
 <div
 	id="body"
 	style="--scroll-prog: {navBarScroll.progress(scrollY)}; margin-left:{navBarScroll.progress(
