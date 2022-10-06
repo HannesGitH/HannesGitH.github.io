@@ -97,7 +97,7 @@
 	<meta name="keywords" content={$_('keywords')} />
 	<meta name="author" content={$_('author')} />
 </svelte:head>
-∏
+
 <Background offsetTop={scrollY / 30} />
 <div
 	id="body"
