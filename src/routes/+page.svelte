@@ -1,4 +1,18 @@
 <script lang="ts">
+	const localesworkaround = true;
+	//TODO: remove them
+	import { getLocaleFromNavigator, addMessages, init } from 'svelte-i18n';
+	import en from '$lib/locales/en.json';
+	import de from '$lib/locales/de.json';
+	if (localesworkaround) {
+		addMessages('en', en);
+		addMessages('de', de);
+		init({
+			fallbackLocale: 'en',
+			initialLocale: getLocaleFromNavigator()
+		});
+	}
+
 	import sectionrefs from '$lib/sections/refs';
 
 	import MeSection from '$lib/sections/me.svelte';

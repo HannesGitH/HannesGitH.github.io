@@ -9,7 +9,6 @@ register('en', () => import('$lib/locales/en.json'));
 register('de', () => import('$lib/locales/de.json'));
 
 if (browser) {
-    // init on server side only, need to get query from `page.query.get("lang")`
     init({
         fallbackLocale: "en",
         initialLocale: getLocaleFromNavigator(),
