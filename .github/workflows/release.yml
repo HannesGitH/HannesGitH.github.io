@@ -35,6 +35,8 @@ jobs:
         with:
           name: static
           path: static
+      
+      - run: touch static/.nojekyll # this is needed to prevent github pages from ignoring files starting with an underscore
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.4
