@@ -23,6 +23,10 @@ $surface: black;
   height: 100%;
 }
 
+@mixin full-bleed($bg-color){
+  box-shadow: 0 0 0 100vmax $bg-color;
+  clip-path: inset(0 100vmax);
+}
 
 @font-face{
   font-family: 'JetBrainsMono';
@@ -39,6 +43,9 @@ html,
 body {
   font-family: 'JetBrainsMono','Roboto', sans-serif;
   background-color: #000;
+  max-width: 100%;
+  overflow-x: hidden;
+  // overflow-x: clip;
   // color: ;
 }
 

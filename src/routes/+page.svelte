@@ -75,17 +75,16 @@
 	}
 
 	let meSectionActive = false;
-	import { _ } from 'svelte-i18n'
+	import { _ } from 'svelte-i18n';
 </script>
 
-<Background offsetTop={scrollY/30}/>
+<Background offsetTop={scrollY / 30} />
 <div
 	id="body"
-	style="--scroll-prog: {navBarScroll.progress(scrollY)}; margin-left:{navBarScroll.progress(
-		scrollY
-	) *
-		1.1 *
-		navBarSizeInPx}px;"
+	style="
+		--scroll-prog: {navBarScroll.progress(scrollY)}; 
+		margin-left: {navBarScroll.progress(scrollY) * navBarSizeInPx * 0.78}px;
+		width: calc(100% - {navBarScroll.progress(scrollY) * navBarSizeInPx}px);"
 >
 	<div id="logo">
 		<LogoWithBlob animationduration={5000} />
@@ -106,7 +105,7 @@
 	{#each sections as section, i}
 		<div class="smooth" class:activated={activeSectionBools[i]}>
 			<NavbarItem bind:isCurrentlyActive={activeSectionBools[i]} scrollTo={section.id}>
-				{$_(section.name+'.title')}</NavbarItem
+				{$_(section.name + '.title')}</NavbarItem
 			>
 		</div>
 	{/each}
@@ -131,6 +130,10 @@
 	}
 	.smooth {
 		transition: scale 400ms, color 400ms, filter 400ms;
+	}
+
+	#body {
+		// overflow: hidden;
 	}
 
 	#logo {

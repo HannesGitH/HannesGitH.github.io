@@ -19,6 +19,10 @@
 
 <div use:scrollRef={refs.me}></div>
 
+<div id="placeholder">
+	<!-- yap, hier soll noch bissl was hin -->
+</div>
+
 <style lang="scss">
 	#my-name {
 		font-size: 96pt;
@@ -33,5 +37,13 @@
 	#description {
 		font-size: 1.5em;
 		max-width: calc(96pt * 9);
+	}
+
+	#placeholder{
+		height: 20vh;
+	}
+
+	* {
+		padding: $std-margin;
 	}
 </style>
