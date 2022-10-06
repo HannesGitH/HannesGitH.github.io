@@ -88,10 +88,16 @@
 		goto(`/${route}`, { replaceState });
 	}
 
-	let meSectionActive = false;
 	import { _ } from 'svelte-i18n';
 </script>
 
+<svelte:head>
+	<title>{$_('title')}</title>
+	<meta name="description" content={$_('description')} />
+	<meta name="keywords" content={$_('keywords')} />
+	<meta name="author" content={$_('author')} />
+</svelte:head>
+∏
 <Background offsetTop={scrollY / 30} />
 <div
 	id="body"
