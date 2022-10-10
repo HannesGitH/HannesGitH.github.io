@@ -2,6 +2,7 @@
 	import { scrollRef } from 'svelte-navbar';
 	import refs from './refs';
 	import { _ } from 'svelte-i18n';
+	//TODO: https://codepen.io/HannesGitH/pen/dyeQNQw (von education aus kommend schon)
 </script>
 
 <div id="content" use:scrollRef={refs.experience}>

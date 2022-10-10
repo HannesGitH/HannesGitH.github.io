@@ -92,6 +92,7 @@
 </script>
 
 <svelte:head>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/solid.css" integrity="sha384-Tv5i09RULyHKMwX0E8wJUqSOaXlyu3SQxORObAI08iUwIalMmN5L6AvlPX2LMoSE" crossorigin="anonymous"/>
 	<title>{$_('title')}</title>
 	<meta name="description" content={$_('description')} />
 	<meta name="keywords" content={$_('keywords')} />
