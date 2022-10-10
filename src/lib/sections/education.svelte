@@ -4,6 +4,7 @@
 	import CurvedDivider from '$lib/components/curvedDivider.svelte';
 	import { _ } from 'svelte-i18n';
 	//TODO: https://codepen.io/HannesGitH/pen/dyeQNQw (kann bis experience rüberwachsen)
+    //etwas entspannter https://codyhouse.co/gem/vertical-timeline/
 </script>
 
 <CurvedDivider />
