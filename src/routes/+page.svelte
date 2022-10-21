@@ -92,7 +92,12 @@
 </script>
 
 <svelte:head>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/solid.css" integrity="sha384-Tv5i09RULyHKMwX0E8wJUqSOaXlyu3SQxORObAI08iUwIalMmN5L6AvlPX2LMoSE" crossorigin="anonymous"/>
+	<link
+		rel="stylesheet"
+		href="https://use.fontawesome.com/releases/v5.15.4/css/solid.css"
+		integrity="sha384-Tv5i09RULyHKMwX0E8wJUqSOaXlyu3SQxORObAI08iUwIalMmN5L6AvlPX2LMoSE"
+		crossorigin="anonymous"
+	/>
 	<title>{$_('title')}</title>
 	<meta name="description" content={$_('description')} />
 	<meta name="keywords" content={$_('keywords')} />
@@ -117,37 +122,58 @@
 	{/each}
 </div>
 
-<Navbar
-	scrollProgress={navBarScroll.progress(scrollY)}
-	rowSizeInPx={navBarSizeInPx}
-	color="#a7c347"
->
-	<NavbarItem on:click={(e) => scrollTop()}>Home</NavbarItem>
-	{#each sections as section, i}
-		<div class="smooth" class:activated={activeSectionBools[i]}>
-			<NavbarItem bind:isCurrentlyActive={activeSectionBools[i]} scrollTo={section.id}>
-				{$_(section.name + '.title')}</NavbarItem
-			>
-		</div>
-	{/each}
-</Navbar>
+<!-- <div style="position: fixed;">
+	<Navbar
+		scrollProgress={navBarScroll.progress(scrollY)}
+		rowSizeInPx={navBarSizeInPx}
+		color="#a7c347"
+	>
+		<NavbarItem on:click={(e) => scrollTop()}>Home</NavbarItem>
+		{#each sections as section, i}
+			<div class="smooth" class:activated={activeSectionBools[i]}>
+				<NavbarItem bind:isCurrentlyActive={activeSectionBools[i]} scrollTo={section.id}>
+					{$_(section.name + '.title')}</NavbarItem
+				>
+			</div>
+		{/each}
+	</Navbar>
+</div> -->
 <ScrollToTopButton />
 
 <svelte:window bind:scrollY />
 
 <style lang="scss">
+	@use 'sass:color';
 	$logo-height: min(70vh, 70vw);
+	:global(h1) {
+		font-size: 4rem;
+		font-weight: 400;
+		margin: 0;
+	}
+
+	:global(a) {
+		color: #40b3ff;
+	}
+	:global(a:visited) {
+		color: color.scale(#40b3ff, $lightness: -35%);
+	}
 	:global(body, html) {
 		color: $on-surface;
+		font-family: 'JetBrainsMono', 'Roboto', sans-serif;
+		background-color: #000;
+		width: 100%;
+		overflow-x: hidden;
+		// overflow-x: clip;
+		// color: ;
 	}
 
 	.activated {
 		filter: invert(1);
-		& * {
-			//todo: fix this is not workinf
-			color: $on-surface !important;
-			text-decoration: underline solid $on-surface 2px !important;
-		}
+		// & * {
+		// 	//todo: fix this is not workinf
+		// 	color: $on-surface !important;
+		// 	text-decoration: underline solid $on-surface 2px !important;
+		// }
 	}
 	.smooth {
 		transition: scale 400ms, color 400ms, filter 400ms;
