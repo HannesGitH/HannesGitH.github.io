@@ -28,10 +28,10 @@
 		font-size: 96pt;
 		letter-spacing: -7px;
 
-		> * {
-			margin: $std-margin;
-			padding-left: $std-margin;
-		}
+		// > * {
+		// 	margin: $std-margin;
+		// 	padding-left: $std-margin;
+		// }
 	}
 
 	#description {
