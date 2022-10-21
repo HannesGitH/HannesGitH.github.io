@@ -22,6 +22,7 @@
 	import { Glitch2 } from 'svelte-glitch';
 </script>
 
+<div style="height:10em"></div>
 <div id="content" use:scrollRef={refs.experience}>
 	<h1 id="title">
 		{#if glitchy}
@@ -100,7 +101,9 @@
 	}
 	#content {
 		--dot-color: #{$primary};
-		padding: 2 * $std-margin;
+		@include full-bleed($bg-color: $primary);
+		backdrop-filter: blur(2px);
+		// filter: invert(1);
 		
 		strong{
 			font-style: italic;
@@ -118,9 +121,6 @@
 			padding: 0;
 		}
 
-		.timeline-item {
-			flex: unset !important;
-		}
 
 		p {
 			margin: 0;
@@ -130,11 +130,7 @@
 			// color: $primary;
 			padding-bottom: $std-margin;
 		}
-		#gpa {
-			padding: 0;
-			display:inline;
-			opacity: 0.5;
-		}
+
 		#description {
 			opacity: 0.9;
 			font-weight: 300;
@@ -153,9 +149,5 @@
 			// color: grey;
 		}
 	}
-	.flipped {
-		transform: rotate(180deg);
-		padding-top: calc(4 * $std-margin);
-		margin-bottom: -10px;
-	}
+
 </style>
