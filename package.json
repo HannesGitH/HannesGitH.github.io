@@ -44,6 +44,7 @@
 		"flubber2": "^0.4.9",
 		"svelte-glitch": "^0.0.3",
 		"svelte-i18n": "^3.4.0",
-		"svelte-navbar": "^0.0.113"
+		"svelte-navbar": "^0.0.113",
+		"svelte-vertical-timeline": "^0.0.2"
 	}
 }

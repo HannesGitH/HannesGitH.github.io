@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import type { ContactData } from '$lib/components/contacts/all';
+	import type { ContactData } from '$lib/data/contacts';
 
 	export let contact: ContactData;
 	let activated: boolean = false;

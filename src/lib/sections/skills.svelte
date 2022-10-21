@@ -2,8 +2,8 @@
 	import { scrollRef } from 'svelte-navbar';
 	import refs from './refs';
 	import { _ } from 'svelte-i18n';
-    import skills from '$lib/components/skills/all';
-    import Skill from '$lib/components/skills/skill.svelte';
+    import skills from '$lib/data/skills';
+    import Skill from '$lib/components/skill.svelte';
 
 </script>
 

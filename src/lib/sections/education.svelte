@@ -4,75 +4,149 @@
 	import CurvedDivider from '$lib/components/curvedDivider.svelte';
 	import { _ } from 'svelte-i18n';
 	//TODO: https://codepen.io/HannesGitH/pen/dyeQNQw (kann bis experience rüberwachsen)
-    //etwas entspannter https://codyhouse.co/gem/vertical-timeline/
+	//etwas entspannter https://codyhouse.co/gem/vertical-timeline/
+
+	export let glitchy: boolean = false;
+
+	import {
+		Timeline,
+		TimelineItem,
+		TimelineSeparator,
+		TimelineDot,
+		TimelineConnector,
+		TimelineContent,
+		TimelineOppositeContent
+	} from 'svelte-vertical-timeline';
+
+	import education from '$lib/data/education';
+	import { Glitch2 } from 'svelte-glitch';
 </script>
 
 <CurvedDivider />
 <div id="content" use:scrollRef={refs.education}>
-	<h1>{$_('education.title')}</h1>
-	<p>THIS (website) IS STILL WIP</p>
-	<p>
-		Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos incidunt eos commodi delectus
-		quisquam quibusdam consequuntur. Quasi rem eligendi eius corrupti laudantium assumenda odit
-		modi? Molestias a corrupti error enim, fugit fuga unde? Magnam cumque quam dignissimos qui! Ut
-		eaque iste illum sequi recusandae laboriosam laborum nisi alias, asperiores libero ratione,
-		deleniti dolorem reprehenderit unde eos! Doloremque incidunt neque libero veritatis corporis ad
-		assumenda, voluptatum est nisi. Est provident officia facilis nihil fugit error tempora ipsam
-		sint, minima nobis. Corrupti accusamus beatae assumenda, sed ea, eius quos numquam iusto
-		delectus consectetur, earum molestias fuga aperiam corporis non officia quo similique reiciendis
-		rerum vel id nulla optio neque. Nemo unde molestiae porro eveniet corrupti, molestias beatae qui
-		quod veritatis fugiat iste eaque harum laboriosam, laudantium libero esse cumque quae numquam
-		expedita ratione impedit, repudiandae accusantium? Iusto dolorem accusantium blanditiis laborum
-		quae? Delectus similique illum quo odio libero id corporis rerum rem blanditiis voluptatum
-		aperiam temporibus error tempora reprehenderit, quidem tempore quisquam sunt ea. At nesciunt
-		veniam, velit consectetur eos voluptate, quos recusandae ex, enim hic totam amet dolore tempore.
-		Non velit accusamus optio nobis minima qui consequatur quasi voluptates id nisi sequi officiis
-		consectetur, laboriosam dolor, eos, quae voluptate blanditiis incidunt tempora cumque
-		accusantium ex quia debitis? In, quos maiores? Aperiam fugiat dolorem officia dolor, quibusdam
-		ducimus totam nobis earum consequatur voluptatum repellat fuga quo rerum expedita quidem
-		voluptas autem culpa porro praesentium vel, cum explicabo sint! Possimus ipsum vel tempora
-		blanditiis error sapiente quis similique, sunt corrupti accusantium, vero id animi tempore totam
-		fuga ratione cum aliquam debitis deserunt sed? Earum blanditiis a non obcaecati. Minus
-		dignissimos voluptate repellendus tempore quam aliquam necessitatibus soluta. Rerum iusto
-		accusamus cum vitae repellat possimus consectetur atque dicta est inventore. Quidem numquam
-		aliquid, deserunt quo consequatur neque tenetur saepe beatae nisi suscipit deleniti eius! Iste
-		modi, maxime ea error consectetur natus non, porro molestias eaque impedit placeat, iure amet.
-		Nemo sint vel consequuntur id molestiae excepturi, nisi iure eos velit rerum animi maxime
-		possimus sapiente explicabo quia voluptates nesciunt assumenda eius magnam! Porro, laborum esse
-		neque voluptate ab ratione sapiente tempora ducimus fugiat, dolorum illo animi? Consequatur ad
-		quisquam nobis ut ipsam tenetur ea quos omnis ratione nisi, error perspiciatis delectus soluta
-		et eos aut incidunt corporis sed? Architecto nesciunt consequuntur eum ducimus? Vitae
-		praesentium vel ullam eveniet, tempora quis voluptatum aperiam consequatur, quisquam delectus
-		neque alias tenetur sequi iure nisi itaque provident omnis perspiciatis ipsa repudiandae minima.
-		Minus quidem veniam quod voluptatum, placeat temporibus libero debitis recusandae atque itaque.
-		Voluptas asperiores blanditiis debitis sunt impedit, veniam id! Harum, tenetur natus veniam
-		perspiciatis esse unde dolores amet quibusdam, inventore doloremque quae iure aliquam distinctio
-		quas voluptas minus veritatis vero. Velit quis quas repudiandae illo possimus! Beatae adipisci
-		odit quas nobis ipsam quos doloremque iusto, quibusdam consequatur officia minima ad totam id
-		atque suscipit, blanditiis voluptas tempore hic. Aut, itaque nostrum? Voluptate ab consectetur
-		animi sequi obcaecati. Dignissimos obcaecati qui temporibus autem voluptatem enim perferendis
-		optio soluta. Exercitationem minus et alias facilis reiciendis, quibusdam qui?
-	</p>
+	<h1 id="title">
+		{#if glitchy}
+			<Glitch2 text={$_('education.title')} />
+		{:else}
+			{$_('education.title')}
+		{/if}
+	</h1>
+	<Timeline position="right" style={'justify-content: start;'}>
+		{#each education as option, i}
+			<TimelineItem>
+				<TimelineOppositeContent slot="opposite-content" style="flex: unset; width:fit-content;">
+					<p>{option.year}</p>
+				</TimelineOppositeContent>
+				<TimelineSeparator>
+					<TimelineDot style={'background-color: var(--dot-color,#000);'} />
+					<TimelineConnector />
+				</TimelineSeparator>
+				<TimelineContent style="flex:3">
+					<h2 style="animation: smooth-sparkle 1s ease {i / education.length}s infinite;">
+						{option.degree}{option.name ? ', ' + option.name : ''}
+					</h2>
+					<p id="gpa">{option.gpa}</p>
+					<div>
+						<p id="location">@ {option.place}</p>
+						<p id="description">
+							{option.description}
+						</p>
+						<br />
+					</div>
+				</TimelineContent>
+			</TimelineItem>
+		{/each}
+	</Timeline>
 </div>
 <div class="flipped">
 	<CurvedDivider />
 </div>
 
 <style lang="scss">
+	@keyframes -global-smooth-sparkle {
+		0% {
+			background: linear-gradient(0.9turn, #{$on-surface}, #{$primary});
+			-webkit-background-clip: text;
+			background-clip: text;
+			-webkit-text-fill-color: transparent;
+			// rotate: 0deg;
+		}
+		50% {
+			background: linear-gradient(0.9turn, #{$on-surface}, #{$on-surface}, #{$primary});
+			-webkit-background-clip: text;
+			background-clip: text;
+			-webkit-text-fill-color: transparent;
+			// rotate: 20deg;
+		}
+		100% {
+			background: linear-gradient(0.9turn, #{$on-surface}, #{$primary});
+			-webkit-background-clip: text;
+			background-clip: text;
+			-webkit-text-fill-color: transparent;
+			// rotate: 0deg;
+		}
+	}
 	* {
 		padding: $std-margin;
 	}
 	#content {
-		padding: 2*$std-margin;
+		--dot-color: #{$primary};
+		padding: 2 * $std-margin;
 		@include full-bleed($bg-color: $surface);
 		// margin:-10%;
 		background-color: $surface;
 		// backdrop-filter: invert(1);
 		filter: invert(1);
+
+		h2 {
+			// letter-spacing: 1.5px;
+			display: inline-block;
+			background-size: 100%;
+			background: linear-gradient(0.9turn, $on-surface, $primary);
+			-webkit-background-clip: text;
+			background-clip: text;
+			-webkit-text-fill-color: transparent;
+			margin: 0;
+			padding: 0;
+		}
+
+		.timeline-item {
+			flex: unset !important;
+		}
+
+		p {
+			margin: 0;
+			padding: 0.5em 1cm 1.5em 0;
+		}
+		#location {
+			// color: $primary;
+			padding-bottom: $std-margin;
+		}
+		#gpa {
+			padding: 0;
+			display:inline;
+			opacity: 0.5;
+		}
+		#description {
+			opacity: 0.5;
+			font-weight: 300;
+			font-size: smaller;
+		}
+
+		div{
+			padding: 0;
+		}
+
+		:global(.timeline-opposite-content > p) {
+			padding: 0;
+			letter-spacing: 1.5px;
+			margin: 0;
+			// color: grey;
+		}
 	}
 	.flipped {
 		transform: rotate(180deg);
 		padding-top: calc(4 * $std-margin);
-        margin-bottom: -10px;
+		margin-bottom: -10px;
 	}
 </style>

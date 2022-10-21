@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
-	import type { SkillData } from '$lib/components/skills/all';
+	import type { SkillData } from '$lib/data/skills';
 
 	export let skill: SkillData;
 	let activated: boolean = false;
