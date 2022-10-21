@@ -122,22 +122,20 @@
 	{/each}
 </div>
 
-<!-- <div style="position: fixed;">
-	<Navbar
-		scrollProgress={navBarScroll.progress(scrollY)}
-		rowSizeInPx={navBarSizeInPx}
-		color="#a7c347"
-	>
-		<NavbarItem on:click={(e) => scrollTop()}>Home</NavbarItem>
-		{#each sections as section, i}
-			<div class="smooth" class:activated={activeSectionBools[i]}>
-				<NavbarItem bind:isCurrentlyActive={activeSectionBools[i]} scrollTo={section.id}>
-					{$_(section.name + '.title')}</NavbarItem
-				>
-			</div>
-		{/each}
-	</Navbar>
-</div> -->
+<Navbar
+	scrollProgress={navBarScroll.progress(scrollY)}
+	rowSizeInPx={navBarSizeInPx}
+	color="#a7c347"
+>
+	<NavbarItem on:click={(e) => scrollTop()}>Home</NavbarItem>
+	{#each sections as section, i}
+		<div class="smooth" class:activated={activeSectionBools[i]}>
+			<NavbarItem bind:isCurrentlyActive={activeSectionBools[i]} scrollTo={section.id}>
+				{$_(section.name + '.title')}</NavbarItem
+			>
+		</div>
+	{/each}
+</Navbar>
 <ScrollToTopButton />
 
 <svelte:window bind:scrollY />
