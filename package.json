@@ -1,6 +1,6 @@
 {
 	"name": "hannesgith.github.io",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
@@ -21,9 +21,9 @@
 		"@rollup/plugin-json": "^4.1.0",
 		"@smui/button": "^6.1.4",
 		"@smui/fab": "^6.1.4",
-		"@sveltejs/adapter-auto": "next",
-		"@sveltejs/adapter-static": "next",
-		"@sveltejs/kit": "next",
+		"@sveltejs/adapter-auto": "latest",
+		"@sveltejs/adapter-static": "latest",
+		"@sveltejs/kit": "latest",
 		"@typescript-eslint/eslint-plugin": "^5.27.0",
 		"@typescript-eslint/parser": "^5.27.0",
 		"eslint": "^8.16.0",
@@ -37,7 +37,7 @@
 		"svelte-preprocess": "^4.10.6",
 		"tslib": "^2.3.1",
 		"typescript": "^4.7.4",
-		"vite": "^3.1.0"
+		"vite": "^4.0.0"
 	},
 	"type": "module",
 	"dependencies": {
