@@ -80,7 +80,7 @@ const cpp : SkillData = {
 
 const sass : SkillData = {
     name: "Sass",
-    level: 8,
+    level: 7,
     iconClass: "devicon-sass-original",
 }
 
@@ -128,7 +128,7 @@ const latex : SkillData = {
 
 const rust : SkillData = {
     name: "Rust",
-    level: 1,
+    level: 5,
     iconClass: "devicon-rust-plain",
 }
 
