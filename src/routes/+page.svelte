@@ -149,8 +149,6 @@
 		margin: 0;
 	}
 
-
-
 	:global(a) {
 		color: #40b3ff;
 	}
@@ -165,10 +163,6 @@
 		overflow-x: hidden;
 		// overflow-x: clip;
 		// color: ;
-	}
-
-	html {
-		width: 10%;
 	}
 
 	:global(body::-webkit-scrollbar) {
