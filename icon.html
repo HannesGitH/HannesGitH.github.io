@@ -42,18 +42,19 @@
 			var module = {};
 		</script>
 		<meta http-equiv="content-security-policy" content="">
-		<link href="./_app/immutable/assets/iconwithblob-570588ee.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/start-ca7b4698.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index-1029fe6c.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/singletons-e74e4778.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/index-68a0e872.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper-41c905a7.js">
-		<link rel="modulepreload" href="./_app/immutable/components/layout.svelte-66dff2b5.js">
-		<link rel="modulepreload" href="./_app/immutable/modules/pages/_layout.ts-247c087a.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/runtime.esm-15ec61f0.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/_layout-9a28feb8.js">
-		<link rel="modulepreload" href="./_app/immutable/components/pages/icon/_page.svelte-54aec7ea.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/iconwithblob-c1e34990.js">
+		<link href="./_app/immutable/assets/iconwithblob.570588ee.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.51e4abd7.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.85cbbf71.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.8d97f525.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.cdbab694.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.03ff7b04.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.41c905a7.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/layout.svelte.ab94ba21.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/_layout.ts.4a78381e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/runtime.esm.1b0b298e.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/_layout.dd54f0c7.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/icon-page.svelte.c4789701.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/iconwithblob.24d22dab.js">
 	</head>
 	<body>
 		<div>
@@ -64,22 +65,30 @@
 </div>
 
 
-		<script type="module" data-sveltekit-hydrate="p1iyeu">
-			import { start } from "./_app/immutable/start-ca7b4698.js";
+			
+			<script>
+				{
+					__sveltekit_udxcnr = {
+						env: {},
+						base: new URL(".", location).pathname.slice(0, -1),
+						element: document.currentScript.parentElement
+					};
 
-			start({
-				assets: "",
-				env: {},
-				target: document.querySelector('[data-sveltekit-hydrate="p1iyeu"]').parentNode,
-				version: "1676802852823",
-				hydrate: {
-					node_ids: [0, 3],
-					data: [null,null],
-					form: null,
-					error: null
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.51e4abd7.js"),
+						import("./_app/immutable/entry/app.03ff7b04.js")
+					]).then(([kit, app]) => {
+						kit.start(app, __sveltekit_udxcnr.element, {
+							node_ids: [0, 3],
+							data,
+							form: null,
+							error: null
+						});
+					});
 				}
-			});
-		</script>
-	</div>
+			</script>
+		</div>
 	</body>
 </html>
