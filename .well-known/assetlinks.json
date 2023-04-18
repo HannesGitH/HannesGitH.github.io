@@ -1,11 +1,1 @@
-[
-  {
-    "relation": ["delegate_permission/common.handle_all_urls"],
-    "target": {
-      "namespace": "android_app",
-      "package_name": "hannepps.tools.passwordchecker",
-      "sha256_cert_fingerprints":
-        ["48:8D:7C:D4:BA:57:9C:72:95:CF:DE:7D:C0:E2:2B:0B:EC:89:B5:01:78:88:12:C4:44:D6:D4:31:97:52:73:8E","79:C0:96:97:DE:F8:E1:45:85:03:CD:F7:10:79:E4:A5:2B:22:04:BB:2A:0D:E8:C6:16:C2:A8:71:E1:95:3F:A3"]
-    }
-  }
-]
+[{"relation": ["delegate_permission/common.handle_all_urls"], "target": { "namespace": "android_app","package_name": "hannepps.tools.passwordchecker","sha256_cert_fingerprints": ["48:8D:7C:D4:BA:57:9C:72:95:CF:DE:7D:C0:E2:2B:0B:EC:89:B5:01:78:88:12:C4:44:D6:D4:31:97:52:73:8E"]}}]
