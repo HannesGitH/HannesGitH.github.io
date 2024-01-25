@@ -10,7 +10,9 @@
 
 </script>
 
-<CurvedDivider/>
+<div class="divider">
+</div>
+<!-- <CurvedDivider/> -->
 <div id="content" use:scrollRef={refs.projects}>
 	<h1>{$_('projects.title')}</h1>
 
@@ -23,28 +25,47 @@
 		{/each}
 	</div>
 
+	<!-- FIXME: hätte den lieber ausserhalb von #content um full-bleed zu primary zu machen, siehe style -->
+	<div class="divider big"></div> 
 </div>
-<div class="flipped"><CurvedDivider/></div>
+<!-- <div class="flipped"><CurvedDivider/></div> -->
 
 <style lang="scss">
+
+	.divider {
+		height: 10rem;
+
+		@include full-bleed($bg-color: transparent);
+		&.big {
+			height: 20rem;
+		}
+	}
 	* {
 		padding: $std-margin;
 	}
 	#content {
 		padding-top: $std-margin;
-		@include full-bleed($bg-color: $surface);
+		@include full-bleed($bg-color: $primary);
+		@include full-bleed($bg-color: transparent); //FIXME: hätte lieber den drüber, siehe oben
+		// white-space: pre-wrap;
+		overflow: visible;
+		display: block;
+		position: relative;
+		z-index: 0;
 		// margin:-10%;
-		// background-color: $surface;
-		// backdrop-filter: invert(1);
+		// background-color: gray;
+		backdrop-filter: blur(2px);
 		// filter: invert(1);
 		--dot-color: #{$primary};
 		padding: 2 * $std-margin;
-		@include full-bleed($bg-color: $surface);
+		// @include full-bleed($bg-color: $surface);
 		// margin:-10%;
 		// backdrop-filter: invert(1);
 		// filter: invert(1);
-		background-color: $on-surface;
-		color: $surface;
+		// background-color: $on-surface;
+		// color: $surface;
+			overflow-clip-margin: 200rem;
+		// padding-bottom: 30rem;
 		
 		& #projects {
 			display: flex;
@@ -52,6 +73,8 @@
 			justify-content: center;
 			justify-content: stretch;
 			justify-self: stretch;
+			overflow: visible;
+			overflow-clip-margin: 200rem;
 		} 
 	}
 	.flipped {

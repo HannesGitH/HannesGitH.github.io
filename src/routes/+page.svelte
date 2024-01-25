@@ -179,6 +179,10 @@
 		// overflow-x: clip;
 		// color: ;
 	}
+	// :global(*) {
+	// 	overflow: visible;
+	// 	white-space: nowrap;
+	// }
 
 	:global(body::-webkit-scrollbar) {
 		display: none;

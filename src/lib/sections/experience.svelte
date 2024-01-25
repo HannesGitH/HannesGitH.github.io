@@ -22,7 +22,11 @@
 	import { Glitch2 } from 'svelte-glitch';
 </script>
 
-<div style="height:10em"></div>
+<div id="divider">
+	<!-- <CurvedDivider /> -->
+</div>
+
+
 <div id="content" use:scrollRef={refs.experience}>
 	<h1 id="title">
 		{#if glitchy}
@@ -79,6 +83,9 @@
 		</TimelineItem>
 	</Timeline>
 </div>
+<div class="flipped">
+	<CurvedDivider />
+</div>
 
 <div style="height:10em"></div>
 
@@ -101,11 +108,27 @@
 	* {
 		padding: $std-margin;
 	}
+
+	#divider {
+		// @include full-bleed($bg-color: white);
+		// height: 20em;
+		background: white;
+		// filter: invert(1);
+	}
+
+	#topPadder {
+		height: 0em;
+		background: $surface;
+		filter: invert(1);
+	}
 	#content {
 		--dot-color: #{$primary};
-		@include full-bleed($bg-color: $primary);
-		backdrop-filter: blur(2px);
+		padding: calc( 2 * $std-margin) ;
+		@include full-bleed($bg-color: $on-surface);
+		// backdrop-filter: blur(2px);
+		background: white;
 		// filter: invert(1);
+		color: black;
 		
 		strong{
 			font-style: italic;
@@ -115,7 +138,7 @@
 			// letter-spacing: 1.5px;
 			display: inline-block;
 			background-size: 100%;
-			background: linear-gradient(0.9turn, $on-surface, $primary);
+			background: linear-gradient(0.9turn, black, $primary);
 			-webkit-background-clip: text;
 			background-clip: text;
 			-webkit-text-fill-color: transparent;
@@ -134,10 +157,9 @@
 		}
 
 		#description {
-			opacity: 0.9;
+			opacity: 0.5;
 			font-weight: 300;
 			font-size: smaller;
-
 		}
 
 		div{
@@ -150,6 +172,13 @@
 			margin: 0;
 			// color: grey;
 		}
+	}
+
+	.flipped {
+		transform: rotate(180deg);
+		padding-top: calc(4 * $std-margin);
+		margin-bottom: -10px;
+		// filter: invert(1);
 	}
 
 </style>

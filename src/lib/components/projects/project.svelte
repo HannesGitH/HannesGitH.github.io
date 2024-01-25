@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { ProjectData } from "$lib/data/projects";
+	import { onMount } from "svelte";
 
 	import { _ } from 'svelte-i18n';
 
@@ -17,19 +18,27 @@
     let m = { x: 0, y: 0};
     let rm = { x: 0, y: 0};
     $: ws = {
-        w: wrapper?.offsetWidth ?? 0,
-        h: wrapper?.offsetHeight ?? 0,
+        w: wrapper?.offsetWidth ?? 1,
+        h: wrapper?.offsetHeight ?? 1,
     };
     $: cardAngle = {
-        x:  (0.5 - (rm.y / ws.h)) * 20,
-        y: -(0.5 - (rm.x / ws.w)) * 20
+        x: rm.x == 0 ? 0 :  (0.5 - (rm.y / ws.h)) * 20,
+        y: rm.y == 0 ? 0 : -(0.5 - (rm.x / ws.w)) * 20
     };
 	function handleMousemove(event: MouseEvent) {
 		m.x = event.clientX;
 		m.y = event.clientY;
-        rm.x = event.pageX - (wrapper?.offsetLeft ?? 0);
-        rm.y = event.pageY - (wrapper?.offsetTop ?? 0);
+        const rect = wrapper?.getBoundingClientRect();
+        // rm.x = event.pageX - (wrapper?.offsetLeft ?? 0);
+        // rm.y = event.pageY - (wrapper?.offsetTop ?? 0);
+        rm.x = m.x - (rect?.left ?? 0); 
+        rm.y = m.y - (rect?.top ?? 0);
 	}
+
+    function handleMouseleave(event: MouseEvent) {
+        rm.x = 0;
+        rm.y = 0;
+    }
 
 </script>
 
@@ -39,6 +48,7 @@
     <div 
     class="wrapper" 
     on:mousemove={handleMousemove} 
+    on:mouseleave={handleMouseleave}
     bind:this={wrapper}
     >
     <div id="previewplaceholder">
@@ -68,10 +78,17 @@
         transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
         margin: $std-margin;
         padding: $std-margin;
+        margin-right: 10rem;
+        position: relative;
         color: $on-surface;
         width: 30rem;
         transform-style: preserve-3d;
+        transition: transform 0.3s ease-in-out;
         transform: perspective(500px) translateZ(0) rotateX(var(--rx)) rotateY(var(--ry));
+        &:hover{
+            transition: none;
+            z-index: 5;
+        }
         
         //children are in row
         display: flex;
@@ -101,16 +118,18 @@
             }
             & #description {
                 transform: translateZ(30px);
+                font-size: smaller;
             }
         }
         & img#preview , #previewplaceholder{
             width: 40rem;
             transform: translateZ(5px);
-            border-radius: 20px;
+            border-radius: 40px;
             margin: $std-margin;
             margin-right: 0;
             transition: all 0.3s ease-in-out;
             z-index: 2;
+            border: 5px solid black;
             &#preview {
                 margin: 0;
                 position: absolute;
@@ -120,8 +139,8 @@
                 top: 0;
                 left: 0;
                 &:hover {
-                    transform: translate3d(5rem, 5rem, 250px);
-                    scale: 0.5;
+                    transform: translate3d(20rem, 2rem, 250px);
+                    scale: 0.35;
                 }
             }
         }

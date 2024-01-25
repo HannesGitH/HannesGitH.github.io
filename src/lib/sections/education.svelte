@@ -58,9 +58,7 @@
 		{/each}
 	</Timeline>
 </div>
-<div class="flipped">
-	<CurvedDivider />
-</div>
+
 
 <style lang="scss">
 	@keyframes -global-smooth-sparkle {
