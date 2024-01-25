@@ -21,7 +21,7 @@
 
 	let mounted = false;
 	$: {
-		// TODO: set tween animation progress to animationprogress
+		// TO-DO: set tween animation progress to animationprogress
 		// if (mounted) tween.update(Math.sin(animataionprogress * Math.PI));
 		if (mounted) {
 			// tween.start(animationprogress);

@@ -21,13 +21,18 @@ export const github: ContactData = {
 //email
 export const email: ContactData = {
     name: 'Email',
-    iconClass: 'fa-solid fa-envelope',
+    iconClass: 'fa fa-envelope',
     link: 'mailto:contact@h-h.win'
 };
 
-//telegram//TODO
+//telegram
+export const telegram: ContactData = {
+    name: 'Telegram',
+    iconClass: 'fa fa-telegram',
+    link: 'https://t.me/hannepps'
+}
 
 
-const contacts: ContactData[] = [linkedin, github, email];
+const contacts: ContactData[] = [linkedin, github, email, telegram];
 
 export default contacts;

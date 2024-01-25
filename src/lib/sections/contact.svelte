@@ -14,7 +14,7 @@
 			<Contact {contact} />
 		{/each}
 	</div>
-	<h1 class="header"  id="impressum_header">{$_('impress.title')}</h1>
+	<h2 class="header"  id="impressum_header">{$_('impress.title')}</h2>
 	<div id="impressum_body">
 		<p><strong>Hannepps</strong> by:</p>
 		<br>
@@ -23,20 +23,23 @@
 		<br>
 		<p><a href="mailto:impressum@h-h.win">impressum@h-h.win</a></p>
 		<br>
-		<p>USt-Nr: </p> <!-- TODO -->
+		<p>USt-Nr:  DE364767306</p>
 		<br>
 		<br>
 	</div>
 </div>
 
 <style lang="scss">
-	h1 , #more_channels, #impressum_body, #content {
+	h1 , h2, #more_channels, #impressum_body, #content {
 		padding: $std-margin;
 	}
-	#impressum_body a {
-		color: aliceblue;
+	#impressum_body{
+		padding-top: 0;
+		& a {
+			color: aliceblue;
+		}
 	}
-
+	
 	#contacts {
 		display: flex;
 		flex-wrap: wrap;
@@ -63,5 +66,9 @@
 		// background-color: $surface;
 		// backdrop-filter: invert(1);
 		// filter: invert(1);
+	}
+
+	br {
+		font-size: xx-small;
 	}
 </style>

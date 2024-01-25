@@ -18,19 +18,9 @@ const options: ExperienceEntry[] = [
                 'helping to build a new web app for the company using Nuxt.js (Vue.js) and MongoDB, though to be honest, i forgot most of that already',
             ]
 	},
-	{
-        start: 2021,
-		year: '....',
-		place: 'Mastbau FN GmbH',
-		name: 'lead Full-Stack Developer',
-		description:
-			[
-                'designed and built an internal application for managing the company\'s projects, using Flutter and some JS'
-            ]
-	},
     {
         start: 2021,
-		year:'....',
+		year: 2024,
 		place: 'Fraunhofer AISEC ',
 		name: 'Studentische Hilfskraft',
 		description:
@@ -38,6 +28,27 @@ const options: ExperienceEntry[] = [
                 'doing a lot of research regarding quantum computing and quantum algorithms, code wasn\'t really the main part of the job, but i did a bunch of python using IBM\'s qiskit framework',
             ]
 	},
+	{
+        start: 2021,
+		year: '....',
+		place: 'Mastbau FN GmbH',
+		name: 'lead Full-Stack Developer',
+		description:
+			[
+                'designed and built an internal application for managing the company\'s projects, using primarily Flutter'
+            ]
+	},
+	//TODO: sobald carii gegründet wird
+	// {
+	// 	start: 2023,
+	// 	year: '....',
+	// 	place: 'Carii GmbH',
+	// 	name: 'CTO',
+	// 	description:
+	// 		[
+    //             'leading the development and technological decisions of the company',
+    //         ]
+	// },
 ];
 
 export default options;

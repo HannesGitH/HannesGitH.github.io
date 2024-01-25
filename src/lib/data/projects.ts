@@ -1,26 +1,30 @@
-import PassCheckD from '$lib/components/projects/passcheck.svelte';
-
-
-type Icon = string; //TODO: image or similar
-type Description = any //TODO: either HTML or even component?
-
+type Description = any //TO-DO: either HTML or even component?
 export interface ProjectData {
 	name: string;
-	icon: Icon;
+	iconUrl: string;
+    previewUrl: string;
 	description: Description;
     link: string
 }
 
-const passcheck = {
+
+import passCheckDescriptionComponent from '$lib/components/projects/passcheck.svelte';
+import passCheckIcon from '$lib/assets/projects/passcheck/icon.png';
+import passCheckPreview from '$lib/assets/projects/passcheck/preview.png';
+
+const passCheck = {
     name: 'passcheck', //later calls: $_('projects.passcheck.name')
-    icon: 'TODO',
-    description: PassCheckD,
-    link: 'https://play.google.com/store/apps/developer?id=Hannepps"' //TODO
+    iconUrl: passCheckIcon,
+    previewUrl: passCheckPreview,
+    description: passCheckDescriptionComponent,
+    link: 'https://play.google.com/store/apps/details?id=hannepps.tools.passwordchecker'
 }
 
 
 const shownProjects : ProjectData[] = [
-    passcheck
+    passCheck,
+    passCheck,
+    passCheck,
 ]
 
 export default shownProjects;

@@ -27,6 +27,12 @@
         justify-content: center;
         justify-content: stretch;
         justify-self: stretch;
+		// & :global( > div ) {
+		// 	filter: invert(1);
+		// 	& :global( i.colored ) {
+		// 		filter: invert(1);
+		// 	}
+		// }
     }
 
 	#content {
@@ -36,5 +42,6 @@
 		// background-color: $surface;
 		// backdrop-filter: invert(1);
 		// filter: invert(1);
+		// background: gray;
 	}
 </style>

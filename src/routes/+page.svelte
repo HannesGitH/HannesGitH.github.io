@@ -13,6 +13,12 @@
 		});
 	}
 
+	import { onMount } from 'svelte'
+
+	onMount(() => {
+		scrollY = window.scrollY;
+	});
+
 	import sectionrefs from '$lib/sections/refs';
 
 	import MeSection from '$lib/sections/me.svelte';
@@ -104,12 +110,8 @@
 </script>
 
 <svelte:head>
-	<link
-		rel="stylesheet"
-		href="https://use.fontawesome.com/releases/v5.15.4/css/solid.css"
-		integrity="sha384-Tv5i09RULyHKMwX0E8wJUqSOaXlyu3SQxORObAI08iUwIalMmN5L6AvlPX2LMoSE"
-		crossorigin="anonymous"
-	/>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<title>{$_('title')}</title>
 	<meta name="description" content={$_('description')} />
 	<meta name="keywords" content={$_('keywords')} />
@@ -190,19 +192,17 @@
 
 	.activated {
 		filter: invert(1);
-		// & * {
-		// 	//todo: fix this is not workinf
-		// 	color: $on-surface !important;
-		// 	text-decoration: underline solid $on-surface 2px !important;
-		// }
+		& :global( * ) {
+			font-weight: 600;
+			font-style: normal;
+			// color: $on-surface !important;
+			// text-decoration: underline solid $on-surface 1px !important;
+		}
 	}
 	.smooth {
 		transition: scale 400ms, color 400ms, filter 400ms;
 	}
 
-	#body {
-		// overflow: hidden;
-	}
 
 	#logo {
 		height: $logo-height;

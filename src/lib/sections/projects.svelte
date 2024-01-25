@@ -3,7 +3,7 @@
 	import refs from './refs';
 	import { _ } from 'svelte-i18n';
 	import CurvedDivider from '$lib/components/curvedDivider.svelte';
-	//TODO: https://codepen.io/HannesGitH/pen/dyeQNQw (von education aus kommend schon)
+	//TO-DO: https://codepen.io/HannesGitH/pen/dyeQNQw (von education aus kommend schon)
 
 	import projects from "$lib/data/projects";
 	import Project from '$lib/components/projects/project.svelte';
@@ -17,10 +17,11 @@
 	<!-- TODO: localize: -->
 	<p>The following is only a small selection, for a more complete picture check my <a href="https://github.com/HannesGitH">Github</a> and <a href="https://play.google.com/store/apps/developer?id=Hannepps">Play-Store entries.</a></p>
 
-	<!-- TODO -->
-	{#each projects as p}
-		<Project projectData={p}/>
-	{/each}
+	<div id="projects">
+		{#each projects as p}
+			<Project projectData={p}/>
+		{/each}
+	</div>
 
 </div>
 <div class="flipped"><CurvedDivider/></div>
@@ -36,22 +37,29 @@
 		// background-color: $surface;
 		// backdrop-filter: invert(1);
 		// filter: invert(1);
+		--dot-color: #{$primary};
+		padding: 2 * $std-margin;
+		@include full-bleed($bg-color: $surface);
+		// margin:-10%;
+		// backdrop-filter: invert(1);
+		// filter: invert(1);
+		background-color: $on-surface;
+		color: $surface;
+		
+		& #projects {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			justify-content: stretch;
+			justify-self: stretch;
+		} 
 	}
 	.flipped {
 		transform: rotate(180deg);
 		padding-top: calc(4 * $std-margin);
 		margin-bottom: -10px;
+		// filter: invert(1);
 	}
 
-
-	#content {
-		--dot-color: #{$primary};
-		padding: 2 * $std-margin;
-		@include full-bleed($bg-color: $surface);
-		// margin:-10%;
-		background-color: $surface;
-		// backdrop-filter: invert(1);
-		filter: invert(1);
-	}
 
 </style>

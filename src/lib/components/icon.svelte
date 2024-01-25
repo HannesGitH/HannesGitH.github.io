@@ -1,5 +1,5 @@
 <script lang="ts">
-	//TODO: clippath left side and reintroduce right and asyymetric
+	//TO-DO: clippath left side and reintroduce right and asyymetric
 	export let animationprogress: number;
 	export let amplitude: number = 1;
 	// export let asymmetric: boolean = false;

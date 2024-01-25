@@ -164,7 +164,6 @@ const allSkills : SkillData[] = [
 
 
 const shownSkills : SkillData[] = [
-    vscode,
     git,
     github,
     ts,
@@ -185,6 +184,7 @@ const shownSkills : SkillData[] = [
     // unity,
     latex,
     rust,
+    vscode,
 ]
 
 export default shownSkills;
