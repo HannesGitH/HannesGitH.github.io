@@ -61,9 +61,9 @@
                 <svelte:component this={content}/>
             </div>
             <p><a href={link}>
-            {$_('projects.checkout')}
-            <!-- TODO: O->NO-knickpfeil -->
-            </a></p>
+                {$_('projects.checkout')}
+                </a>
+            <i class="fa-solid fa fa-arrow-up-right-from-square"></i></p>
         </div>
     </div>
 </div>
@@ -88,6 +88,10 @@
         &:hover{
             transition: none;
             z-index: 5;
+        }
+
+        & i {
+            color: white;
         }
         
         //children are in row
