@@ -184,6 +184,13 @@
 	// 	white-space: nowrap;
 	// }
 
+	// #body {
+	// 	position: relative;
+	// 	& > section {
+	// 		position: relative;
+	// 	}
+	// }
+
 	:global(body::-webkit-scrollbar) {
 		display: none;
 	}

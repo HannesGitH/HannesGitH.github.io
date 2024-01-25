@@ -19,15 +19,17 @@
 	<!-- TODO: localize: -->
 	<p>The following is only a small selection, for a more complete picture check my <a href="https://github.com/HannesGitH">Github</a> and <a href="https://play.google.com/store/apps/developer?id=Hannepps">Play-Store entries.</a></p>
 
-	<div id="projects">
-		{#each projects as p}
-			<Project projectData={p}/>
-		{/each}
+	<div>
+		<div id="projects">
+			{#each projects as p}
+				<Project projectData={p}/>
+			{/each}
+		</div>
 	</div>
 
 	<!-- FIXME: hätte den lieber ausserhalb von #content um full-bleed zu primary zu machen, siehe style -->
-	<div class="divider big"></div> 
 </div>
+<!-- <section class="divider big"></section>  -->
 <!-- <div class="flipped"><CurvedDivider/></div> -->
 
 <style lang="scss">
@@ -45,13 +47,17 @@
 	}
 	#content {
 		padding-top: $std-margin;
-		@include full-bleed($bg-color: $primary);
-		@include full-bleed($bg-color: transparent); //FIXME: hätte lieber den drüber, siehe oben
+		// @include full-bleed($bg-color: $primary);
+		// @include full-bleed($bg-color: transparent); //FIXME: hätte lieber den drüber, siehe oben
 		// white-space: pre-wrap;
 		overflow: visible;
 		display: block;
 		position: relative;
-		z-index: 0;
+		z-index: 1;
+		// border: 1px solid $primary;
+		// border-right: none;
+		// margin-right: 0;
+		// width: 100%;
 		// margin:-10%;
 		// background-color: gray;
 		backdrop-filter: blur(2px);
