@@ -20,6 +20,12 @@
 			"duration" : "3 days",
 			"complexity" : "very small",
 			"description": "A {complexity} Progressive Web App made with Svelte, that evaluates how secure a given password is. Creating this or something similar takes me around {duration}"
+		},
+		"vibration" : {
+			"name": "haptic patterns",
+			"duration" : "1-2 weeks",
+			"complexity" : "small",
+			"description": "A {complexity} Cross-Platform App made with Flutter, that lets you create custom vibration patterns. Creating this or something similar takes me around {duration}"
 		}
 	},
 	"skills": { "title": "Skills" },

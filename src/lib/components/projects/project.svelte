@@ -189,10 +189,11 @@
             border: 2px solid $primary;
             border-radius: 20px;
             & img#logo{
-            width: 10rem;
-            height: 10rem;
-            transform: translateZ(30px);
-
+                margin: calc($std-margin / 2);
+                width: 8rem;
+                height: 8rem;
+                transform: translateZ(30px);
+                border-radius: 20px;
             }
             & h3 {
                 transform: translateZ(30px);
