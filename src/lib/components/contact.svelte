@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import type { ContactData } from '$lib/data/contacts';
+	import { hover3dFactory } from '$lib/utils/hooks/transformHover3d';
 
 	export let contact: ContactData;
 	let activated: boolean = false;
@@ -10,6 +11,7 @@
 	id="contact"
 	on:mouseenter={(e) => (activated = true)}
 	on:mouseleave={(e) => (activated = false)}
+	use:hover3dFactory(true)
 	class:activated
 >
 	<a href={contact.link}>
@@ -22,6 +24,10 @@
 	// @import url('https://use.fontawesome.com/releases/v5.15.4/css/solid.css');
 
 	#contact {
+		& * {
+			transform-style: preserve-3d;
+		}
+		perspective: 1000px !important;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -37,6 +43,7 @@
 		a {
 			text-decoration: none;
 			color: inherit;
+			transform: translateZ(20px);
 		}
 
 		&.activated {
@@ -45,7 +52,7 @@
 			color: $primary;
 		}
 
-		#icon {
+		& i {
 			font-size: 48pt;
 		}
 

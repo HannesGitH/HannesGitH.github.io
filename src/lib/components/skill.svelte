@@ -1,15 +1,18 @@
 <script lang="ts">
 	import { _ } from 'svelte-i18n';
 	import type { SkillData } from '$lib/data/skills';
+	import { hover3dFactory } from '$lib/utils/hooks/transformHover3d';
 
 	export let skill: SkillData;
 	let activated: boolean = false;
 </script>
 
+<!-- svelte-ignore missing-declaration -->
 <div
 	id="skill"
 	on:mouseenter={(e) => (activated = true)}
 	on:mouseleave={(e) => (activated = false)}
+	use:hover3dFactory(true)
 	class:activated
 >
 	<i id="icon" class={skill.iconClass} class:colored={activated} />
@@ -25,7 +28,13 @@
 </div>
 
 <style lang="scss">
+	@use 'sass:color';
 	#skill {
+
+		& * {
+			transform-style: preserve-3d;
+		}
+
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -44,22 +53,26 @@
 
 		#icon {
 			font-size: 48pt;
+			transform: translateZ(10px);
+			transition: color 0.5s ease-in-out;
 		}
 
 		#name {
 			font-size: 1em;
 			color: $surface;
+			transform: translateZ(12px);
 		}
 
 		#level {
 			font-size: 1em;
+			transform: translateZ(2px);
 			// margin-top: $std-margin;
 		}
 
         $progress-height: 30px;
 
 		.progress {
-			background: rgba(255, 255, 255, 0.1);
+			background: adjust-color($color: gray, $alpha: -.7);
 			justify-content: flex-start;
 			border-radius: 100px;
 			align-items: center;
@@ -67,6 +80,7 @@
 			padding: 0 5px;
 			display: flex;
 			height: $progress-height;
+			transform: translateZ(2px);
 			width: 6rem;
 		}
 
@@ -76,7 +90,10 @@
 			border-radius: 100px;
 			background: var(--progress-color);
 			height: calc(#{$progress-height} - 10px);
+			transform: translateZ(5px);
+			transition: background 0.3s ease-in-out;
 			width: 0;
+
 		}
 
 		@keyframes load {

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { ProjectData } from "$lib/data/projects";
+	import { hover3dFactory } from "$lib/utils/hooks/transformHover3d";
 	import { onMount } from "svelte";
 
 	import { _ } from 'svelte-i18n';
@@ -14,42 +15,14 @@
     $: content = projectData.description
     $: link = projectData.link
 
-    let wrapper : HTMLElement | undefined;
-    let m = { x: 0, y: 0};
-    let rm = { x: 0, y: 0};
-    $: ws = {
-        w: wrapper?.offsetWidth ?? 1,
-        h: wrapper?.offsetHeight ?? 1,
-    };
-    $: cardAngle = {
-        x: rm.x == 0 ? 0 :  (0.5 - (rm.y / ws.h)) * 20,
-        y: rm.y == 0 ? 0 : -(0.5 - (rm.x / ws.w)) * 20
-    };
-	function handleMousemove(event: MouseEvent) {
-		m.x = event.clientX;
-		m.y = event.clientY;
-        const rect = wrapper?.getBoundingClientRect();
-        // rm.x = event.pageX - (wrapper?.offsetLeft ?? 0);
-        // rm.y = event.pageY - (wrapper?.offsetTop ?? 0);
-        rm.x = m.x - (rect?.left ?? 0); 
-        rm.y = m.y - (rect?.top ?? 0);
-	}
 
-    function handleMouseleave(event: MouseEvent) {
-        rm.x = 0;
-        rm.y = 0;
-    }
 
 </script>
 
-<div id="variableParent"
-    style="--rx:{cardAngle.x}deg; --ry:{cardAngle.y}deg;"
-    >
+    <!-- svelte-ignore missing-declaration -->
     <div 
     class="wrapper" 
-    on:mousemove={handleMousemove} 
-    on:mouseleave={handleMouseleave}
-    bind:this={wrapper}
+    use:hover3dFactory(false)
     >
     <div id="previewplaceholder">
             <img src={previewImgSrc} alt={previewImgAlt} id="preview">
@@ -66,7 +39,6 @@
             <i class="fa-solid fa fa-arrow-up-right-from-square"></i></p>
         </div>
     </div>
-</div>
 
 
 <style lang="scss">
@@ -84,7 +56,7 @@
         width: 30rem;
         transform-style: preserve-3d;
         transition: transform 0.3s ease-in-out;
-        transform: perspective(500px) translateZ(0) rotateX(var(--rx)) rotateY(var(--ry));
+        transform: perspective(800px) translateZ(0) rotateX(var(--hover3d-xAngle)) rotateY(var(--hover3d-yAngle));
         &:hover{
             transition: none;
             z-index: 5;
