@@ -156,7 +156,7 @@
         color: $on-surface;
         width: 32rem;
         transform-style: preserve-3d;
-        transition: transform 0.3s ease-in-out;
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);;
         transform: perspective(800px) translateZ(0) rotateX(var(--hover3d-xAngle)) rotateY(var(--hover3d-yAngle));
 
 		&:hover {
