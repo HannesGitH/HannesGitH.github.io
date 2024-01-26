@@ -1,9 +1,6 @@
 <script lang="ts">
     import Description from "./description.svelte";
-
-    const madeInDuration = '3 days' //TODO: localize
-    const complexityDescription = 'very small' //TODO: localize
-    const toInterpolateDescription = "A {complexity} Progressive Web App made with Svelte, that evaluates how secure a given password is. Creating this or something similar takes me around {duration}."//TODO: localize
+    const i18nBaseName = 'projects.passcheck';
 </script>
 
-<Description {madeInDuration} {complexityDescription} {toInterpolateDescription} />
+<Description  {i18nBaseName}/>

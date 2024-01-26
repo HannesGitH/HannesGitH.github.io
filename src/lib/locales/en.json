@@ -16,7 +16,10 @@
 		"checkout" : "more info",
 		"checkout-hovered" : "open link",
 		"passcheck": {
-			"name": "Password Checker"
+			"name": "Password Checker",
+			"duration" : "3 days",
+			"complexity" : "very small",
+			"description": "A {complexity} Progressive Web App made with Svelte, that evaluates how secure a given password is. Creating this or something similar takes me around {duration}"
 		}
 	},
 	"skills": { "title": "Skills" },
