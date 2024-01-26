@@ -28,7 +28,7 @@ export const email: ContactData = {
 //telegram
 export const telegram: ContactData = {
     name: 'Telegram',
-    iconClass: 'fa fa-telegram',
+    iconClass: 'fa-brands fa-telegram',
     link: 'https://t.me/hannepps'
 }
 

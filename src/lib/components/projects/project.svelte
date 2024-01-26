@@ -5,6 +5,7 @@
     import Button, {Label} from '@smui/button'
 
 	import { _ } from 'svelte-i18n';
+	import { slide } from "svelte/transition";
 
     export let projectData : ProjectData;
 
@@ -45,9 +46,9 @@
             <!-- <Button on:click={()=> location.href = link} variant="raised" class="button-shaped-round">
                 <Label>{$_('projects.checkout')}</Label>
             </Button> -->
-            <a href={link} >
-                {$_('projects.checkout')}
-            <i class="fa-solid fa fa-arrow-up-right-from-square"></i>
+            <a href={link} transition:slide>
+                {buttonHovered ? $_('projects.checkout-hovered') : $_('projects.checkout')}
+            <i class="fa-solid fa fa-arrow-up-right-from-square" class:activated={buttonHovered}></i>
             </a>
         </p>
         </div>
@@ -83,6 +84,7 @@
         margin: calc($std-margin * .7);
         transform: translateZ(15px);
         margin-top: calc($std-margin * 2);
+
         & a {
             text-decoration: none;
             color: inherit;
@@ -92,6 +94,17 @@
             align-items: center;
             height: 100%;
             width: 100%;
+
+            & i {
+                margin-left: $std-margin;
+                transition: all 0.3s ease-in-out;
+                &.activated {
+                    transform: translate3d(10rem, 0, 5px);
+                    background-color: $primary;
+                    padding: $std-margin;
+                    border-radius: 100%;
+                }
+            }
         }
 
         transition: all 0.3s ease-in-out;
@@ -99,6 +112,9 @@
             background-color: $on-primary;
             color: white;
             transform: translateZ(5px);
+        }
+        &:active {
+            transform: translateZ(0);
         }
     }
 
@@ -135,7 +151,7 @@
         transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
         margin: $std-margin;
         padding: $std-margin;
-        margin-right: 10rem;
+        // margin-right: 10rem;
         position: relative;
         color: $on-surface;
         width: 32rem;
