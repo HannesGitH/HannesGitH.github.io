@@ -71,7 +71,7 @@
 
 	import Background from '$lib/components/background.svelte';
 	import ScrollToTopButton from '$lib/components/scrollToTopButton.svelte';
-	import Navbar, { NavbarItem, scrollTop, scrollRef, scrollTo } from '$lib/navbarindex';//'./../../dependencies/svelte-navbar/package/index'; //FIXME should simply be 'svelte-navbar' but https://github.com/sveltejs/svelte/issues/10306
+	import Navbar, { NavbarItem, scrollTop, scrollRef, scrollTo } from '$lib/dependencies/navbar_cp';//'./../../dependencies/svelte-navbar/package/index'; //FIXME should simply be 'svelte-navbar' but https://github.com/sveltejs/svelte/issues/10306
 	// import { scrollTop, scrollTo, scrollRef } from 'svelte-scrolling';
 	import { goto } from '$app/navigation';
 	import LogoWithBlob from '$lib/components/iconwithblob.svelte';

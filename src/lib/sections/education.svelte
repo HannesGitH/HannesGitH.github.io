@@ -1,5 +1,5 @@
 <script lang="ts">
-		import { scrollRef } from '$lib/navbarindex'; //'svelte-navbar'; //FIXME: see page.svelte
+		import { scrollRef } from '$lib/dependencies/navbar_cp'; //'svelte-navbar'; //FIXME: see page.svelte
 
 	import refs from './refs';
 	import CurvedDivider from '$lib/components/curvedDivider.svelte';

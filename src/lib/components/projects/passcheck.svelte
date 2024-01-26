@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { _ } from 'svelte-i18n';
     import Description from "./description.svelte";
 
     const madeInDuration = '3 days' //TODO: localize
