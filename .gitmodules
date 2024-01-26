@@ -1,0 +1,3 @@
+[submodule "dependencies/svelte-navbar"]
+	path = dependencies/svelte-navbar
+	url = https://github.com/HannesGitH/svelte-navbar
