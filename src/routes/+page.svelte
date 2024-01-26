@@ -115,6 +115,7 @@
 	<meta name="description" content={$_('description')} />
 	<meta name="keywords" content={$_('keywords')} />
 	<meta name="author" content={$_('author')} />
+	<!-- <link rel="stylesheet" href="/smui-dark.css" /> -->
 </svelte:head>
 
 <Background offsetTop={scrollY / 30} />

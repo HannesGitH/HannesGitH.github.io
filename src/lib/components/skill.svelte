@@ -46,6 +46,11 @@
 		transition: all 0.3s ease-in-out;
 		margin: $std-margin;
 
+		&:hover {
+			transition: transform 0s linear;
+			z-index: 5;
+		}
+
 		&.activated {
 			background-color: azure;
 			box-shadow: 0 0 10px 0 rgba(242, 242, 242, 0.5);

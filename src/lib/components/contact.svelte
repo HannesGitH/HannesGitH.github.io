@@ -40,6 +40,11 @@
 		margin: $std-margin;
 		color: $on-surface;
 
+		&:hover {
+			transition: transform 0s linear;
+			z-index: 5;
+		}
+
 		a {
 			text-decoration: none;
 			color: inherit;
