@@ -4,7 +4,8 @@ export interface ProjectData {
 	iconUrl: string;
     previewUrl: string;
 	description: Description;
-    link: string
+    link: string;
+    relevantSkillNames: string[];
 }
 
 
@@ -17,7 +18,8 @@ const passCheck = {
     iconUrl: passCheckIcon,
     previewUrl: passCheckPreview,
     description: passCheckDescriptionComponent,
-    link: 'https://play.google.com/store/apps/details?id=hannepps.tools.passwordchecker'
+    link: 'https://play.google.com/store/apps/details?id=hannepps.tools.passwordchecker',
+    relevantSkillNames: ['Android', 'Svelte', 'Git', 'GitHub', 'VS Code', 'TypeScript', 'Sass'], 
 }
 
 

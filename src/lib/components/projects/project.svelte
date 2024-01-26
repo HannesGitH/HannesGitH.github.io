@@ -2,7 +2,9 @@
 	import type { ProjectData } from "$lib/data/projects";
 	import { hover3dFactory } from "$lib/utils/hooks/transformHover3d";
 
-    import Button, {Label} from '@smui/button'
+    // import Button, {Label} from '@smui/button'
+
+    import { currentlySelectedProjectName } from '$lib/stores/project-skill-relation';
 
 	import { _ } from 'svelte-i18n';
 	import { slide } from "svelte/transition";
@@ -25,7 +27,8 @@
     
     <div 
     class="wrapper" 
-
+    on:mouseenter={()=> currentlySelectedProjectName.set(projectData.name)}
+    on:mouseleave={()=> currentlySelectedProjectName.set(null)}
     use:hover3dFactory(false)
     >
     <div id="previewplaceholder">

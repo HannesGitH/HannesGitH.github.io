@@ -3,15 +3,21 @@
 	import type { SkillData } from '$lib/data/skills';
 	import { hover3dFactory } from '$lib/utils/hooks/transformHover3d';
 
+	import { isActive } from '$lib/stores/project-skill-relation';
+
+	$: active = isActive(skill.name);
+
 	export let skill: SkillData;
-	let activated: boolean = false;
+	let _activated: boolean = false;
+	$: activated = _activated || $active;
+
 </script>
 
 <!-- svelte-ignore missing-declaration -->
 <div
 	id="skill"
-	on:mouseenter={(e) => (activated = true)}
-	on:mouseleave={(e) => (activated = false)}
+	on:mouseenter={(e) => (_activated = true)}
+	on:mouseleave={(e) => (_activated = false)}
 	use:hover3dFactory(true)
 	class:activated
 >
