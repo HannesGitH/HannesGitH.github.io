@@ -12,7 +12,7 @@ const config: UserConfig = {
 	// },
 	server: {
 		fs: {
-		  allow: ['./dependencies/svelte-navbar/package/'],
+		  allow: ['./dependencies/svelte-navbar/'],
 		},
 	  },
 
