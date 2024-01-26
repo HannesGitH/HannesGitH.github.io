@@ -18,13 +18,13 @@ jobs:
           submodules: true
       - name: Setup node
         uses: actions/setup-node@v3
-      # - name : Install dependencies
-      #   run: |
-      #     cd dependencies
-      #     cd svelte-navbar
-      #     npm i
-      #     npm run build
-      #     cd ..
+      - name : Install dependencies
+        run: |
+          cd dependencies
+          cd svelte-navbar
+          npm i
+          npm run build
+          cd ..
       - run: npm i
       - run: npm run build
       - name: upload build folder as artifact
