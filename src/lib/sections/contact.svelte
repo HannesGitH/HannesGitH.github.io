@@ -17,6 +17,7 @@
 
 </script>
 
+<div class="spacer"></div>
 <div id="content" use:scrollRef={refs.contact}>
 	<h1 class="header" id="header">{$_('contact.title')}</h1>
 	<!-- <p id="more_channels">More channels coming soon..</p> -->
@@ -56,6 +57,10 @@
 </div>
 
 <style lang="scss">
+
+	.spacer {
+		height: 30vh;
+	}
 	h1 , h2, #more_channels, #impressum_body, #content {
 		padding: $std-margin;
 	}
