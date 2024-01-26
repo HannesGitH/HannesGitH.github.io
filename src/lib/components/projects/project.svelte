@@ -1,7 +1,8 @@
 <script lang="ts">
 	import type { ProjectData } from "$lib/data/projects";
 	import { hover3dFactory } from "$lib/utils/hooks/transformHover3d";
-	import { onMount } from "svelte";
+
+    import Button, {Label} from '@smui/button'
 
 	import { _ } from 'svelte-i18n';
 
@@ -33,15 +34,23 @@
             <div id="description">
                 <svelte:component this={content}/>
             </div>
-            <p><a href={link}>
-                {$_('projects.checkout')}
-                </a>
+            <p>
+            <Button on:click={()=> location.href = link} variant="raised" class="button-shaped-round">
+                <Label>{$_('projects.checkout')}</Label>
+            </Button>
             <i class="fa-solid fa fa-arrow-up-right-from-square"></i></p>
         </div>
     </div>
 
 
 <style lang="scss">
+    @use '@material/button/mixins' as mdc-button;
+
+    .button-shaped-round {
+        @include mdc-button.shape-radius(100%);
+        // border-radius: 100% !important;
+    }
+
     .wrapper {
         z-index: 0;
         background-color: $surface;

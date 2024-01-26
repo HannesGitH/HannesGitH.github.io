@@ -36,7 +36,7 @@
 		background-color: $surface;
 		border-radius: 20px;
 		box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-		transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+		transition: all 0.3s ease-in-out;
 		margin: $std-margin;
 		color: $on-surface;
 

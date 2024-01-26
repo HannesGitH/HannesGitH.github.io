@@ -44,7 +44,7 @@
 		"flubber2": "^0.4.9",
 		"svelte-glitch": "^0.0.3",
 		"svelte-i18n": "^3.4.0",
-		"svelte-navbar": "^0.0.120",
+		"svelte-navbar": "file: ./dependencies/svelte-navbar/package/",
 		"svelte-vertical-timeline": "^0.0.2"
 	}
 }

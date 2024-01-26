@@ -10,6 +10,11 @@ const config: UserConfig = {
 	// ssr: {
 	// 	noExternal: Object.keys(pkg.dependencies || {})
 	// },
+	server: {
+		fs: {
+		  allow: ['./dependencies/svelte-navbar/package/'],
+		},
+	  },
 	
 };
 
