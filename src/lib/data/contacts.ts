@@ -2,6 +2,7 @@ export interface ContactData {
 	name: string;
 	iconClass: string;
     link: string;
+    hideFromCrawler?: boolean;
 }
 
 //linkedin
@@ -29,7 +30,8 @@ export const email: ContactData = {
 export const telegram: ContactData = {
     name: 'Telegram',
     iconClass: 'fa-brands fa-telegram',
-    link: 'https://t.me/hannepps'
+    link: 'https://t.me/hannepps',
+    hideFromCrawler: true,
 }
 
 

@@ -3,6 +3,8 @@
 	import type { ContactData } from '$lib/data/contacts';
 	import { hover3dFactory } from '$lib/utils/hooks/transformHover3d';
 
+	$: hideFromCrawler = contact.hideFromCrawler;
+
 	export let contact: ContactData;
 	export let isActivated : boolean = false;
 	let activated: boolean = false;
@@ -17,8 +19,14 @@
 	class:externally-activated={isActivated}
 >
 	<div id="a" >
-		<!-- href={contact.link} -->
-		<i id="icon" class={contact.iconClass} class:colored={activated} />
+		<!--  -->
+		{#if !hideFromCrawler}
+		<a href={contact.link}>
+			<i id="icon" class={contact.iconClass} class:colored={activated} />
+		</a>
+		{:else}
+			<i id="icon" class={contact.iconClass} class:colored={activated} />
+		{/if}
 		<!-- <h2 id="name">{contact.name}</h2> -->
 	</div>
 </div>
@@ -48,7 +56,7 @@
 			z-index: 5;
 		}
 
-		#a {
+		#a , a{
 			text-decoration: none;
 			color: inherit;
 			transform: translateZ(20px);
