@@ -11,8 +11,20 @@
 	$: active = activeContactIdx >= 0;
 	$: activeContact = !active ? null : contacts[activeContactIdx];
 
+	let left = false;
+
+	function handleMouseLeave() {
+		const idx = activeContactIdx;
+		setTimeout(() => {
+			if (idx == activeContactIdx && left)
+			activeContactIdx = -1;
+		}, 3000);
+		left = true;
+	}
+
 	function handleHover(idx: number) {
 		activeContactIdx = idx;
+		left = false;
 	}
 
 </script>
@@ -27,9 +39,9 @@
 				<div 
 				id="contact-wrapper"
 					on:mouseenter={() => handleHover(idx)}
-					on:mouseleave={() => handleHover(-1)}
+					on:mouseleave={handleMouseLeave}
 				>
-					<Contact {contact} />
+					<Contact {contact} isActivated={activeContactIdx == idx}/>
 				</div>
 			{/each}
 		</div>

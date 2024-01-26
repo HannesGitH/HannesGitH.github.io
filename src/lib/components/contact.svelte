@@ -4,6 +4,7 @@
 	import { hover3dFactory } from '$lib/utils/hooks/transformHover3d';
 
 	export let contact: ContactData;
+	export let isActivated : boolean = false;
 	let activated: boolean = false;
 </script>
 
@@ -13,11 +14,13 @@
 	on:mouseleave={(e) => (activated = false)}
 	use:hover3dFactory(true)
 	class:activated
+	class:externally-activated={isActivated}
 >
-	<a href={contact.link}>
+	<div id="a" >
+		<!-- href={contact.link} -->
 		<i id="icon" class={contact.iconClass} class:colored={activated} />
 		<!-- <h2 id="name">{contact.name}</h2> -->
-	</a>
+	</div>
 </div>
 
 <style lang="scss">
@@ -45,12 +48,17 @@
 			z-index: 5;
 		}
 
-		a {
+		#a {
 			text-decoration: none;
 			color: inherit;
 			transform: translateZ(20px);
 		}
 
+		&.externally-activated {
+			background-color: $primary;
+			color: $on-primary;
+			box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+		}
 		&.activated {
 			background-color: azure;
 			box-shadow: 0 0 10px 0 rgba(242, 242, 242, 0.5);
