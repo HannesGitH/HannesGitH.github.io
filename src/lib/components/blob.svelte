@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { tweened } from 'svelte/motion';
 
-	import InterpolationWorker from '$lib/workers/interpolator.worker?worker';
+	import InterpolationWorker from '$lib/wworkers/interpolator.worker?worker';
 
 	export let color = '#ffffff';
 	/**

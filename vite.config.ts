@@ -15,6 +15,12 @@ const config: UserConfig = {
 		  allow: ['./dependencies/svelte-navbar/package/'],
 		},
 	  },
+
+	  build: {
+		rollupOptions: {
+		//   external: ['svelte-navbar', '../../dependencies/svelte-navbar/package'],
+		},
+	  },		
 	
 };
 

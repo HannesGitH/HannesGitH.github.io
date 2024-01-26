@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Fab, { Icon } from '@smui/fab';
-	import { scrollTop } from 'svelte-navbar';
+	import { scrollTop } from '$lib/navbarindex'; //'svelte-navbar'; //FIXME: see page.svelte
+
 	export let showWhenScrolledPast = 1000;
 	export let show: boolean | null = null;
 

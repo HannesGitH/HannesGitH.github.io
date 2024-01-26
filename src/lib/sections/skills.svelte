@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { scrollRef } from 'svelte-navbar';
+		import { scrollRef } from '$lib/navbarindex'; //'svelte-navbar'; //FIXME: see page.svelte
+
 	import refs from './refs';
 	import { _ } from 'svelte-i18n';
     import skills from '$lib/data/skills';
