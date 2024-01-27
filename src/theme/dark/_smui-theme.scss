@@ -6,6 +6,9 @@
 $primary: #a7c347;
 $surface: black;
 
+$glow-shadow: 0 0 15px -2px $primary;
+
+
 // Svelte Colors! (Dark Theme)
 @forward '@material/theme/index' with (
   $primary: $primary,

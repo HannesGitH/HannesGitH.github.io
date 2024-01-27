@@ -32,7 +32,7 @@
 </div>
 
 <style lang="scss">
-	// @import url('https://use.fontawesome.com/releases/v5.15.4/css/solid.css');
+
 
 	#contact {
 		& * {
@@ -63,9 +63,9 @@
 		}
 
 		&.externally-activated {
-			background-color: $primary;
-			color: $on-primary;
-			box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+			// background-color: $primary;
+			// color: $on-primary;
+			box-shadow: $glow-shadow;
 		}
 		&.activated {
 			background-color: azure;

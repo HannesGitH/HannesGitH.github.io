@@ -45,7 +45,7 @@
 				</div>
 			{/each}
 		</div>
-		<div id="link-preview" class:active>
+		<div id="link-preview" class:active class:left>
 			{#if active}
 				<a transition:slide href={activeContact?.link}> 
 					<!-- <i class={activeContact?.iconClass}></i> -->{activeContact?.link}<i class="fa-solid fa fa-arrow-up-right-from-square"></i>
@@ -95,6 +95,9 @@
 		opacity: 0;
 		transform: translateX(-20rem);
 		&.active {
+			&.left{
+				box-shadow: $glow-shadow;
+			}
 			opacity: 1;
 			pointer-events: all;
 			transform: translateX(0);
