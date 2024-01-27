@@ -22,7 +22,7 @@
 			"description": "A {complexity} Progressive Web App made with Svelte, that evaluates how secure a given password is. Creating this or something similar takes me around {duration}"
 		},
 		"vibration" : {
-			"name": "haptic patterns",
+			"name": "Haptic Patterns",
 			"duration" : "1-2 weeks",
 			"complexity" : "small",
 			"description": "A {complexity} Cross-Platform App made with Flutter, that lets you create custom vibration patterns. Creating this or something similar takes me around {duration}"
@@ -32,6 +32,12 @@
 			"duration" : "over 1 year",
 			"complexity" : "complex",
 			"description": "A {complexity} android app, made for internal usage by Mastbau FN, which lets them inspect and manage their construction sites. Creating this took {duration} as requirements changed over time. Im still working on and maintaining this project."
+		},
+		"carii" : {
+			"name": "Carii",
+			"duration" : "multiple years",
+			"complexity" : "very complex",
+			"description": "A {complexity} multi-platform app, whose exact purpose is still a secret. Finishing this DiPA (digitale Pflegeanwendung) will take {duration} and a small team."
 		}
 	},
 	"skills": { "title": "Skills" },

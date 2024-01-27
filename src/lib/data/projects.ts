@@ -36,7 +36,7 @@ const vibration = {
     relevantSkillNames: ['Android', 'Flutter', 'Git', 'GitHub', 'VS Code', 'Dart', ], 
 }
 
-
+//inspector
 import inspectionIcon from '$lib/assets/projects/inspector/icon.svg';
 import inspectionPreview from '$lib/assets/projects/inspector/preview.jpg';
 
@@ -49,10 +49,24 @@ const inspection = {
 }
 
 
+//carii
+import cariiIcon from '$lib/assets/projects/carii/icon.png';
+import cariiPreview from '$lib/assets/projects/carii/preview.jpg';
+
+const carii = {
+    name: 'carii',
+    iconUrl: cariiIcon,
+    previewUrl: cariiPreview,
+    link: 'https://carii.de',
+    relevantSkillNames: ['Flutter', 'Git', 'GitHub', 'VS Code', 'PostgreSQL', 'TypeScript', 'Docker', ' Dart', 'Supabase', 'Android', 'Linux', 'iOS', 'Apple',  ],
+}
+
+
 const shownProjects : ProjectData[] = [
     passCheck,
     vibration,
     inspection,
+    carii,
 ]
 
 export default shownProjects;
