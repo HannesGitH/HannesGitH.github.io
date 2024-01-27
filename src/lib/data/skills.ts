@@ -150,6 +150,12 @@ const supabase : SkillData = {
     iconClass: "fa-solid fa-bolt",
 }
 
+const nixos : SkillData = {
+    name: "NixOS",
+    level: 5,
+    iconClass: "devicon-nixos-plain",
+}
+
 export const tools : SkillData[] = [
     vscode,
     git,
@@ -182,6 +188,7 @@ const allSkills : SkillData[] = [
     cad,
     docker,
     supabase,
+    nixos,
 ]
 
 
@@ -210,6 +217,7 @@ const shownSkills : SkillData[] = [
     vscode,
     cad,
     docker,
+    nixos,
 ]
 
 export default shownSkills;
