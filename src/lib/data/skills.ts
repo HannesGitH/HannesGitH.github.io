@@ -132,10 +132,29 @@ const rust : SkillData = {
     iconClass: "devicon-rust-plain",
 }
 
+const cad : SkillData = {
+    name: "CAD (f360)",
+    level: 7,
+    iconClass: "devicon-webpack-plain",
+}
+
+const docker : SkillData = {
+    name: "Docker",
+    level: 4,
+    iconClass: "devicon-docker-plain",
+}
+
+const supabase : SkillData = {
+    name: "Supabase",
+    level: 8,
+    iconClass: "fa-solid fa-bolt",
+}
+
 export const tools : SkillData[] = [
     vscode,
     git,
     github,
+    cad,
 ];
 
 const allSkills : SkillData[] = [
@@ -160,6 +179,9 @@ const allSkills : SkillData[] = [
     unity,
     latex,
     rust,
+    cad,
+    docker,
+    supabase,
 ]
 
 
@@ -170,6 +192,7 @@ const shownSkills : SkillData[] = [
     python,
     flutter,
     // dart,
+    supabase,
     svelte,
     android,
     // arduino,
@@ -185,6 +208,8 @@ const shownSkills : SkillData[] = [
     latex,
     rust,
     vscode,
+    cad,
+    docker,
 ]
 
 export default shownSkills;

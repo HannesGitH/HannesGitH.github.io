@@ -1,9 +1,9 @@
 <script lang="ts">
 
-    export let i18nBaseName: string;
+    export let projId: string;
+    export let i18nProjBase = 'projects.'
 
     import { _ } from 'svelte-i18n';
-    //TODO: interpolate description by adding html for complexity and madiIn with style
 
     function addHTML(innerHtml: string) {
         return `
@@ -20,10 +20,12 @@
     `;
     }
 
-    $: durationHtml =  addHTML($_(i18nBaseName+'.duration'));
-    $: complexityHtml = addHTML($_(i18nBaseName+'.complexity'));
+    $: base = i18nProjBase+projId
 
-    $: interpolatedDescription = $_(i18nBaseName + '.description', {values: {duration: durationHtml, complexity: complexityHtml}});
+    $: durationHtml =  addHTML($_(base+'.duration'));
+    $: complexityHtml = addHTML($_(base+'.complexity'));
+
+    $: interpolatedDescription = $_(base+'.description', {values: {duration: durationHtml, complexity: complexityHtml}});
 </script>
 
 <p style="transform-style: preserve-3d;">{@html interpolatedDescription}</p>

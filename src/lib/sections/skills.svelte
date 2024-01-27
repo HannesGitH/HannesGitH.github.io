@@ -1,5 +1,5 @@
 <script lang="ts">
-		import { scrollRef } from '$lib/navbarindex'; //'svelte-navbar'; //FIXME: see page.svelte
+		import { scrollRef, scrollTo } from '$lib/navbarindex'; //'svelte-navbar'; //FIXME: see page.svelte
 
 	import refs from './refs';
 	import { _ } from 'svelte-i18n';
@@ -18,6 +18,9 @@
             <Skill {skill} />
         {/each}
     </div>
+	<p id="theresmore">
+		Of course this is also just a selection of tools, frameworks and languages I am quite familiar with and deemed worth mentioning. If you are interested in more niche technologies I have worked with, feel free to <strong class="link" use:scrollTo={refs.contact}>contact</strong> me. There are is also a lot of stuff i have touched on a few times that would need some refreshing, but I am always eager to learn new things.
+	</p>
 <div style="height: 2rem;"></div>
 
 </div>
@@ -25,9 +28,19 @@
 
 <style lang="scss">
 
+	#theresmore {
+		padding: $std-margin;
+		margin: $std-margin;
+	}
+
 	
 	* {
 		padding: $std-margin;
+	}
+
+	.link {
+		padding: 0;
+		text-decoration: underline;
 	}
 
     #skills {

@@ -66,6 +66,10 @@
 			font-size: 48pt;
 			transform: translateZ(10px);
 			transition: color 0.5s ease-in-out;
+			&.fa-bolt.colored {
+				//supabase
+				color: #37996b
+			}
 		}
 
 		#name {

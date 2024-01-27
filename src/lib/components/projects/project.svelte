@@ -8,6 +8,7 @@
 
 	import { _ } from 'svelte-i18n';
 	import { slide } from "svelte/transition";
+	import Description from "./description.svelte";
 
     export let projectData : ProjectData;
 
@@ -15,9 +16,10 @@
     $: logoImgAlt = projectData.name+" image"
     $: previewImgSrc = projectData.previewUrl;
     $: previewImgAlt = projectData.name+" preview"
-    $: name = projectData.name
-    $: content = projectData.description
+    $: projId = projectData.name
+    // $: content = projectData.description
     $: link = projectData.link
+    $: name = $_('projects.'+projId+'.name')
 
     let buttonHovered = false;
 
@@ -40,8 +42,10 @@
             <img src={logoImgSrc} alt={logoImgAlt} id="logo">
             <h3>{name}</h3>
             <div id="description">
-                <svelte:component this={content}/>
+                <!-- <svelte:component this={content}/> -->
+                <Description {projId}/>
             </div>
+            <div class="spacer"/>
             <p class="button-shaped-round" class:activated={buttonHovered}
                 on:mouseenter={()=> buttonHovered = true}
                 on:mouseleave={()=> buttonHovered = false}
@@ -75,6 +79,10 @@
 	// 	background: color.adjust($color: $primary, $alpha: -.2);
 	// }
 
+    .spacer {
+        // height: 3rem;
+        flex-grow: 2;
+    }
 
 
     .button-shaped-round {
@@ -87,6 +95,7 @@
         margin: calc($std-margin * .7);
         transform: translateZ(15px);
         margin-top: calc($std-margin * 2);
+
 
         & a {
             text-decoration: none;
@@ -175,7 +184,7 @@
         display: flex;
         flex-direction: row;
         justify-content: start;
-        align-items: flex-start;
+        justify-self: center;
 
         & * {
             transform-style: preserve-3d;
@@ -188,6 +197,14 @@
             padding: $std-margin;
             border: 2px solid $primary;
             border-radius: 20px;
+
+            height: calc( 100% - 4 * $std-margin - 4px );
+            display: flex;
+            justify-self: stretch;
+            justify-content: end;
+            flex-direction: column;
+            // height: 100%;
+
             & img#logo{
                 margin: calc($std-margin / 2);
                 width: 8rem;
@@ -204,14 +221,16 @@
             }
         }
         & img#preview , #previewplaceholder{
-            width: 40rem;
+            width: 10rem;
             transform: translateZ(5px);
             border-radius: 40px;
             margin: calc($std-margin / 2);
             margin-right: 0;
             transition: all 0.3s ease-in-out;
             z-index: 2;
+            flex-shrink: 0;
             &#preview {
+                flex-shrink: 0;
                 border: 5px solid black;
                 margin: 0;
                 position: absolute;
