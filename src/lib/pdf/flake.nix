@@ -6,10 +6,11 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-23.11";
   };
   
-  outputs = { self, nixpkgs, flake-utils }:
+  outputs = inputs@{ self, nixpkgs, flake-utils, ... }:
     with flake-utils.lib; eachSystem allSystems (system:
     let
-      pkgs = import nixpgs { inherit system; };
+      pkgs = import nixpkgs { inherit system; };
+      pkgs-stable = import inputs.nixpkgs-stable { inherit system; };
       tex = pkgs.texlive.combine {
         inherit (pkgs.texlive) scheme-basic latexmk
         pgf nicematrix fontspec;
@@ -22,10 +23,9 @@
         parse-ts = pkgs.stdenvNoCC.mkDerivation {
           name = "parse-ts";
           src = self;
-          buildInputs = [ pkgs.nodejs pkgs.nodePackages.node-ts ];
+          buildInputs = with pkgs-stable.nodePackages; [ pkgs.nodejs ts-node ];
           buildPhase = ''
-            mkdir -p .parsed-data
-            npx node-ts -parse-cv-entries.ts
+            ts-node "./compiler/parse-cv-entries.ts" > "test.log"
           '';
           installPhase = "cp -r .parsed-data $out";
         };
