@@ -1,0 +1,1 @@
+nix build .#parse-ts -v -o .parsed-data

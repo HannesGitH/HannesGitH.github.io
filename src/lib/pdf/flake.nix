@@ -16,7 +16,7 @@
         pgf nicematrix fontspec;
       };
 
-      data-location = pkgs.callPackage ./data-location.nix { inherit pkgs; };
+      data-location = pkgs.callPackage ./data-location.nix { };
     in rec {
       packages = {
 
@@ -25,9 +25,12 @@
           src = self;
           buildInputs = with pkgs-stable.nodePackages; [ pkgs.nodejs ts-node ];
           buildPhase = ''
-            ts-node "./compiler/parse-cv-entries.ts" > "test.log"
+            cp -r ${data-location} .data
+            mkdir -p out
+            touch "out/test.log"
+            ts-node "./compiler/parse-cv-entries.ts" > "out/test.log"
           '';
-          installPhase = "cp -r .parsed-data $out";
+          installPhase = "cp -r out $out";
         };
 
         # document = pkgs.stdenvNoCC.mkDerivation rec {
