@@ -25,7 +25,7 @@ jobs:
           extraPullNames: nix-community, cachix, hannesgith
       - name: build
         run: | 
-          nix build
+          nix build -L --show-trace
           cp -r result/build build
       - name: upload build folder as artifact
         uses: actions/upload-artifact@v2
