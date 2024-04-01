@@ -1,3 +1,5 @@
+import shownProjects from "./projects";
+
 export interface ExperienceEntry {
 	year: number | string;
 	start?: number;
@@ -51,4 +53,10 @@ const options: ExperienceEntry[] = [
 	// },
 ];
 
-export default options;
+const allExperience = options;
+
+const shownExperience = allExperience;
+
+export const forpdf = shownExperience;
+
+export default shownExperience;

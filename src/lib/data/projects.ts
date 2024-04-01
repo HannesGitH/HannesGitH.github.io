@@ -6,20 +6,24 @@ export interface ProjectData {
 	// description: Description;
     link: string;
     relevantSkillNames: string[];
+    position?: string;
+    pdfName: string;
+    pdfDescription: string[];
 }
 
 
 // import passCheckDescriptionComponent from '$lib/components/projects/passcheck.svelte';
 import passCheckIcon from '$lib/assets/projects/passcheck/icon.png';
 import passCheckPreview from '$lib/assets/projects/passcheck/preview.png';
+import { passCheckR, vibrationR, cariiR, inspectionR } from './projects-raw';
 
 const passCheck = {
     name: 'passcheck', //later calls: $_('projects.passcheck.name')
     iconUrl: passCheckIcon,
     previewUrl: passCheckPreview,
     // description: passCheckDescriptionComponent,
-    link: 'https://play.google.com/store/apps/details?id=hannepps.tools.passwordchecker',
     relevantSkillNames: ['Android', 'Svelte', 'Git', 'GitHub', 'VS Code', 'TypeScript', 'Sass'], 
+    ... passCheckR,
 }
 
 
@@ -32,8 +36,8 @@ const vibration = {
     iconUrl: vibrationIcon,
     previewUrl: vibrationPreview,
     // description: vibrationDescriptionComponent,
-    link: 'https://play.google.com/store/apps/details?id=hannepps.tools.vibrationtest',
     relevantSkillNames: ['Android', 'Flutter', 'Git', 'GitHub', 'VS Code', 'Dart', ], 
+    ... vibrationR,
 }
 
 //inspector
@@ -44,8 +48,8 @@ const inspection = {
     name: 'inspector',
     iconUrl: inspectionIcon,
     previewUrl: inspectionPreview,
-    link: 'https://github.com/mastbau-fn/inspector',
     relevantSkillNames: ['Flutter', 'Git', 'GitHub', 'VS Code', 'PostgreSQL', 'TypeScript', 'Docker', ' Dart' ],
+    ... inspectionR,
 }
 
 
@@ -57,8 +61,8 @@ const carii = {
     name: 'carii',
     iconUrl: cariiIcon,
     previewUrl: cariiPreview,
-    link: 'https://carii.de',
     relevantSkillNames: ['Flutter', 'Git', 'GitHub', 'VS Code', 'PostgreSQL', 'TypeScript', 'Docker', ' Dart', 'Supabase', 'Android', 'Linux', 'iOS', 'Apple',  ],
+    ... cariiR,
 }
 
 
@@ -68,6 +72,8 @@ const shownProjects : ProjectData[] = [
     inspection,
     carii,
 ]
+
+export const forpdf = shownProjects;
 
 export default shownProjects;
 

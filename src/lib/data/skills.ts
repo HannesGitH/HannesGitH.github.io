@@ -220,5 +220,7 @@ const shownSkills : SkillData[] = [
     nixos,
 ]
 
+export const forpdf = shownSkills;
+
 export default shownSkills;
 

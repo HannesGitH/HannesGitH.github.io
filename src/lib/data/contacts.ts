@@ -34,7 +34,6 @@ export const telegram: ContactData = {
     hideFromCrawler: true,
 }
 
-
 const contacts: ContactData[] = [linkedin, github, email, telegram];
 
 export default contacts;
