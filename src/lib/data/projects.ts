@@ -18,12 +18,12 @@ import passCheckPreview from '$lib/assets/projects/passcheck/preview.png';
 import { passCheckR, vibrationR, cariiR, inspectionR } from './projects-raw';
 
 const passCheck = {
+    ... passCheckR,
     name: 'passcheck', //later calls: $_('projects.passcheck.name')
     iconUrl: passCheckIcon,
     previewUrl: passCheckPreview,
     // description: passCheckDescriptionComponent,
     relevantSkillNames: ['Android', 'Svelte', 'Git', 'GitHub', 'VS Code', 'TypeScript', 'Sass'], 
-    ... passCheckR,
 }
 
 
@@ -31,13 +31,13 @@ const passCheck = {
 import vibrationIcon from '$lib/assets/projects/vibration/icon.png';
 import vibrationPreview from '$lib/assets/projects/vibration/preview.png';
 
-const vibration = {
+const vibration = {    
+    ... vibrationR,
     name: 'vibration',
     iconUrl: vibrationIcon,
     previewUrl: vibrationPreview,
     // description: vibrationDescriptionComponent,
     relevantSkillNames: ['Android', 'Flutter', 'Git', 'GitHub', 'VS Code', 'Dart', ], 
-    ... vibrationR,
 }
 
 //inspector
@@ -45,11 +45,11 @@ import inspectionIcon from '$lib/assets/projects/inspector/icon.svg';
 import inspectionPreview from '$lib/assets/projects/inspector/preview.jpg';
 
 const inspection = {
+    ... inspectionR,
     name: 'inspector',
     iconUrl: inspectionIcon,
     previewUrl: inspectionPreview,
     relevantSkillNames: ['Flutter', 'Git', 'GitHub', 'VS Code', 'PostgreSQL', 'TypeScript', 'Docker', ' Dart' ],
-    ... inspectionR,
 }
 
 
@@ -58,11 +58,11 @@ import cariiIcon from '$lib/assets/projects/carii/icon.png';
 import cariiPreview from '$lib/assets/projects/carii/preview.jpg';
 
 const carii = {
+    ... cariiR,
     name: 'carii',
     iconUrl: cariiIcon,
     previewUrl: cariiPreview,
     relevantSkillNames: ['Flutter', 'Git', 'GitHub', 'VS Code', 'PostgreSQL', 'TypeScript', 'Docker', ' Dart', 'Supabase', 'Android', 'Linux', 'iOS', 'Apple',  ],
-    ... cariiR,
 }
 
 

@@ -30,12 +30,12 @@ const options: ExperienceEntry[] = [
 		name: 'Studentische Hilfskraft',
 		description:
 			[
-                'doing a lot of research regarding quantum computing and quantum algorithms, code wasn\'t really the main part of the job, but i did a bunch of python using IBM\'s qiskit framework',
+                'did a lot of research regarding quantum computing and quantum algorithms, code wasn\'t really the main part of the job, but i did a bunch of python using IBM\'s qiskit framework',
             ]
 	},
 	{
         start: 2021,
-		year: '....',
+		year: '2024',
 		place: 'Mastbau FN GmbH',
 		location: 'Berlin, DE',
 		name: 'lead Full-Stack Developer',
