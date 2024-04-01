@@ -12,25 +12,39 @@
       pkgs = import nixpkgs { inherit system; };
       pkgs-stable = import inputs.nixpkgs-stable { inherit system; };
 
-      node2nixOutput = import ./default.nix { inherit pkgs nodejs system; };
-      nodeDeps = node2nixOutput.nodeDependencies;
+      nodejs = pkgs.nodejs;
+      esbuild = pkgs-stable.esbuild;
+
+      # node2nixOutput = import ./default.nix { inherit pkgs nodejs system; };
+      # nodeDeps = node2nixOutput.nodeDependencies;
 
     in rec {
       packages = rec {
-        website = pkgs.stdenvNoCC.mkDerivation {
+        website = pkgs.mkYarnPackage {
           name = "website";
           src = self;
           buildInputs = with pkgs; [ nodejs git ];
-          buildPhase = ''
-          # export PATH="$PWD/node_modules/.bin/:$PATH"
-          #   git submodule update --init
-          #   cd dependencies/svelte-navbar && npm install && npm run build && cd ../..
-            # npm install
-            ln -sf ${nodeDeps}/lib/node_modules ./node_modules
-            
-            npm run build
+          configurePhase = ''
+            for localDir in build node_modules; do
+              if [[ -d $localDir || -L $localDir ]]; then
+                echo "$localDir dir present. Removing."
+                rm -rf $localDir
+              fi
+            done
+
+            cp -r $node_modules node_modules
+            chmod -R +w node_modules
+            ln -sf ${esbuild}/bin/esbuild node_modules/esbuild/bin/esbuild
+            ln -sf ${esbuild}/bin/esbuild node_modules/esbuild-linux-64/bin/esbuild
           '';
-          installPhase = "cp -r build $out";
+          buildPhase = ''
+            yarn --offline --frozen-lockfile build
+          '';
+          installPhase = ''
+            mkdir -p $out
+            cp -r build $out
+          '';
+          distPhase = "true";
         };
       };
 
