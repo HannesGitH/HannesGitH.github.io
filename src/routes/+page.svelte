@@ -123,6 +123,7 @@
 				event.preventDefault();
 
 					window.location.href = "/resume.pdf";
+					window.print();
 				if (event.stopImmediatePropagation) {
 					event.stopImmediatePropagation();
 				} else {
@@ -132,16 +133,16 @@
 				return;
 				}
 		}, true);
-        function printTrigger(elementId) {
-            var getMyFrame = document.getElementById("iFramePdf");
-            getMyFrame.focus();
-            getMyFrame.contentWindow.print();
-        }
+        
     </script>
 </svelte:head>
 
 <!-- <iframe id="iFramePdf" src="/resume.pdf"></iframe> -->
 <img src="/qr.png" alt="qr-code" id="qrImg" />
+
+<div id="pdfButton" on:click={() => {window.location.href = "/resume.pdf"; window.print();}}>
+	<i class="fas fa-print"></i>
+</div>
 
 <Background offsetTop={scrollY / 30} />
 <div
@@ -187,6 +188,30 @@
 		font-size: 4rem;
 		font-weight: 400;
 		margin: 0;
+	}
+
+	#pdfButton {
+		position: fixed;
+		top: 20px;
+		right: 20px;
+		background-color: $primary;
+		color: #000;
+		padding: 1rem;
+		aspect-ratio: 1;
+		width: 2rem;
+		height: 2rem;
+		text-align: center;
+		line-height: 2rem;
+		font-size: x-large;
+		z-index: 100;
+		margin: auto;
+		border-radius: 50%;
+		cursor: pointer;
+		transition: background-color 400ms, color 400ms;
+		&:hover {
+			background-color: white;
+			color: $primary;
+		}
 	}
 
 	:global(a) {
