@@ -117,7 +117,31 @@
 	<meta name="keywords" content={$_('keywords')} />
 	<meta name="author" content={$_('author')} />
 	<!-- <link rel="stylesheet" href="/smui-dark.css" /> -->
+	<script>
+		window.addEventListener('keydown', function(event) {
+			if (event.keyCode === 80 && (event.ctrlKey || event.metaKey) && !event.altKey && (!event.shiftKey || window.chrome || window.opera)) {
+				event.preventDefault();
+
+					window.location.href = "/resume.pdf";
+				if (event.stopImmediatePropagation) {
+					event.stopImmediatePropagation();
+				} else {
+					
+					event.stopPropagation();
+				}
+				return;
+				}
+		}, true);
+        function printTrigger(elementId) {
+            var getMyFrame = document.getElementById("iFramePdf");
+            getMyFrame.focus();
+            getMyFrame.contentWindow.print();
+        }
+    </script>
 </svelte:head>
+
+<!-- <iframe id="iFramePdf" src="/resume.pdf"></iframe> -->
+<img src="/qr.png" alt="qr-code" id="qrImg" />
 
 <Background offsetTop={scrollY / 30} />
 <div
@@ -229,6 +253,25 @@
 			z-index: 1;
 			transform-origin: 50% calc(-2 * $logo-height);
 			rotate: calc((var(--scroll-prog) - 1) * 90deg);
+		}
+	}
+
+	#iFramePdf, #qrImg {
+		display: none;
+		// position: fixed;
+		margin: auto;
+	}
+
+	@media print 
+	// :global(*)
+	{
+		:global(*):not(html,body,body>div:nth-child(1),#iFramePdf, #qrImg) {
+			display: none;
+			visibility: hidden;
+		}
+		:global(#iframePdf), :global(#qrImg) {
+			display: block !important;
+			visibility: visible !important;
 		}
 	}
 </style>

@@ -22,6 +22,12 @@
         sha256 = "sha256-naxceQenpoSbjlYLaLlYxJElddk0qplXp7K+4KIzA8M=";
       };
 
+      # pdf-cv-flake = import ./pdf/flake.nix ;
+      # pdf-cv-flake-outputs = pdf-cv-flake.outputs { };
+      # pdf = pdf-cv-flake-outputs.packages.${system}.document;
+
+      pdf = (builtins.getFlake "path:./pdf/flake.nix" ).packages.${system}.document;
+
       svelte-navbar = pkgs.mkYarnPackage {
         name = "svelte-navbar";
         src = svelte-navbar-src;
@@ -33,6 +39,7 @@
           ln -sf ${esbuild}/bin/esbuild node_modules/esbuild-linux-64/bin/esbuild
         '';
         buildPhase = ''
+          cp -r ${pdf} static/resume.pdf
           # yarn install --offline --frozen-lockfile
           yarn --offline --frozen-lockfile build
         '';
