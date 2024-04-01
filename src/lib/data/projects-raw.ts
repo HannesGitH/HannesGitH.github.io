@@ -30,7 +30,7 @@ export const inspectionR = {
     name: 'Mastbau-FN GmbH, Team of 2',
     pdfName: 'Inspector',
     pdfDescriptionDE: ['Ein Inspektions-Tool für Baustellen', 'Speziell entwickelt für die Mastbau-FN GmbH' ,'Geschrieben in Flutter und TypeScript'],
-    pdfDescription: ['An inspection tool for construction sites', 'Specially developed for Mastbau-FN GmbH', 'Written in Flutter and TypeScript'],
+    pdfDescription: ['An inspection tool for construction sites', 'Specially developed for Mastbau-FN GmbH', 'Written using Flutter and TypeScript'],
     link: 'https://github.com/mastbau-fn/inspector',
 }
 
@@ -38,7 +38,7 @@ export const cariiR = {
     // year: '2024',
     pdfName: 'Carii',
     pdfDescriptionDE: ['Eine DiPA, WIP', 'Primär geschrieben in Flutter, mit supabase und postgresql als Backend'],
-    pdfDescription: ['A DiPA, WIP', 'Primarily written in Flutter, with supabase and postgresql as backend'],
+    pdfDescription: ['A DiPA, WIP', 'Primarily written using Flutter, with supabase and postgresql as backend'],
     link: 'https://carii.de',
     name: 'Group of ~5',
 }
