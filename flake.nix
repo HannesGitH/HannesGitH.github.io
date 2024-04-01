@@ -75,6 +75,8 @@
             mkdir -p dependencies
             cp -rf ${svelte-navbar} dependencies/svelte-navbar
 
+            ls -la dependencies
+
             cp -r $node_modules node_modules
             chmod -R +w node_modules
             # ls -la src/lib
