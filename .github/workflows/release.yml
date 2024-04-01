@@ -18,15 +18,11 @@ jobs:
           submodules: true
       - name: Setup node
         uses: actions/setup-node@v3
-      - name : Install dependencies
-        run: |
-          cd dependencies
-          cd svelte-navbar
-          npm i
-          npm run build
-          cd ..
-      - run: npm i
-      - run: npm run build
+      - uses: cachix/install-nix-action@v25
+      - name: build
+        run: | 
+          nix build
+          cp -r result/build build
       - name: upload build folder as artifact
         uses: actions/upload-artifact@v2
         with:
