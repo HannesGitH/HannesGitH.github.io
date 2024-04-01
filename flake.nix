@@ -22,11 +22,16 @@
         sha256 = "sha256-naxceQenpoSbjlYLaLlYxJElddk0qplXp7K+4KIzA8M=";
       };
 
-      # pdf-cv-flake = import ./pdf/flake.nix ;
-      # pdf-cv-flake-outputs = pdf-cv-flake.outputs { };
-      # pdf = pdf-cv-flake-outputs.packages.${system}.document;
+      pdf-cv-flake = import ./pdf/flake.nix ;
+      pdf-cv-flake-outputs = pdf-cv-flake.outputs {
+        self = ./pdf;
+        nixpkgs = nixpkgs;
+        nixpkgs-stable = inputs.nixpkgs-stable;
+        flake-utils = flake-utils;
+      };
+      pdf = pdf-cv-flake-outputs.packages.${system}.document;
 
-      pdf = (builtins.getFlake "path:./pdf/flake.nix" ).packages.${system}.document;
+      # pdf = (builtins.getFlake "path:./pdf/flake.nix" ).packages.${system}.document;
 
       svelte-navbar = pkgs.mkYarnPackage {
         name = "svelte-navbar";
@@ -39,7 +44,6 @@
           ln -sf ${esbuild}/bin/esbuild node_modules/esbuild-linux-64/bin/esbuild
         '';
         buildPhase = ''
-          cp -r ${pdf} static/resume.pdf
           # yarn install --offline --frozen-lockfile
           yarn --offline --frozen-lockfile build
         '';
@@ -57,7 +61,7 @@
       packages = rec {
         website = pkgs.mkYarnPackage {
           name = "website";
-          
+
           src = self;
           buildInputs = with pkgs; [ nodejs git ];
           configurePhase = ''
@@ -81,6 +85,9 @@
           buildPhase = ''
             # yarn install --offline --frozen-lockfile
             yarn --offline --frozen-lockfile build
+            cp -rf ${pdf}/resume.pdf build/resume.pdf
+          # chmod 777 resume.pdf
+          # ls -la .
           '';
           installPhase = ''
             mkdir -p $out
