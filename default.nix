@@ -10,7 +10,7 @@
   ];
 
   mkDerivation = {
-    src = ./nextjs-app;
+    src = ./nextjs-papp;
   };
 
   deps = {nixpkgs, ...}: {
@@ -25,6 +25,6 @@
     packageLockFile = "${config.mkDerivation.src}/package-lock.json";
   };
 
-  name = "nextjs-app";
+  name = "akjsdh";
   version = "0.1.0";
 }
