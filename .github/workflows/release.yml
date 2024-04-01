@@ -19,6 +19,10 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
       - uses: cachix/install-nix-action@v25
+        with:
+          name: hannesgith
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          extraPullNames: nix-community, cachix, hannesgith
       - name: build
         run: | 
           nix build
