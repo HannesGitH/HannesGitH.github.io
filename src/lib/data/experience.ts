@@ -6,6 +6,7 @@ export interface ExperienceEntry {
 	place: string;
 	description: string[];
 	name: string;
+	location?: string;
 }
 //all times need to have the same length
 const options: ExperienceEntry[] = [
@@ -13,6 +14,7 @@ const options: ExperienceEntry[] = [
         start: 2019,
 		year: 2020,
 		place: 'Whats2doo / Leithold',
+		location: 'Berlin, DE',
 		name: 'Software Engineer (Internship)',
 		description:
 			[
@@ -24,6 +26,7 @@ const options: ExperienceEntry[] = [
         start: 2021,
 		year: 2024,
 		place: 'Fraunhofer AISEC ',
+		location: 'Berlin, DE',
 		name: 'Studentische Hilfskraft',
 		description:
 			[
@@ -34,6 +37,7 @@ const options: ExperienceEntry[] = [
         start: 2021,
 		year: '....',
 		place: 'Mastbau FN GmbH',
+		location: 'Berlin, DE',
 		name: 'lead Full-Stack Developer',
 		description:
 			[

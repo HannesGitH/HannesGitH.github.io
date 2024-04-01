@@ -10,8 +10,6 @@ fs.readdir(dir, (err : any, files : any) => {
 
 import { forpdf as experience } from '../.data/experience'
 import type { ExperienceEntry } from '../.data/experience';
-import { forpdf as skills } from '../.data/skills'
-import type { SkillData } from '../.data/skills';
 import { forpdf as education } from '../.data/education'
 import type { EducationEntry } from '../.data/education';
 import { forpdf as projects } from '../.data/projects-raw'
@@ -19,7 +17,7 @@ import type { ProjectData as ProjectEntry } from '../.data/projects-raw';
 
 const parseCVEntry = (entry: ExperienceEntry | EducationEntry | ProjectEntry) => {
 
-    let { year , start, place, name, description, position} = {position: '', year: '', start: '', place: '', name: '', description: '', ...entry, };
+    let { year , start, place, name, description, location} = {location:'', year: '', start: '', place: '', name: '', description: '', ...entry, };
     //in case of education we also have a degree
     if ((entry as EducationEntry).degree) {
         let { degree } = entry as EducationEntry;
@@ -27,7 +25,7 @@ const parseCVEntry = (entry: ExperienceEntry | EducationEntry | ProjectEntry) =>
     }
     if ((entry as ProjectEntry).pdfName) {
         const {pdfName, link } = (entry as ProjectEntry);
-        name = `\\href{${link}}{${pdfName}}`;
+        place = `\\href{${link}}{${pdfName}}`;
     }
 
     const parseDescription = (description: string[] | string) => {
@@ -45,7 +43,7 @@ const parseCVEntry = (entry: ExperienceEntry | EducationEntry | ProjectEntry) =>
     \\cventry
         {${name}}
         {${place}}
-        {${position}}
+        {${location}}
         {${start ? `${start} - ${year}` : year}}
         {
             ${parseDescription(description)}
@@ -59,6 +57,18 @@ const parseCVEntries = (entries: ExperienceEntry[] | EducationEntry[] | ProjectE
     +   `\n\\end{cventries}\n`;
 }
 
-fs.writeFileSync('out/experience.tex', '\\cvsection{Bisherige Jobs}\n'+parseCVEntries(experience));
-fs.writeFileSync('out/education.tex', '\\cvsection{Bildung}\n'+parseCVEntries(education));
-fs.writeFileSync('out/projects.tex', '\\cvsection{Projekte}\n'+parseCVEntries(projects));
+fs.writeFileSync('out/experience.tex', '\\cvsection{Experience}\n'+parseCVEntries(experience));
+fs.writeFileSync('out/education.tex', '\\cvsection{Education}\n'+parseCVEntries(education));
+fs.writeFileSync('out/projects.tex', '\\cvsection{Projects}\n'+parseCVEntries(projects));
+
+import { tools,  languages, frameworks, miscSkills } from '../.data/skills';
+fs.writeFileSync('out/skills.tex', '\\cvsection{Skills}\n'+
+    `
+    \\begin{cvskills}
+        \\cvskill{Languages}{${languages.map(({name}) => name).join(', ')}}
+        \\cvskill{Frameworks}{${frameworks.map(({name}) => name).join(', ')}}
+        \\cvskill{Tools}{${tools.map(({name}) => name).join(', ')}}
+        \\cvskill{Misc}{${miscSkills.join(', ')}}
+    \\end{cvskills}
+    `
+);

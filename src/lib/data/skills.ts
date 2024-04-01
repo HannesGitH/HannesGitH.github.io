@@ -151,7 +151,7 @@ const supabase : SkillData = {
 }
 
 const nixos : SkillData = {
-    name: "NixOS",
+    name: "Nix",
     level: 5,
     iconClass: "devicon-nixos-plain",
 }
@@ -162,6 +162,30 @@ export const tools : SkillData[] = [
     github,
     cad,
 ];
+
+export const languages : SkillData[] = [
+    ts,
+    python,
+    dart,
+    bash,
+    cpp,
+    swift,
+    rust,
+    nixos,
+    latex,
+    postgresql,
+];
+
+export const frameworks : SkillData[] = [
+    flutter,
+    svelte,
+    vue,
+    unity,
+];
+
+export const miscSkills : string[] = [
+    "Managing software projects, including CI/CD"
+]
 
 const allSkills : SkillData[] = [
     vscode,
