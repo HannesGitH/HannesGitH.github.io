@@ -1,20 +1,30 @@
 {
-  config,
   lib,
+  config,
   dream2nix,
   ...
 }: {
   imports = [
-    # dream2nix modules go here
     dream2nix.modules.dream2nix.nodejs-package-lock-v3
+    dream2nix.modules.dream2nix.nodejs-granular-v3
   ];
 
-  deps = {nixpkgs, ...}: {
-    # dependencies go here
+  mkDerivation = {
+    src = ./nextjs-app;
   };
 
-  name = "my-package-name";
-  version = "2.7.1";
+  deps = {nixpkgs, ...}: {
+    inherit
+      (nixpkgs)
+      fetchFromGitHub
+      stdenv
+      ;
+  };
 
-  # Ecosystem-dependent package definition goes here
+  nodejs-package-lock-v3 = {
+    packageLockFile = "${config.mkDerivation.src}/package-lock.json";
+  };
+
+  name = "nextjs-app";
+  version = "0.1.0";
 }
