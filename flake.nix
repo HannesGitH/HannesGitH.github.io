@@ -38,6 +38,12 @@
         src = svelte-navbar-src;
         buildInputs = with pkgs; [ nodejs git ];
         configurePhase = ''
+          for localDir in build node_modules; do
+              if [[ -d $localDir || -L $localDir ]]; then
+                echo "$localDir dir present. Removing."
+                rm -rf $localDir
+              fi
+            done
           cp -r $node_modules node_modules
           chmod -R +w node_modules
           ln -sf ${esbuild}/bin/esbuild node_modules/esbuild/bin/esbuild
@@ -65,29 +71,19 @@
           src = self;
           buildInputs = with pkgs; [ nodejs git ];
           configurePhase = ''
-            # for localDir in build node_modules; do
-            #   if [[ -d $localDir || -L $localDir ]]; then
-            #     echo "$localDir dir present. Removing."
-            #     rm -rf $localDir
-            #   fi
-            # done
 
-            ln -sf ${svelte-navbar} dependencies/svelte-navbar
+            mkdir -p dependencies/svelte-navbar
+            cp -r ${svelte-navbar}/. dependencies/svelte-navbar
 
             cp -r $node_modules node_modules
             chmod -R +w node_modules
-            # ls -la src/lib
-            # ls -la dependencies
-            # ls -la .
+
             ln -sf ${esbuild}/bin/esbuild node_modules/esbuild/bin/esbuild
             ln -sf ${esbuild}/bin/esbuild node_modules/esbuild-linux-64/bin/esbuild
           '';
           buildPhase = ''
-            # yarn install --offline --frozen-lockfile
             yarn --offline --frozen-lockfile build
             cp -rf ${pdf}/resume.pdf build/resume.pdf
-          # chmod 777 resume.pdf
-          # ls -la .
           '';
           installPhase = ''
             mkdir -p $out

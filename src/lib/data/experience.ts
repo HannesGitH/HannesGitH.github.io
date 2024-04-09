@@ -18,8 +18,8 @@ const options: ExperienceEntry[] = [
 		name: 'Software Engineer (Internship)',
 		description:
 			[
-                'designed and built a new landing page for the company website, mostly using PHP and plain JS',
-                'helping to build a new web app for the company using Nuxt.js (Vue.js) and MongoDB, though to be honest, i forgot most of that already',
+                'Designed and built a new landing page for the company website, mostly using PHP and plain JS.',
+                'Helping to build a new web app for the company using Nuxt.js (Vue.js) and MongoDB, though to be honest, i forgot most of that already..',
             ]
 	},
     {
@@ -30,8 +30,8 @@ const options: ExperienceEntry[] = [
 		name: 'Studentische Hilfskraft',
 		description:
 			[
-                'did a lot of research regarding quantum computing and quantum algorithms, code wasn\'t really the main part of the job, but i did a bunch of python using IBM\'s qiskit framework',
-				'worked on multiple large projects including QACI, BayQS and PoQuID'
+				'Did a lot of research regarding quantum computing and quantum algorithms with a focus on quantum cryptanalysis, code wasn\'t really the main part of the job, but i did a bunch of python using IBM\'s qiskit framework.',
+				'Worked on multiple large projects including QACI, BayQS and PoQuID'
             ]
 	},
 	{
@@ -39,10 +39,10 @@ const options: ExperienceEntry[] = [
 		year: '2024',
 		place: 'Mastbau FN GmbH',
 		location: 'Berlin, DE',
-		name: 'lead Full-Stack Developer',
+		name: 'Lead Full-Stack Developer',
 		description:
 			[
-                'designed and built an internal application for managing the company\'s projects, using primarily Flutter'
+                'Designed and built an internal application for managing the company\'s projects, using primarily Flutter.'
             ]
 	},
 	//TODO: sobald carii gegründet wird
