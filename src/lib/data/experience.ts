@@ -31,6 +31,7 @@ const options: ExperienceEntry[] = [
 		description:
 			[
                 'did a lot of research regarding quantum computing and quantum algorithms, code wasn\'t really the main part of the job, but i did a bunch of python using IBM\'s qiskit framework',
+				'worked on multiple large projects including QACI, BayQS and PoQuID'
             ]
 	},
 	{
