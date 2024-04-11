@@ -21,14 +21,40 @@
 
 	import experience from '$lib/data/experience';
 	import { Glitch2 } from 'svelte-glitch';
+	let hoveredPdf : string | null | undefined;
+	let showPdfPreview = false;
+	let pdfPreview : HTMLDivElement;
+
+	const mouseover = (url : string | undefined) => {
+		hoveredPdf = url + "#scrollbar=0&toolbar=0&navpanes=0";
+		setTimeout(() => {
+			showPdfPreview = true;
+		}, 100);
+	}
+	const mouseleave = () => {
+		showPdfPreview = false;
+		setTimeout(() => {
+			hoveredPdf = null;
+		}, 500);
+	}
+
 </script>
+
 
 <div id="divider">
 	<!-- <CurvedDivider /> -->
 </div>
-
+<div id="pdfpreview" bind:this={pdfPreview} class:active={showPdfPreview}>
+	{#if hoveredPdf}
+		<!-- <embed src={hoveredPdf} type="application/pdf" /> -->
+		<object data={hoveredPdf} type="application/pdf">
+			<p>It appears you don't have a PDF plugin for this browser. No biggie... you can <a href={hoveredPdf}>click here to download the PDF file.</a></p>
+		</object>
+	{/if}
+</div>
 
 <div id="content" use:scrollRef={refs.experience}>
+	
 	<h1 id="title">
 		{#if glitchy}
 			<Glitch2 text={$_('experience.title')} />
@@ -54,7 +80,11 @@
 						</h2>
 						<div class="pdfbuttonrow" style="">
 							{#if entry.pdfFileUrl}
-								<a href={entry.pdfFileUrl}>
+								<!-- svelte-ignore a11y-mouse-events-have-key-events -->
+								<a href={entry.pdfFileUrl}
+									on:mouseover={() => mouseover(entry.pdfFileUrl)}
+									on:mouseleave={() => mouseleave()}
+								>
 									<i id="icon" class="fa fas fa-solid fa-file-pdf" class:colored={true} />
 									{$_('certificate')}
 								</a>
@@ -118,6 +148,41 @@
 	}
 	* {
 		padding: $std-margin;
+	}
+
+
+	#pdfpreview {
+		position: fixed;
+		// align-self: center;
+		z-index: 10000;
+		top:10vh;
+		right: 0;
+		// margin: auto;
+		width: 30vw;
+		height: 80vh;
+		// background-color: rgba(0, 0, 0, 0.5);
+		// display: flex;
+		// justify-content: center;
+		// align-items: center;
+		justify-self: stretch;
+		justify-content: stretch;
+		align-items: stretch;
+		z-index: 1000;
+		transition: transform 1000ms, opacity 400ms;
+			display: flex;
+		// display: none;
+		opacity: 0;
+		pointer-events: none;
+		transform: perspective(2000px) translateX(100%) rotateY(-100deg) ;
+		&.active {
+			transform: perspective(2000px) rotateY(-20deg);
+			opacity: 1;
+		}
+		object, embed {
+			width: 100%;
+			height: 100%;
+			border-radius: 2rem;
+		}
 	}
 
 	.pdfbuttonrow > a {

@@ -42,7 +42,7 @@ const allEducation:EducationEntry[] = [
         name:'Computer Science', 
         description:'I\'ve not yet got my degree, but i\'ve already finished all my classes and my masters thesis called "Improved linear Cryptanalysis on Quantum Computers" with a 1.0, I therefor expect to graduate with a 1.4 very soon.',
         degreePdfFileUrl: '/pdfs/hh_zeugnis_master.pdf',
-        thesisPdfFileUrl: 'https://github.com/HannesGitH/MA-public/blob/main/main.pdf?raw=true',
+        thesisPdfFileUrl: '/pdfs/hh_thesis_master.pdf',
     },
 ];
 
