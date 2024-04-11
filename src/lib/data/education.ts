@@ -40,7 +40,7 @@ const allEducation:EducationEntry[] = [
         place: 'Freie Universität Berlin', 
         location:'Berlin, DE', 
         name:'Computer Science', 
-        description:'I\'ve not yet got my degree, but i\'ve already finished all my classes and my masters thesis called "Improved linear Cryptanalysis on Quantum Computers" with a 1.0, I therefor expect to graduate with a 1.4 very soon.',
+        description:'I\'ve not got my certificate yet, but i\'ve already finished all my classes and my masters thesis called "Improved linear Cryptanalysis on Quantum Computers" with a 1.0, therefor I expect to graduate with a 1.4 very soon.',
         degreePdfFileUrl: '/pdfs/hh_zeugnis_master.pdf',
         thesisPdfFileUrl: '/pdfs/hh_thesis_master.pdf',
     },
