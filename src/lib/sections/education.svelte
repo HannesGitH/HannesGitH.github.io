@@ -24,6 +24,7 @@
 </script>
 
 <CurvedDivider />
+
 <div id="content" use:scrollRef={refs.education}>
 	<h1 id="title">
 		{#if glitchy}
