@@ -32,19 +32,19 @@ const parseCVEntry = (entry: ExperienceEntry | EducationEntry | ProjectEntry) =>
     }
 
     if((entry as ExperienceEntry).pdfFileUrl) {
-        let fileUrl = (entry as ExperienceEntry).pdfFileUrl;
-        place = `{${place} \\href{${fileUrl}}{\\color{gray} cert \\ExternalLink }\\hfill}`;
+        let fileUrl = base_href+(entry as ExperienceEntry).pdfFileUrl;
+        place = `{${place} \\tiny (\\href{${fileUrl}}{\\color{gray} review \\ExternalLink})}`;
     }
     if((entry as EducationEntry).degreePdfFileUrl || (entry as EducationEntry).thesisPdfFileUrl) {
         let { degreePdfFileUrl, thesisPdfFileUrl } = entry as EducationEntry;
         if (degreePdfFileUrl && thesisPdfFileUrl) {
-            place = `{${place} \\href{${degreePdfFileUrl}}{\\color{gray} degree \\ExternalLink }\\hfill \\href{${thesisPdfFileUrl}}{\\color{gray} thesis \\ExternalLink }}`;
+            place = `{${place} \\tiny (\\href{${base_href}${degreePdfFileUrl}}{\\color{gray} certificate \\ExternalLink }, \\href{${base_href}${thesisPdfFileUrl}}{\\color{gray} thesis \\ExternalLink })}`;
         }
         else if (degreePdfFileUrl) {
-            place = `{${place} \\href{${degreePdfFileUrl}}{\\color{gray} degree \\ExternalLink }\\hfill}`;
+            place = `{${place} \\tiny (\\href{${base_href}${degreePdfFileUrl}}{\\color{gray} certificate \\ExternalLink }})}`;
         }
         else if (thesisPdfFileUrl) {
-            place = `{${place} \\href{${thesisPdfFileUrl}}{\\color{gray} thesis \\ExternalLink }\\hfill}`;
+            place = `{${place} \\tiny (\\href{${base_href}${thesisPdfFileUrl}}{\\color{gray} thesis \\ExternalLink }})}`;
         }
     }
 
