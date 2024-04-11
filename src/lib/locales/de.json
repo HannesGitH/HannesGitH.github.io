@@ -11,6 +11,8 @@
 	},
 	"education": { "title": "Ausbildung" },
 	"experience": { "title": "Erfahrung" },
+	"certificate": "Zeugnis",
+	"thesis": "Abschlussarbeit",
 	"projects": { "title": "Projekte" ,
 		"passcheck": {
 			"name": "Passwort-Checker"

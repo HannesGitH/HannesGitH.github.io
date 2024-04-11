@@ -156,6 +156,12 @@ const nixos : SkillData = {
     iconClass: "devicon-nixos-plain",
 }
 
+const qiskit : SkillData = {
+    name: "Qiskit",
+    level: 2,
+    iconClass: "devicon-qiskit-plain",
+}
+
 export const tools : SkillData[] = [
     vscode,
     git,
@@ -164,20 +170,21 @@ export const tools : SkillData[] = [
 ];
 
 export const languages : SkillData[] = [
-    ts,
-    python,
     dart,
-    bash,
-    cpp,
-    swift,
-    rust,
-    nixos,
+    python,
+    ts,
     latex,
     postgresql,
+    cpp,
+    rust,
+    nixos,
+    bash,
+    swift,
 ];
 
 export const frameworks : SkillData[] = [
     flutter,
+    qiskit,
     svelte,
     vue,
     unity,

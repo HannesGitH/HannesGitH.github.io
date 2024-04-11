@@ -11,6 +11,8 @@
 	},
 	"education": { "title": "Education" },
 	"experience": { "title": "Experience" },
+	"certificate": "certificate",
+	"thesis": "thesis",
 	"projects": { 
 		"title": "Projects" ,
 		"checkout" : "more info",

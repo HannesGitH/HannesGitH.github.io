@@ -7,6 +7,7 @@ export interface ExperienceEntry {
 	description: string[];
 	name: string;
 	location?: string;
+	pdfFileUrl?: string;
 }
 //all times need to have the same length
 const options: ExperienceEntry[] = [
@@ -20,7 +21,8 @@ const options: ExperienceEntry[] = [
 			[
                 'Designed and built a new landing page for the company website, mostly using PHP and plain JS.',
                 'Helping to build a new web app for the company using Nuxt.js (Vue.js) and MongoDB, though to be honest, i forgot most of that already..',
-            ]
+            ],
+		pdfFileUrl: '/pdfs/hh_zeugnis_whats2doo.pdf'
 	},
     {
         start: 2021,

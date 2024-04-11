@@ -37,24 +37,34 @@
 		{/if}
 	</h1>
 	<Timeline position="right" style={'justify-content: start;'}>
-		{#each experience as option, i}
+		{#each experience as entry, i}
 			<TimelineItem>
 				<TimelineOppositeContent slot="opposite-content" style="flex: unset; width:fit-content;">
-					<p>{option.start}</p>
-					<p>{option.year}</p>
+					<p>{entry.start}</p>
+					<p>{entry.year}</p>
 				</TimelineOppositeContent>
 				<TimelineSeparator>
 					<TimelineDot style={'background-color: var(--dot-color,#000);'} />
 					<TimelineConnector />
 				</TimelineSeparator>
 				<TimelineContent style="flex:3">
-					<h2 style="animation: smooth-sparkle 1s ease {i / experience.length}s infinite;">
-						{option.name}
-					</h2>
+					<div id="header" style="display: flex;">
+						<h2 style="animation: smooth-sparkle 1s ease {i / experience.length}s infinite;">
+							{entry.name}
+						</h2>
+						<div class="pdfbuttonrow" style="">
+							{#if entry.pdfFileUrl}
+								<a href={entry.pdfFileUrl}>
+									<i id="icon" class="fa fas fa-solid fa-file-pdf" class:colored={true} />
+									{$_('certificate')}
+								</a>
+							{/if}
+						</div>
+					</div>
 					<div>
-						<p id="location">@ {option.place}</p>
+						<p id="location">@ {entry.place}</p>
 						<div id="description">
-							{#each option.description as desciptionItem}
+							{#each entry.description as desciptionItem}
 								<p>{desciptionItem}</p>
 							{/each}
 						</div>
@@ -108,6 +118,31 @@
 	}
 	* {
 		padding: $std-margin;
+	}
+
+	.pdfbuttonrow > a {
+		background-color: adjust-color($color: $primary, $alpha: -.7);
+		color: #000;
+		padding: 0.5rem 1.5rem !important;
+		margin-left: 1rem;
+		text-align: center;
+		line-height: 2rem;
+		font-size: small;
+		z-index: 100;
+		// margin: auto;
+		border-radius: 20rem;
+		cursor: pointer;
+		transition: background-color 400ms, color 400ms;
+		&:hover {
+			background-color: white;
+			color: $primary;
+		}
+		text-decoration: none;
+		* {
+			// margin: 0;
+			padding: 0;
+			// scale: .2;
+		}
 	}
 
 	#divider {

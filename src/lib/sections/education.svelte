@@ -33,24 +33,40 @@
 		{/if}
 	</h1>
 	<Timeline position="right" style={'justify-content: start;'}>
-		{#each education as option, i}
+		{#each education as entry, i}
 			<TimelineItem>
 				<TimelineOppositeContent slot="opposite-content" style="flex: unset; width:fit-content;">
-					<p>{option.year}</p>
+					<p>{entry.year}</p>
 				</TimelineOppositeContent>
 				<TimelineSeparator>
 					<TimelineDot style={'background-color: var(--dot-color,#000);'} />
 					<TimelineConnector />
 				</TimelineSeparator>
 				<TimelineContent style="flex:3">
-					<h2 style="animation: smooth-sparkle 1s ease {i / education.length}s infinite;">
-						{option.degree}{option.name ? ', ' + option.name : ''}
-					</h2>
-					<p id="gpa">{option.gpa}</p>
+					<div id="header">
+						<h2 style="animation: smooth-sparkle 1s ease {i / education.length}s infinite;">
+							{entry.degree}{entry.name ? ', ' + entry.name : ''}
+						</h2>
+						<p id="gpa">{entry.gpa}</p>
+						<div class="pdfbuttonrow" style="">
+							{#if entry.degreePdfFileUrl}
+								<a href={entry.degreePdfFileUrl}>
+									<i id="icon" class="fa fas fa-solid fa-file-pdf" class:colored={true} />
+									{$_('certificate')}
+								</a>
+							{/if}
+							{#if entry.thesisPdfFileUrl}
+								<a href={entry.thesisPdfFileUrl}>
+									<i id="icon" class="fa fas fa-solid fa-file-pdf" class:colored={true} />
+									{$_('thesis')}
+								</a>
+							{/if}
+						</div>
+					</div>
 					<div>
-						<p id="location">@ {option.place}</p>
+						<p id="location">@ {entry.place}</p>
 						<p id="description">
-							{option.description}
+							{entry.description}
 						</p>
 						<br />
 					</div>
@@ -88,6 +104,40 @@
 	* {
 		padding: $std-margin;
 	}
+
+	#header {
+		display: flex;
+		align-items: center;
+		> * {
+			margin: 1rem;
+		}
+	}
+
+	.pdfbuttonrow > a {
+		background-color: adjust-color($color: $primary, $alpha: -.7);
+		color: #fff;
+		padding: 0.5rem 1.5rem !important;
+		margin-left: 1rem;
+		text-align: center;
+		line-height: 2rem;
+		font-size: small;
+		z-index: 100;
+		// margin: auto;
+		border-radius: 20rem;
+		cursor: pointer;
+		transition: background-color 400ms, color 400ms;
+		&:hover {
+			background-color: black;
+			color: $primary;
+		}
+		text-decoration: none;
+		* {
+			// margin: 0;
+			padding: 0;
+			// scale: .2;
+		}
+	}
+
 	#content {
 		--dot-color: #{$primary};
 		padding: 2 * $std-margin;
@@ -122,8 +172,9 @@
 			padding-bottom: $std-margin;
 		}
 		#gpa {
-			padding: 0;
-			display:inline;
+			padding: 0 .5rem ;
+			padding-right: 0;
+			// display:inline;
 			opacity: 0.5;
 		}
 		#description {
