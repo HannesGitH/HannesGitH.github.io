@@ -36,6 +36,7 @@
       };
 
       data-location = pkgs.callPackage ./data-location.nix { };
+      base-href = pkgs.callPackage ./base-href.nix { };
     in rec {
       packages = rec {
 
@@ -47,7 +48,7 @@
             cp -r ${data-location} .data
             mkdir -p out
             touch "out/test.log"
-            ts-node "./compiler/parse-cv-entries.ts" > "out/test.log"
+            ts-node "./compiler/parse-cv-entries.ts" ${base-href} > "out/test.log"
           '';
           installPhase = "cp -r out $out";
         };

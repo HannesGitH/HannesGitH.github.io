@@ -15,6 +15,8 @@ import type { EducationEntry } from '../.data/education';
 import { forpdf as projects } from '../.data/projects-raw'
 import type { ProjectData as ProjectEntry } from '../.data/projects-raw';
 
+const base_href = process.argv[2]
+
 const parseCVEntry = (entry: ExperienceEntry | EducationEntry | ProjectEntry) => {
 
     let { year , start, place, name, description, location} = {location:'', year: '', start: '', place: '', name: '', description: '', ...entry, };
@@ -27,6 +29,23 @@ const parseCVEntry = (entry: ExperienceEntry | EducationEntry | ProjectEntry) =>
         const {pdfName, link, pdfDescription } = (entry as ProjectEntry);
         place = `{\\href{${link}}{${pdfName} \\ExternalLink }\\hfill}`;
         description = pdfDescription;
+    }
+
+    if((entry as ExperienceEntry).pdfFileUrl) {
+        let fileUrl = (entry as ExperienceEntry).pdfFileUrl;
+        place = `{${place} \\href{${fileUrl}}{\\color{gray} cert \\ExternalLink }\\hfill}`;
+    }
+    if((entry as EducationEntry).degreePdfFileUrl || (entry as EducationEntry).thesisPdfFileUrl) {
+        let { degreePdfFileUrl, thesisPdfFileUrl } = entry as EducationEntry;
+        if (degreePdfFileUrl && thesisPdfFileUrl) {
+            place = `{${place} \\href{${degreePdfFileUrl}}{\\color{gray} degree \\ExternalLink }\\hfill \\href{${thesisPdfFileUrl}}{\\color{gray} thesis \\ExternalLink }}`;
+        }
+        else if (degreePdfFileUrl) {
+            place = `{${place} \\href{${degreePdfFileUrl}}{\\color{gray} degree \\ExternalLink }\\hfill}`;
+        }
+        else if (thesisPdfFileUrl) {
+            place = `{${place} \\href{${thesisPdfFileUrl}}{\\color{gray} thesis \\ExternalLink }\\hfill}`;
+        }
     }
 
     const parseDescription = (description: string[] | string) => {
