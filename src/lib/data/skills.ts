@@ -24,13 +24,13 @@ const github : SkillData = {
 
 const ts : SkillData = {
     name: "TypeScript",
-    level: 5,
+    level: 7,
     iconClass: "devicon-typescript-plain",
 }
 
 const python : SkillData = {
     name: "Python",
-    level: 6,
+    level: 7,
     iconClass: "devicon-python-plain",
 }
 
@@ -74,7 +74,7 @@ const bash : SkillData = {
 
 const cpp : SkillData = {
     name: "C++",
-    level: 5,
+    level: 4,
     iconClass: "devicon-cplusplus-plain",
 }
 

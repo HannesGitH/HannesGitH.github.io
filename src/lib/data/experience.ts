@@ -34,7 +34,9 @@ const options: ExperienceEntry[] = [
 			[
 				'Did a lot of research regarding quantum computing and quantum algorithms with a focus on quantum cryptanalysis, code wasn\'t really the main part of the job, but i did a bunch of python using IBM\'s qiskit framework.',
 				'Worked on multiple large projects including QACI, BayQS and PoQuID'
-            ]
+                ],
+	    pdfFileUrl: '/pdfs/hh_zeugnis_fraunhofer.pdf'
+	    
 	},
 	{
         start: 2021,
