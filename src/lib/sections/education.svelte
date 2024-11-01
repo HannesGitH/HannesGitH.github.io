@@ -73,7 +73,7 @@
 						<h2 style="animation: smooth-sparkle 1s ease {i / education.length}s infinite;">
 							{entry.degree}{entry.name ? ', ' + entry.name : ''}
 						</h2>
-						<p id="gpa">{entry.gpa}</p>
+						<p id="gpa">{entry.grade}</p>
 						<div class="pdfbuttonrow" style="">
 							{#if entry.degreePdfFileUrl}
 								<!-- svelte-ignore a11y-mouse-events-have-key-events -->
