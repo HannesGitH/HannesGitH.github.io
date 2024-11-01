@@ -57,7 +57,7 @@ const options: ExperienceEntry[] = [
 		name: 'Frontend Engineer',
 		description:
 			[
-                'Help building the best app for families in Europe, Pocket money, banking, chores, and more, all in one place. Frontend primarily build with Flutter.'
+                'Help building the best app for families in Europe: Pocket money, banking, chores, and more, all in one place. Frontend primarily build with Flutter.'
             ]
 	},
 	//TODO: sobald carii gegründet wird
