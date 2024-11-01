@@ -49,6 +49,17 @@ const options: ExperienceEntry[] = [
                 'Designed and built an internal application for managing the company\'s projects, using primarily Flutter.'
             ]
 	},
+	{
+        start: 2024,
+		year: '....',
+		place: 'Bling.de',
+		location: 'Berlin, DE',
+		name: 'Frontend Engineer',
+		description:
+			[
+                'Help building the best app for families in Europe, Pocket money, banking, chores, and more, all in one place. Frontend primarily build with Flutter.'
+            ]
+	},
 	//TODO: sobald carii gegründet wird
 	// {
 	// 	start: 2023,

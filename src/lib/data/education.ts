@@ -2,7 +2,7 @@ export interface EducationEntry {
     year: number;
     start?: string;
     degree: string;
-    gpa: number | string;
+    grade: number | string;
     place: string;
     description: string;
     name?: string;
@@ -15,7 +15,7 @@ const allEducation:EducationEntry[] = [
     { 
         year: 2017,
         degree: 'Abitur',
-        gpa:2.0, 
+        grade:2.0, 
         place: 'Werner von Siemens Gymnasium Berlin', 
         location:'Berlin, DE', 
         
@@ -25,7 +25,7 @@ const allEducation:EducationEntry[] = [
     { 
         year: 2020,
         degree: 'B.Sc.', 
-        gpa:2.6, 
+        grade:2.6, 
         place: 'Freie Universität Berlin', 
         location:'Berlin, DE', 
         name:'Computer Science', 
@@ -36,11 +36,11 @@ const allEducation:EducationEntry[] = [
     { 
         year: 2023,
         degree: 'M.Sc.', 
-        gpa:'expecting ~1.4', 
+        grade:'expecting ~1.4', 
         place: 'Freie Universität Berlin', 
         location:'Berlin, DE', 
         name:'Computer Science', 
-        description:'I\'ve not got my certificate yet, but i\'ve already finished all my classes and my masters thesis called "Improved linear Cryptanalysis on Quantum Computers" with a 1.0, therefor I expect to graduate with a 1.4 very soon.',
+        description:'After finishing my master thesis "Improved linear Cryptanalysis on Quantum Computers" with a 1.0, I graduated with a 1.3 at the end of \'23.',
         degreePdfFileUrl: '/pdfs/hh_zeugnis_master.pdf',
         thesisPdfFileUrl: '/pdfs/hh_thesis_master.pdf',
     },

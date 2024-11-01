@@ -22,8 +22,8 @@ const parseCVEntry = (entry: ExperienceEntry | EducationEntry | ProjectEntry) =>
     let { year , start, place, name, description, location} = {location:'', year: '', start: '', place: '', name: '', description: '', ...entry, };
     //in case of education we also have a degree
     if ((entry as EducationEntry).degree) {
-        let { degree, gpa } = entry as EducationEntry;
-        name = (name ? `${degree} in ${name}` : degree) + (gpa ? ` (gpa: ${gpa})` : '');
+        let { degree, gpa: grade } = entry as EducationEntry;
+        name = (name ? `${degree} in ${name}` : degree) + (grade ? ` (grade: ${grade})` : '');
     }
     if ((entry as ProjectEntry).pdfName) {
         const {pdfName, link, pdfDescription } = (entry as ProjectEntry);
