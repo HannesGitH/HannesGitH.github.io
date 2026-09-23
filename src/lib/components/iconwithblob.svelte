@@ -2,18 +2,22 @@
 	import Icon from '$lib/components/icon.svelte';
 	import Blob from '$lib/components/blob.svelte';
 	import { tweened } from 'svelte/motion';
+	import { onMount } from 'svelte';
 	export let color = '#c7f347';
     export let animationduration = 1000;
 	let progress = tweened(0, { duration: animationduration });
 
-    
-    let loopi:any = () =>
-    progress
-    .update((v) => ++v)
-    //   .set(1)
-    //   .then(() => progress.set(0))
-      .then(() => loopi());
-  loopi();
+    // runs in the browser only and stops once the component is gone
+    let running = false;
+    const loopi = (): void => {
+        if (!running) return;
+        progress.update((v) => ++v).then(loopi);
+    };
+    onMount(() => {
+        running = true;
+        loopi();
+        return () => (running = false);
+    });
 </script>
 
 <div id="wrapper">

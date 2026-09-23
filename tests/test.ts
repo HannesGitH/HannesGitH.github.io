@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test';
 
-test('index page has expected h1', async ({ page }) => {
+test('index page renders the resume sections', async ({ page }) => {
 	await page.goto('/');
-	expect(await page.textContent('h1')).toBe('Welcome to SvelteKit');
+	await expect(page).toHaveTitle('Hannes Hattenbach');
+	await expect(page.locator('h1').first()).toHaveText(/Education|Ausbildung/);
 });

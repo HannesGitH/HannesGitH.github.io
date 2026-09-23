@@ -25,15 +25,20 @@
 	let showPdfPreview = false;
 	let pdfPreview : HTMLDivElement;
 
+	// only one pending timer at a time, so a quick leave/enter can't show a stale or empty preview
+	let previewTimeout : ReturnType<typeof setTimeout> | undefined;
+
 	const mouseover = (url : string | undefined) => {
+		clearTimeout(previewTimeout);
 		hoveredPdf = url + "#scrollbar=0&toolbar=0&navpanes=0";
-		setTimeout(() => {
+		previewTimeout = setTimeout(() => {
 			showPdfPreview = true;
 		}, 100);
 	}
 	const mouseleave = () => {
+		clearTimeout(previewTimeout);
 		showPdfPreview = false;
-		setTimeout(() => {
+		previewTimeout = setTimeout(() => {
 			hoveredPdf = null;
 		}, 500);
 	}
@@ -105,7 +110,7 @@
 		{/each}
 		<TimelineItem>
 			<TimelineOppositeContent slot="opposite-content" style="flex: unset; width:fit-content;">
-				<p>{'soon'}</p>
+				<p>{$_('experience.soon')}</p>
 			</TimelineOppositeContent>
 			<TimelineSeparator>
 				<TimelineDot style={'background-color: var(--dot-color,#000);'} />
@@ -113,11 +118,11 @@
 			</TimelineSeparator>
 			<TimelineContent style="flex:3">
 				<h2 style="animation: smooth-sparkle 1s ease {experience.length}s infinite;">
-					{'YOU?'}
+					{$_('experience.you')}
 				</h2>
 				<div>
 					<p id="description">
-						{'I am always looking for new opportunities. If you have a position that you think I would be a good fit for, please feel free to'} <strong use:scrollTo={refs.contact}>contact</strong> {'me.'}
+						{$_('experience.you-before')} <strong use:scrollTo={refs.contact}>{$_('experience.you-link')}</strong> {$_('experience.you-after')}
 					</p>
 					<br />
 				</div>

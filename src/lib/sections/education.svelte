@@ -26,15 +26,20 @@
 	let showPdfPreview = false;
 	let pdfPreview : HTMLDivElement;
 
+	// only one pending timer at a time, so a quick leave/enter can't show a stale or empty preview
+	let previewTimeout : ReturnType<typeof setTimeout> | undefined;
+
 	const mouseover = (url : string | undefined) => {
+		clearTimeout(previewTimeout);
 		hoveredPdf = url + "#scrollbar=0&toolbar=0&navpanes=0";
-		setTimeout(() => {
+		previewTimeout = setTimeout(() => {
 			showPdfPreview = true;
 		}, 100);
 	}
 	const mouseleave = () => {
+		clearTimeout(previewTimeout);
 		showPdfPreview = false;
-		setTimeout(() => {
+		previewTimeout = setTimeout(() => {
 			hoveredPdf = null;
 		}, 500);
 	}

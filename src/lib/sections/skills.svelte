@@ -19,7 +19,7 @@
         {/each}
     </div>
 	<p id="theresmore">
-		Of course this is also just a selection of tools, frameworks and languages I am quite familiar with and deemed worth mentioning. If you are interested in more niche technologies I have worked with, feel free to <strong class="link" use:scrollTo={refs.contact}>contact</strong> me. There are is also a lot of stuff i have touched on a few times that would need some refreshing, but I am always eager to learn new things.
+		{$_('skills.more-before')} <strong class="link" use:scrollTo={refs.contact}>{$_('skills.more-link')}</strong> {$_('skills.more-after')}
 	</p>
 <div style="height: 2rem;"></div>
 

@@ -13,6 +13,7 @@ onmessage = (e) => {
 			break;
 		case 'interpolate':
 			postMessage({path:interpolator(d.t),t:d.t, id:d.id});
+			break;
 		default:
 			break;
 	}

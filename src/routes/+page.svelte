@@ -71,22 +71,10 @@
 
 	import Background from '$lib/components/background.svelte';
 	import ScrollToTopButton from '$lib/components/scrollToTopButton.svelte';
-	import Navbar, { NavbarItem, scrollTop, scrollRef, scrollTo } from '$lib/navbarindex';//'./../../dependencies/svelte-navbar/package/index'; //FIXME should simply be 'svelte-navbar' but https://github.com/sveltejs/svelte/issues/10306
+	import Navbar, { NavbarItem, scrollTop } from '$lib/navbarindex';//'./../../dependencies/svelte-navbar/package/index'; //FIXME should simply be 'svelte-navbar' but https://github.com/sveltejs/svelte/issues/10306
 	// import { scrollTop, scrollTo, scrollRef } from 'svelte-scrolling';
-	import { goto } from '$app/navigation';
 	import LogoWithBlob from '$lib/components/iconwithblob.svelte';
 
-
-	import { tweened } from 'svelte/motion';
-
-	const scrollY_tweened = tweened(0, {
-		duration: 50,
-		// easing: (t) => t
-	});
-
-	$: {
-		scrollY_tweened.set(scrollY);
-	}
 
 	const navBarScroll = {
 		startY: 100,
@@ -101,10 +89,6 @@
 
 	let scrollY = 0;
 	let navBarSizeInPx = 60;
-
-	function routeToPage(route: string, replaceState: boolean) {
-		goto(`/${route}`, { replaceState });
-	}
 
 	import { _ } from 'svelte-i18n';
 </script>
@@ -122,8 +106,8 @@
 			if (event.keyCode === 80 && (event.ctrlKey || event.metaKey) && !event.altKey && (!event.shiftKey || window.chrome || window.opera)) {
 				event.preventDefault();
 
+					// open the real resume instead of printing this page (printing from the browser menu still yields the qr code)
 					window.location.href = "/resume.pdf";
-					window.print();
 				if (event.stopImmediatePropagation) {
 					event.stopImmediatePropagation();
 				} else {
@@ -140,7 +124,7 @@
 <!-- <iframe id="iFramePdf" src="/resume.pdf"></iframe> -->
 <img src="/qr.png" alt="qr-code" id="qrImg" />
 
-<button id="pdfButton" aria-label="Print resume" on:click={() => {window.location.href = "/resume.pdf"; window.print();}}>
+<button id="pdfButton" aria-label="Open resume PDF" on:click={() => {window.location.href = "/resume.pdf";}}>
 	<i class="fas fa-print"></i>
 </button>
 

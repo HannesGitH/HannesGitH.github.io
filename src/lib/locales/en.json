@@ -9,40 +9,62 @@
 		"surname": "Hannes",
 		"description": "thats me. I've recently finished my computer science degree by writing my master thesis @ Freie Universität Berlin and developed some love for builing (Web-)Apps. But cryptography and more importantly how to break them using Quantum-Computing is my current interest."
 	},
-	"education": { "title": "Education" },
-	"experience": { "title": "Experience" },
+	"education": {
+		"title": "Education"
+	},
+	"experience": {
+		"title": "Experience",
+		"soon": "soon",
+		"you": "YOU?",
+		"you-before": "I am always looking for new opportunities. If you have a position that you think I would be a good fit for, please feel free to",
+		"you-link": "contact",
+		"you-after": "me."
+	},
 	"certificate": "certificate",
 	"thesis": "thesis",
-	"projects": { 
-		"title": "Projects" ,
-		"checkout" : "more info",
-		"checkout-hovered" : "open link",
+	"projects": {
+		"title": "Projects",
+		"checkout": "more info",
+		"checkout-hovered": "open link",
 		"passcheck": {
 			"name": "Password Checker",
-			"duration" : "3 days",
-			"complexity" : "very small",
+			"duration": "3 days",
+			"complexity": "very small",
 			"description": "A {complexity} Progressive Web App made with Svelte, that evaluates how secure a given password is. Creating this or something similar takes me around {duration}"
 		},
-		"vibration" : {
+		"vibration": {
 			"name": "Haptic Patterns",
-			"duration" : "1-2 weeks",
-			"complexity" : "small",
+			"duration": "1-2 weeks",
+			"complexity": "small",
 			"description": "A {complexity} Cross-Platform App made with Flutter, that lets you create custom vibration patterns. Creating this or something similar takes me around {duration}"
 		},
-		"inspector" : {
+		"inspector": {
 			"name": "Inspector",
-			"duration" : "over 1 year",
-			"complexity" : "complex",
+			"duration": "over 1 year",
+			"complexity": "complex",
 			"description": "A {complexity} android app, made for internal usage by Mastbau FN, which lets them inspect and manage their construction sites. Creating this took {duration} as requirements changed over time. Im still working on and maintaining this project."
 		},
-		"carii" : {
+		"carii": {
 			"name": "Carii",
-			"duration" : "multiple years",
-			"complexity" : "very complex",
+			"duration": "multiple years",
+			"complexity": "very complex",
 			"description": "A {complexity} multi-platform app, whose exact purpose is still a secret. Finishing this DiPA (digitale Pflegeanwendung) will take {duration} and a small team."
-		}
+		},
+		"intro-before": "The following is only a small selection, for a more complete picture check my",
+		"intro-github": "Github",
+		"intro-and": "and",
+		"intro-playstore": "Play-Store entries."
 	},
-	"skills": { "title": "Skills" },
-	"contact": { "title": "Contact" },
-	"impress": { "title": "Impressum" }
+	"skills": {
+		"title": "Skills",
+		"more-before": "Of course this is also just a selection of tools, frameworks and languages I am quite familiar with and deemed worth mentioning. If you are interested in more niche technologies I have worked with, feel free to",
+		"more-link": "contact",
+		"more-after": "me. There is also a lot of stuff I have touched on a few times that would need some refreshing, but I am always eager to learn new things."
+	},
+	"contact": {
+		"title": "Contact"
+	},
+	"impress": {
+		"title": "Impressum"
+	}
 }

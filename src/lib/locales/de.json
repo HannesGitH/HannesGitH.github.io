@@ -1,24 +1,70 @@
 {
-	"title" : "Hannes Hattenbach",
-	"author" : "Hannes Hattenbach",
-	"description" : "Hannes. Und das ist mein Lebenslauf-Ersatz als Fullstack Software Entwickler und vielseitig einsetzbarer, studierter Informatiker.",
-	"keywords" : "Hannes Hattenbach Portfolio Resume Skills Personal Website Lebenslauf",
+	"title": "Hannes Hattenbach",
+	"author": "Hannes Hattenbach",
+	"description": "Hannes. Und das ist mein Lebenslauf-Ersatz als Fullstack Software Entwickler und vielseitig einsetzbarer, studierter Informatiker.",
+	"keywords": "Hannes Hattenbach Portfolio Resume Skills Personal Website Lebenslauf",
 	"me": {
 		"title": "Ich",
 		"name": "Hattenbach",
 		"surname": "Hannes",
 		"description": "Yup, das bin ich. Ich habe vor kurzem mein Informatik Master Studiums an der Freien Universität Berlin mit einer 1.3 abgeschlosen, und habe dabei eine leichte Liebe fürs (Web-)App bauen entdeckt. Aber auch Cryptographie und vorallem wie wir diese mit Quantencomputern brechen können interessieren mich."
 	},
-	"education": { "title": "Ausbildung" },
-	"experience": { "title": "Erfahrung" },
+	"education": {
+		"title": "Ausbildung"
+	},
+	"experience": {
+		"title": "Erfahrung",
+		"soon": "bald",
+		"you": "DU?",
+		"you-before": "Ich bin immer offen für neue Möglichkeiten. Wenn du eine Stelle hast, für die ich deiner Meinung nach gut passen würde,",
+		"you-link": "kontaktiere",
+		"you-after": "mich gerne."
+	},
 	"certificate": "Zeugnis",
 	"thesis": "Abschlussarbeit",
-	"projects": { "title": "Projekte" ,
+	"projects": {
+		"title": "Projekte",
+		"intro-before": "Das hier ist nur eine kleine Auswahl, ein vollständigeres Bild geben mein",
+		"intro-github": "Github",
+		"intro-and": "und meine",
+		"intro-playstore": "Play-Store-Einträge.",
+		"checkout": "mehr Infos",
+		"checkout-hovered": "Link öffnen",
 		"passcheck": {
-			"name": "Passwort-Checker"
+			"name": "Passwort-Checker",
+			"duration": "3 Tage",
+			"complexity": "sehr kleine",
+			"description": "Eine {complexity} Progressive Web App, gebaut mit Svelte, die bewertet, wie sicher ein Passwort ist. So etwas oder etwas Ähnliches zu bauen dauert bei mir etwa {duration}."
+		},
+		"vibration": {
+			"name": "Haptic Patterns",
+			"duration": "1-2 Wochen",
+			"complexity": "kleine",
+			"description": "Eine {complexity} Cross-Platform-App, gebaut mit Flutter, mit der man eigene Vibrationsmuster erstellen kann. So etwas oder etwas Ähnliches zu bauen dauert bei mir etwa {duration}."
+		},
+		"inspector": {
+			"name": "Inspector",
+			"duration": "über 1 Jahr",
+			"complexity": "komplexe",
+			"description": "Eine {complexity} Android-App für den internen Einsatz bei der Mastbau FN, mit der sie ihre Baustellen inspizieren und verwalten. Die Entwicklung dauerte {duration}, da sich die Anforderungen mit der Zeit geändert haben. Ich arbeite weiterhin an dem Projekt und pflege es."
+		},
+		"carii": {
+			"name": "Carii",
+			"duration": "mehrere Jahre",
+			"complexity": "sehr komplexe",
+			"description": "Eine {complexity} Multi-Platform-App, deren genauer Zweck noch geheim ist. Diese DiPA (digitale Pflegeanwendung) fertigzustellen wird {duration} und ein kleines Team brauchen."
 		}
-    },
-	"skills": { "title": "Fähigkeiten" },
-	"contact": { "title": "Kontakt" },
-	"impress": { "title": "Impressum" }
+	},
+	"skills": {
+		"title": "Fähigkeiten",
+		"more-before": "Natürlich ist auch das nur eine Auswahl an Tools, Frameworks und Sprachen, mit denen ich gut vertraut bin und die ich erwähnenswert finde. Wenn dich speziellere Technologien interessieren, mit denen ich gearbeitet habe,",
+		"more-link": "kontaktiere",
+		"more-after": "mich gerne. Außerdem gibt es vieles, womit ich schon ein paar Mal zu tun hatte und das ich kurz auffrischen müsste, aber ich lerne immer gerne Neues dazu."
+	},
+	"contact": {
+		"title": "Kontakt"
+	},
+	"impress": {
+		"title": "Impressum"
+	}
 }

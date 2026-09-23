@@ -4,6 +4,13 @@
     export let i18nProjBase = 'projects.'
 
     import { _ } from 'svelte-i18n';
+    import { onMount } from 'svelte';
+    import { browser } from '$app/environment';
+
+    // the page is prerendered in english and svelte doesn't patch {@html} while hydrating,
+    // so switch to the client's (possibly different) locale once mounted
+    let mounted = false;
+    onMount(() => (mounted = true));
 
     function addHTML(innerHtml: string) {
         return `
@@ -28,7 +35,7 @@
     $: interpolatedDescription = $_(base+'.description', {values: {duration: durationHtml, complexity: complexityHtml}});
 </script>
 
-<p style="transform-style: preserve-3d;">{@html interpolatedDescription}</p>
+<p style="transform-style: preserve-3d;">{@html !browser || mounted ? interpolatedDescription : ''}</p>
 
 <style lang="scss">
     p {

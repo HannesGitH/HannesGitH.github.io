@@ -17,8 +17,9 @@
       svelte-navbar-src = pkgs.fetchFromGitHub {
         owner = "hannesgith";
         repo = "svelte-navbar";
-        rev = "0.0.123";
-        sha256 = "sha256-naxceQenpoSbjlYLaLlYxJElddk0qplXp7K+4KIzA8M=";
+        # keep in sync with the dependencies/svelte-navbar submodule
+        rev = "a17018401a00e456fb99fdbdf3f8c399021ae56b";
+        sha256 = "sha256-6JBeJIeZowib9DZFInlgImnZTe0Qppl3i8hCaUOYB2o=";
       };
 
       pdf-cv-flake = import ./pdf/flake.nix ;

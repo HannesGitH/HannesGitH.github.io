@@ -49,7 +49,7 @@ const inspection = {
     name: 'inspector',
     iconUrl: inspectionIcon,
     previewUrl: inspectionPreview,
-    relevantSkillNames: ['Flutter', 'Git', 'GitHub', 'VS Code', 'PostgreSQL', 'TypeScript', 'Docker', ' Dart' ],
+    relevantSkillNames: ['Flutter', 'Git', 'GitHub', 'VS Code', 'PostgreSQL', 'TypeScript', 'Docker', 'Dart' ],
 }
 
 
@@ -62,7 +62,7 @@ const carii = {
     name: 'carii',
     iconUrl: cariiIcon,
     previewUrl: cariiPreview,
-    relevantSkillNames: ['Flutter', 'Git', 'GitHub', 'VS Code', 'PostgreSQL', 'TypeScript', 'Docker', ' Dart', 'Supabase', 'Android', 'Linux', 'iOS', 'Apple',  ],
+    relevantSkillNames: ['Flutter', 'Git', 'GitHub', 'VS Code', 'PostgreSQL', 'TypeScript', 'Docker', 'Dart', 'Supabase', 'Android', 'Linux' ],
 }
 
 

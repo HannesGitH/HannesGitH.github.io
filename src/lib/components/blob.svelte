@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { tweened } from 'svelte/motion';
 
 	import InterpolationWorker from '$lib/wworkers/interpolator.worker?worker';
@@ -67,6 +67,8 @@
 			};
 		});
 	});
+
+	onDestroy(() => interpolationWorker?.terminate());
 </script>
 
 <svg

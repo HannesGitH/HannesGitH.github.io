@@ -12,17 +12,18 @@
 	$: activeContact = !active ? null : contacts[activeContactIdx];
 
 	let left = false;
+	let hideTimeout: ReturnType<typeof setTimeout> | undefined;
 
 	function handleMouseLeave() {
-		const idx = activeContactIdx;
-		setTimeout(() => {
-			if (idx == activeContactIdx && left)
+		clearTimeout(hideTimeout);
+		hideTimeout = setTimeout(() => {
 			activeContactIdx = -1;
 		}, 3000);
 		left = true;
 	}
 
 	function handleHover(idx: number) {
+		clearTimeout(hideTimeout);
 		activeContactIdx = idx;
 		left = false;
 	}

@@ -15,8 +15,7 @@
 <div id="content" use:scrollRef={refs.projects}>
 	<h1>{$_('projects.title')}</h1>
 
-	<!-- TODO: localize: -->
-	<p>The following is only a small selection, for a more complete picture check my <a href="https://github.com/HannesGitH">Github</a> and <a href="https://play.google.com/store/apps/developer?id=Hannepps">Play-Store entries.</a></p>
+	<p>{$_('projects.intro-before')} <a href="https://github.com/HannesGitH">{$_('projects.intro-github')}</a> {$_('projects.intro-and')} <a href="https://play.google.com/store/apps/developer?id=Hannepps">{$_('projects.intro-playstore')}</a></p>
 
 	<div>
 		<div id="projects">
