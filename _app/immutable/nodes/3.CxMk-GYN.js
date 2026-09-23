@@ -1,0 +1,1 @@
+import"../chunks/BH50PtEM.js";import"../chunks/xihTtKlq.js";import{t as e}from"../chunks/BfRbSZpK.js";function t(t){e(t,{color:`#a7c347`,animationduration:4e3})}export{t as component};
