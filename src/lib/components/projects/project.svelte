@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { ProjectData } from "$lib/data/projects";
 	import { hover3dFactory } from "$lib/utils/hooks/transformHover3d";
+	const hover3d = hover3dFactory(false);
 
     // import Button, {Label} from '@smui/button'
 
@@ -31,7 +32,7 @@
     class="wrapper" 
     on:mouseenter={()=> currentlySelectedProjectName.set(projectData.name)}
     on:mouseleave={()=> currentlySelectedProjectName.set(null)}
-    use:hover3dFactory(false)
+    use:hover3d
     >
     <div id="previewplaceholder">
         <img src={previewImgSrc} alt={previewImgAlt} id="preview">

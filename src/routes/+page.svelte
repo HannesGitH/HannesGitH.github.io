@@ -190,6 +190,15 @@
 		margin: 0;
 	}
 
+	// svelte-navbar puts `mdc-button__ripple` on its buttons; since SMUI 9 that class is
+	// globally `position:absolute; inset:0`, which stretches/collapses the nav items
+	:global(.navElem.mdc-button__ripple) {
+		position: relative;
+		inset: auto;
+		overflow: visible;
+		box-sizing: border-box;
+	}
+
 	#pdfButton {
 		position: fixed;
 		top: 20px;

@@ -7,7 +7,7 @@
 
     function addHTML(innerHtml: string) {
         return `
-        <div style="
+        <span style="
             // font-size: 1.1em;
             // font-weight: bold;
             transform: translateZ(3px);
@@ -16,7 +16,7 @@
             text-decoration: underline;
         ">
             ${innerHtml}
-        </div>
+        </span>
     `;
     }
 

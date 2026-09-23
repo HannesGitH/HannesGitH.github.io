@@ -2,6 +2,7 @@
 	import { _ } from 'svelte-i18n';
 	import type { SkillData } from '$lib/data/skills';
 	import { hover3dFactory } from '$lib/utils/hooks/transformHover3d';
+	const hover3d = hover3dFactory(true);
 
 	import { isActive } from '$lib/stores/project-skill-relation';
 
@@ -18,7 +19,7 @@
 	id="skill"
 	on:mouseenter={(e) => (_activated = true)}
 	on:mouseleave={(e) => (_activated = false)}
-	use:hover3dFactory(true)
+	use:hover3d
 	class:activated
 >
 	<i id="icon" class={skill.iconClass} class:colored={activated} />

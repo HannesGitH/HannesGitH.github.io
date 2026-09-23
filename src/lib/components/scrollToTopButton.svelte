@@ -11,7 +11,7 @@
 
 <div class="flexy">
 	<div class="wrapper">
-		<Fab on:click={() => scrollTop()} {exited}>
+		<Fab onclick={() => scrollTop()} {exited}>
 			<Icon class="material-icons">arrow_upward</Icon>
 		</Fab>
 	</div>

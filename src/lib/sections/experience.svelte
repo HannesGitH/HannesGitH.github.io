@@ -120,6 +120,7 @@
 						{'I am always looking for new opportunities. If you have a position that you think I would be a good fit for, please feel free to'} <strong use:scrollTo={refs.contact}>contact</strong> {'me.'}
 					</p>
 					<br />
+				</div>
 			</TimelineContent>
 		</TimelineItem>
 	</Timeline>

@@ -2,6 +2,7 @@
 	import { _ } from 'svelte-i18n';
 	import type { ContactData } from '$lib/data/contacts';
 	import { hover3dFactory } from '$lib/utils/hooks/transformHover3d';
+	const hover3d = hover3dFactory(true);
 
 	$: hideFromCrawler = contact.hideFromCrawler;
 
@@ -14,7 +15,7 @@
 	id="contact"
 	on:mouseenter={(e) => (activated = true)}
 	on:mouseleave={(e) => (activated = false)}
-	use:hover3dFactory(true)
+	use:hover3d
 	class:activated
 	class:externally-activated={isActivated}
 >

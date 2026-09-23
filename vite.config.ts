@@ -1,27 +1,39 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import { viteCommonjs } from '@originjs/vite-plugin-commonjs';
-import type { UserConfig } from 'vite';
+import { defineConfig, type Plugin } from 'vite';
+import { fileURLToPath } from 'url';
 
-const config: UserConfig = {
-	plugins: [viteCommonjs(),sveltekit(), ],
-	optimizeDeps: {
-		include: ['svgpath']
-	  },
-	// ssr: {
-	// 	noExternal: Object.keys(pkg.dependencies || {})
-	// },
-	server: {
-		fs: {
-		  allow: ['./dependencies/svelte-navbar/'],
-		},
-	  },
+const sassPath = fileURLToPath(new URL('./src/theme/dark/', import.meta.url));
+const svelteInternalShim = fileURLToPath(
+	new URL('./src/lib/compat/svelte-internal.ts', import.meta.url)
+);
 
-	  build: {
-		rollupOptions: {
-		//   external: ['svelte-navbar', '../../dependencies/svelte-navbar/package'],
-		},
-	  },		
-	
+// svelte-scrolling-plus (used by svelte-navbar) still imports svelte 3 internals
+const svelteScrollingPlusCompat: Plugin = {
+	name: 'svelte-scrolling-plus-compat',
+	enforce: 'pre',
+	resolveId(id, importer) {
+		if (id === 'svelte/internal' && importer?.includes('svelte-scrolling-plus')) {
+			return svelteInternalShim;
+		}
+	}
 };
 
-export default config;
+export default defineConfig({
+	plugins: [svelteScrollingPlusCompat, sveltekit()],
+	css: {
+		preprocessorOptions: {
+			scss: {
+				additionalData: `@use '${sassPath}smui-theme' as *;`
+			}
+		}
+	},
+	optimizeDeps: {
+		include: ['svgpath'],
+		exclude: ['svelte-scrolling-plus']
+	},
+	server: {
+		fs: {
+			allow: ['./dependencies/svelte-navbar/']
+		}
+	}
+});

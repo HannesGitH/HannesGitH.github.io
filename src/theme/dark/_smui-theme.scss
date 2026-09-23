@@ -1,6 +1,6 @@
 @use 'sass:color';
 
-@use '@material/theme/color-palette';
+@use '@smui/common/theme/_color-palette.scss';
 
 // $primary: color-palette.$teal-a400;
 $primary: #a7c347;
@@ -10,7 +10,7 @@ $glow-shadow: 0 0 15px -2px $primary;
 
 
 // Svelte Colors! (Dark Theme)
-@forward '@material/theme/index' with (
+@forward '@smui/common/theme/_index.scss' with (
   $primary: $primary,
   $secondary: color.scale($primary, $lightness: -30%, $saturation: -30%), //hm
   $surface: $surface,

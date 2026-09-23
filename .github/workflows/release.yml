@@ -13,20 +13,21 @@ jobs:
     runs-on: ubuntu-latest
     name: ssg 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
         with:
           submodules: true
-      - uses: cachix/install-nix-action@v25
+      - uses: cachix/install-nix-action@v31
+      - uses: cachix/cachix-action@v17
         with:
           name: hannesgith
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-          extraPullNames: nix-community, cachix, hannesgith
+          extraPullNames: nix-community, cachix
       - name: build
         run: | 
           nix build -L --show-trace
           cp -r result/build build
       - name: upload build folder as artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: static
           path: ./build
@@ -36,9 +37,9 @@ jobs:
     name: Deploy Web-App
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2 # no idea why but apperently this creates a folder structure (i dont need my repo to be checked out tho)
+      - uses: actions/checkout@v7 # no idea why but apperently this creates a folder structure (i dont need my repo to be checked out tho)
       - name: download web artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: static
           path: static
@@ -49,7 +50,7 @@ jobs:
            mkdir static/.well-known && touch static/.well-known/assetlinks.json
            echo '[{"relation": ["delegate_permission/common.handle_all_urls"], "target": { "namespace": "android_app","package_name": "hannepps.tools.passwordchecker","sha256_cert_fingerprints": ["48:8D:7C:D4:BA:57:9C:72:95:CF:DE:7D:C0:E2:2B:0B:EC:89:B5:01:78:88:12:C4:44:D6:D4:31:97:52:73:8E"]}}]' >> static/.well-known/assetlinks.json
       - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+        uses: JamesIves/github-pages-deploy-action@v4.9.0
         with:
           branch: gh-pages
           folder: static
