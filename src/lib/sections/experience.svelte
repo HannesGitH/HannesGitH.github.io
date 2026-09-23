@@ -130,7 +130,7 @@
 	<div id="waveblur"></div>
 </div>
 <div class="flipped">
-	<CurvedDivider />
+	<CurvedDivider blurred />
 </div>
 
 
@@ -279,6 +279,11 @@
 		padding-top: calc(4 * $std-margin);
 		margin-bottom: -10px;
 		// filter: invert(1);
+
+		// no font dependent baseline gap below the divider, #waveblur relies on its exact position
+		& :global(#visual) {
+			vertical-align: top;
+		}
 	}
 
 	#waveblurwrapper {
@@ -290,12 +295,13 @@
 	// continuing its blurred background up underneath the wave
 	#waveblur {
 		position: absolute;
-		top: -12px;
+		top: -1rem;
 		left: 0;
 		width: 100%;
 		height: 0;
 		padding: 0;
-		padding-top: calc(30% + 44px);
+		// + 2px overlap with the projects section, otherwise a subpixel gap can show up
+		padding-top: calc(30% + 44px + 2px);
 		backdrop-filter: blur(2px);
 		pointer-events: none;
 	}
