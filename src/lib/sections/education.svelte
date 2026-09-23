@@ -45,7 +45,7 @@
 <div id="pdfpreview" bind:this={pdfPreview} class:active={showPdfPreview}>
 	{#if hoveredPdf}
 		<!-- <embed src={hoveredPdf} type="application/pdf" /> -->
-		<object data={hoveredPdf} type="application/pdf">
+		<object data={hoveredPdf} type="application/pdf" title="PDF preview">
 			<p>It appears you don't have a PDF plugin for this browser. No biggie... you can <a href={hoveredPdf}>click here to download the PDF file.</a></p>
 		</object>
 	{/if}
@@ -81,7 +81,7 @@
 									on:mouseover={() => mouseover(entry.degreePdfFileUrl)}
 									on:mouseleave={mouseleave}
 								>
-									<i id="icon" class="fa fas fa-solid fa-file-pdf" class:colored={true} />
+									<i id="icon" class="fa fas fa-solid fa-file-pdf" class:colored={true}></i>
 									{$_('certificate')}
 								</a>
 							{/if}
@@ -91,7 +91,7 @@
 								on:mouseover={() => mouseover(entry.thesisPdfFileUrl)}
 									on:mouseleave={mouseleave}
 									>
-									<i id="icon" class="fa fas fa-solid fa-file-pdf" class:colored={true} />
+									<i id="icon" class="fa fas fa-solid fa-file-pdf" class:colored={true}></i>
 									{$_('thesis')}
 								</a>
 							{/if}
@@ -112,6 +112,7 @@
 
 
 <style lang="scss">
+	@use 'sass:color';
 	@keyframes -global-smooth-sparkle {
 		0% {
 			background: linear-gradient(0.9turn, #{$on-surface}, #{$primary});
@@ -165,7 +166,7 @@
 			transform: perspective(2000px) rotateY(-20deg);
 			opacity: 1;
 		}
-		object, embed {
+		object {
 			width: 100%;
 			height: 100%;
 			border-radius: 2rem;
@@ -181,7 +182,7 @@
 	}
 
 	.pdfbuttonrow > a {
-		background-color: adjust-color($color: $primary, $alpha: -.7);
+		background-color: color.adjust($color: $primary, $alpha: -.7);
 		color: #fff;
 		padding: 0.5rem 1.5rem !important;
 		margin-left: 1rem;
@@ -226,10 +227,6 @@
 			padding: 0;
 		}
 
-		.timeline-item {
-			flex: unset !important;
-		}
-
 		p {
 			margin: 0;
 			padding: 0.5em 1cm 1.5em 0;
@@ -260,10 +257,5 @@
 			margin: 0;
 			// color: grey;
 		}
-	}
-	.flipped {
-		transform: rotate(180deg);
-		padding-top: calc(4 * $std-margin);
-		margin-bottom: -10px;
 	}
 </style>

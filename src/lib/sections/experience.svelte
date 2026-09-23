@@ -47,7 +47,7 @@
 <div id="pdfpreview" bind:this={pdfPreview} class:active={showPdfPreview}>
 	{#if hoveredPdf}
 		<!-- <embed src={hoveredPdf} type="application/pdf" /> -->
-		<object data={hoveredPdf} type="application/pdf">
+		<object data={hoveredPdf} type="application/pdf" title="PDF preview">
 			<p>It appears you don't have a PDF plugin for this browser. No biggie... you can <a href={hoveredPdf}>click here to download the PDF file.</a></p>
 		</object>
 	{/if}
@@ -85,7 +85,7 @@
 									on:mouseover={() => mouseover(entry.pdfFileUrl)}
 									on:mouseleave={() => mouseleave()}
 								>
-									<i id="icon" class="fa fas fa-solid fa-file-pdf" class:colored={true} />
+									<i id="icon" class="fa fas fa-solid fa-file-pdf" class:colored={true}></i>
 									{$_('certificate')}
 								</a>
 							{/if}
@@ -125,14 +125,17 @@
 		</TimelineItem>
 	</Timeline>
 </div>
+<!-- blurred background below the wave, painted before it so the wave itself stays sharp -->
+<div id="waveblurwrapper">
+	<div id="waveblur"></div>
+</div>
 <div class="flipped">
 	<CurvedDivider />
 </div>
 
-<div style="height:10em"></div>
-
 
 <style lang="scss">
+	@use 'sass:color';
 	@keyframes -global-smooth-sparkle {
 		0% {
 			background-size: 300% 250%;
@@ -179,7 +182,7 @@
 			transform: perspective(2000px) rotateY(-20deg);
 			opacity: 1;
 		}
-		object, embed {
+		object {
 			width: 100%;
 			height: 100%;
 			border-radius: 2rem;
@@ -187,7 +190,7 @@
 	}
 
 	.pdfbuttonrow > a {
-		background-color: adjust-color($color: $primary, $alpha: -.7);
+		background-color: color.adjust($color: $primary, $alpha: -.7);
 		color: #000;
 		padding: 0.5rem 1.5rem !important;
 		margin-left: 1rem;
@@ -218,11 +221,6 @@
 		// filter: invert(1);
 	}
 
-	#topPadder {
-		height: 0em;
-		background: $surface;
-		filter: invert(1);
-	}
 	#content {
 		--dot-color: #{$primary};
 		padding: calc( 2 * $std-margin) ;
@@ -281,6 +279,25 @@
 		padding-top: calc(4 * $std-margin);
 		margin-bottom: -10px;
 		// filter: invert(1);
+	}
+
+	#waveblurwrapper {
+		position: relative;
+		height: 0;
+		padding: 0;
+	}
+	// spans from the top of the (opaque) white wave down to where the projects section starts,
+	// continuing its blurred background up underneath the wave
+	#waveblur {
+		position: absolute;
+		top: -12px;
+		left: 0;
+		width: 100%;
+		height: 0;
+		padding: 0;
+		padding-top: calc(30% + 44px);
+		backdrop-filter: blur(2px);
+		pointer-events: none;
 	}
 
 </style>

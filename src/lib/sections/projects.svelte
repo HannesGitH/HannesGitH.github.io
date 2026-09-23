@@ -11,8 +11,6 @@
 
 </script>
 
-<div class="divider">
-</div>
 <!-- <CurvedDivider/> -->
 <div id="content" use:scrollRef={refs.projects}>
 	<h1>{$_('projects.title')}</h1>
@@ -35,14 +33,6 @@
 
 <style lang="scss">
 
-	.divider {
-		height: 10rem;
-
-		@include full-bleed($bg-color: transparent);
-		&.big {
-			height: 20rem;
-		}
-	}
 	* {
 		padding: $std-margin;
 	}
@@ -83,12 +73,6 @@
 			overflow: visible;
 			overflow-clip-margin: 200rem;
 		} 
-	}
-	.flipped {
-		transform: rotate(180deg);
-		padding-top: calc(4 * $std-margin);
-		margin-bottom: -10px;
-		// filter: invert(1);
 	}
 
 

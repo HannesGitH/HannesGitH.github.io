@@ -17,12 +17,13 @@
 <!-- svelte-ignore missing-declaration -->
 <div
 	id="skill"
+	role="presentation"
 	on:mouseenter={(e) => (_activated = true)}
 	on:mouseleave={(e) => (_activated = false)}
 	use:hover3d
 	class:activated
 >
-	<i id="icon" class={skill.iconClass} class:colored={activated} />
+	<i id="icon" class={skill.iconClass} class:colored={activated}></i>
 	<h2 id="name">{skill.name}</h2>
 	<div id="level" style="
     --skill: {skill.level*10}%;
@@ -88,7 +89,7 @@
         $progress-height: 30px;
 
 		.progress {
-			background: adjust-color($color: gray, $alpha: -.7);
+			background: color.adjust($color: gray, $alpha: -.7);
 			justify-content: flex-start;
 			border-radius: 100px;
 			align-items: center;

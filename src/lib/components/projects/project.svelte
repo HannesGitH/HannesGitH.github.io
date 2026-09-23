@@ -30,6 +30,7 @@
     
     <div 
     class="wrapper" 
+    role="presentation"
     on:mouseenter={()=> currentlySelectedProjectName.set(projectData.name)}
     on:mouseleave={()=> currentlySelectedProjectName.set(null)}
     use:hover3d
@@ -46,7 +47,7 @@
                 <!-- <svelte:component this={content}/> -->
                 <Description {projId}/>
             </div>
-            <div class="spacer"/>
+            <div class="spacer"></div>
             <p class="button-shaped-round" class:activated={buttonHovered}
                 on:mouseenter={()=> buttonHovered = true}
                 on:mouseleave={()=> buttonHovered = false}
@@ -230,20 +231,19 @@
             transition: all 0.3s ease-in-out;
             z-index: 2;
             flex-shrink: 0;
-            &#preview {
-                flex-shrink: 0;
-                border: 5px solid black;
-                margin: 0;
-                position: absolute;
-                transform-origin: top left;
-                width: calc(100% / 0.25);
-                scale: 0.25;
-                top: 0;
-                left: 0;
-                &:hover {
-                    transform: translate3d(20rem, 2rem, 250px);
-                    scale: 0.35;
-                }
+        }
+        & img#preview {
+            border: 5px solid black;
+            margin: 0;
+            position: absolute;
+            transform-origin: top left;
+            width: calc(100% / 0.25);
+            scale: 0.25;
+            top: 0;
+            left: 0;
+            &:hover {
+                transform: translate3d(20rem, 2rem, 250px);
+                scale: 0.35;
             }
         }
     }

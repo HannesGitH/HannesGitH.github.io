@@ -140,9 +140,9 @@
 <!-- <iframe id="iFramePdf" src="/resume.pdf"></iframe> -->
 <img src="/qr.png" alt="qr-code" id="qrImg" />
 
-<div id="pdfButton" on:click={() => {window.location.href = "/resume.pdf"; window.print();}}>
+<button id="pdfButton" aria-label="Print resume" on:click={() => {window.location.href = "/resume.pdf"; window.print();}}>
 	<i class="fas fa-print"></i>
-</div>
+</button>
 
 <Background offsetTop={scrollY / 30} />
 <div
@@ -215,6 +215,8 @@
 		z-index: 100;
 		margin: auto;
 		border-radius: 50%;
+		border: none;
+		box-sizing: content-box;
 		cursor: pointer;
 		transition: background-color 400ms, color 400ms;
 		&:hover {

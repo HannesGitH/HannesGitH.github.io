@@ -38,6 +38,7 @@
 			{#each contacts as contact, idx}
 				<div 
 				id="contact-wrapper"
+					role="presentation"
 					on:mouseenter={() => handleHover(idx)}
 					on:mouseleave={handleMouseLeave}
 				>
@@ -73,7 +74,7 @@
 	.spacer {
 		height: 30vh;
 	}
-	h1 , h2, #more_channels, #impressum_body, #content {
+	h1 , h2, #impressum_body, #content {
 		padding: $std-margin;
 	}
 	#impressum_body{

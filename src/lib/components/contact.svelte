@@ -13,6 +13,7 @@
 
 <div
 	id="contact"
+	role="presentation"
 	on:mouseenter={(e) => (activated = true)}
 	on:mouseleave={(e) => (activated = false)}
 	use:hover3d
@@ -22,11 +23,11 @@
 	<div id="a" >
 		<!--  -->
 		{#if !hideFromCrawler}
-		<a href={contact.link}>
-			<i id="icon" class={contact.iconClass} class:colored={activated} />
+		<a href={contact.link} aria-label={contact.name}>
+			<i id="icon" class={contact.iconClass} class:colored={activated}></i>
 		</a>
 		{:else}
-			<i id="icon" class={contact.iconClass} class:colored={activated} />
+			<i id="icon" class={contact.iconClass} class:colored={activated}></i>
 		{/if}
 		<!-- <h2 id="name">{contact.name}</h2> -->
 	</div>
@@ -76,16 +77,6 @@
 
 		& i {
 			font-size: 48pt;
-		}
-
-		#name {
-			font-size: 1em;
-			color: $surface;
-		}
-
-		#level {
-			font-size: 1em;
-			// margin-top: $std-margin;
 		}
 
 		$progress-height: 30px;

@@ -23,7 +23,9 @@ export default defineConfig({
 	css: {
 		preprocessorOptions: {
 			scss: {
-				additionalData: `@use '${sassPath}smui-theme' as *;`
+				additionalData: `@use '${sassPath}smui-theme' as *;`,
+				// @smui / @material still use deprecated sass syntax; only show warnings for our own code
+				quietDeps: true
 			}
 		}
 	},

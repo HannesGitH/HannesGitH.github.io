@@ -16,7 +16,7 @@
   loopi();
 </script>
 
-<div id="wrapper ">
+<div id="wrapper">
     <div id="mainBlob">
         <Blob animationprogress={$progress} />
     </div>
@@ -29,15 +29,6 @@
 	:global body {
 		background-color: #000;
 	}
-    #wrapper {
-        aspect-ratio: 1;
-        position: relative;
-        margin: 0 auto;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
     #mainBlob, #mainIcon {
         object-fit: contain;
         position: absolute;
