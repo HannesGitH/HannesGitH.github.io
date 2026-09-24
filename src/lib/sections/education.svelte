@@ -46,8 +46,7 @@
 
 </script>
 
-<!-- blurred like the other one: in firefox the unblurred version is extremely slow -->
-<CurvedDivider blurred />
+<CurvedDivider staticInFirefox />
 <div id="pdfpreview" bind:this={pdfPreview} class:active={showPdfPreview}>
 	{#if hoveredPdf}
 		<!-- <embed src={hoveredPdf} type="application/pdf" /> -->

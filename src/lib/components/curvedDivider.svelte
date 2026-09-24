@@ -4,6 +4,8 @@
 
 <script lang="ts">
 	// export let animated: boolean = true;
+	// firefox can't handle the animation of the first divider on the page, so it stays still there
+	export let staticInFirefox: boolean = false;
 	// blur the waves more and more towards the outermost one
 	export let blurred: boolean = false;
 	const id = instances++;
@@ -71,7 +73,7 @@
 	];
 </script>
 
-<div id="visual">
+<div id="visual" class:static-firefox={staticInFirefox}>
 	{#each layers as layer, i}
 		{@const blur = blurred ? layer.blur : 0}
 		<!-- leave room above the wave for its blur -->
@@ -114,26 +116,16 @@
 		aspect-ratio: 900 / 600;
 		overflow: clip;
 
-		// the animated layers only cover the visible part (the middle 100/120 plus a bit of room for the skew),
-		// firefox only animates elements on the compositor that aren't much larger than the viewport
-		$room: 1rem;
 		& > .layer {
 			position: absolute;
-			left: calc(100% / 12 - 2% - #{$room});
+			left: 0;
 			bottom: 0;
-			width: calc(100% * 10 / 12 + 4% + 2 * #{$room});
-			overflow: hidden;
+			width: 100%;
 			transform-origin: bottom left;
 			will-change: transform;
 
-			// still the full width of #visual, so the waves look exactly the same
 			& > svg {
 				display: block;
-				position: absolute;
-				top: 0;
-				height: 100%;
-				width: calc((100% - 2 * #{$room}) / (10 / 12 + 0.04));
-				left: calc(#{$room} - (100% - 2 * #{$room}) / (10 / 12 + 0.04) * (1 / 12 - 0.02));
 			}
 		}
 
@@ -159,5 +151,12 @@
 			}
 		}
 
+
+		@supports (-moz-appearance: none) or (-moz-orient: inline) {
+			&.static-firefox > .layer {
+				animation: none;
+				will-change: auto;
+			}
+		}
 	}
 </style>
