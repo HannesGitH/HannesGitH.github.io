@@ -114,16 +114,26 @@
 		aspect-ratio: 900 / 600;
 		overflow: clip;
 
+		// the animated layers only cover the visible part (the middle 100/120 plus a bit of room for the skew),
+		// firefox only animates elements on the compositor that aren't much larger than the viewport
+		$room: 1rem;
 		& > .layer {
 			position: absolute;
-			left: 0;
+			left: calc(100% / 12 - 2% - #{$room});
 			bottom: 0;
-			width: 100%;
+			width: calc(100% * 10 / 12 + 4% + 2 * #{$room});
+			overflow: hidden;
 			transform-origin: bottom left;
 			will-change: transform;
 
+			// still the full width of #visual, so the waves look exactly the same
 			& > svg {
 				display: block;
+				position: absolute;
+				top: 0;
+				height: 100%;
+				width: calc((100% - 2 * #{$room}) / (10 / 12 + 0.04));
+				left: calc(#{$room} - (100% - 2 * #{$room}) / (10 / 12 + 0.04) * (1 / 12 - 0.02));
 			}
 		}
 

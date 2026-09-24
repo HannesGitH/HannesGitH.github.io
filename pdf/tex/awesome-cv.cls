@@ -606,5 +606,6 @@
 }{%
   \end{itemize}
   \end{justify}
-  \vspace{-4.0mm}
+  % no trailing \vspace{-4.0mm} here: since array v2.6 (TeX Live 2024+) it shrinks the
+  % m-column cell below its content, so the last item overlaps the next entry
 }
