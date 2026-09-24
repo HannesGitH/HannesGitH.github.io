@@ -238,12 +238,15 @@
             position: absolute;
             transform-origin: top left;
             width: calc(100% / 0.25);
-            scale: 0.25;
+            // the scale goes through a custom property on purpose: lightningcss (vite 8's default css minifier)
+            // merges `transform` + `scale` of one rule into `transform: ... scale()`, which drops the
+            // `scale` override and applies it in the wrong order, so the preview shrank instead of popping out
+            scale: var(--preview-scale, 0.25);
             top: 0;
             left: 0;
             &:hover {
                 transform: translate3d(20rem, 2rem, 250px);
-                scale: 0.35;
+                --preview-scale: 0.35;
             }
         }
     }
