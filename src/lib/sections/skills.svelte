@@ -33,8 +33,9 @@
 
 <style lang="scss">
 
-	// height of the wavy transition at the end of the section
-	$wave-band: calc(4vw + 3rem);
+	// height of the wavy transition at the end of the section,
+	// has to fit into the empty space below the last paragraph (7rem), otherwise the text gets blurred
+	$wave-band: 5.5rem;
 	@function wave-mask($viewbox-height, $wave) {
 		@return url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 #{$viewbox-height}' preserveAspectRatio='none'><path d='M0 0L#{$wave}L1440 0Z'/></svg>");
 	}

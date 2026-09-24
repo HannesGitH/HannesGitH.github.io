@@ -56,6 +56,8 @@
 	{/if}
 </div>
 <div id="content" use:scrollRef={refs.education}>
+<!-- only invert the content itself, a filter on the full-bleed background (a huge box-shadow) is extremely expensive in firefox -->
+<div id="inverted">
 	<h1 id="title">
 		{#if glitchy}
 			<Glitch2 text={$_('education.title')} />
@@ -113,6 +115,7 @@
 			</TimelineItem>
 		{/each}
 	</Timeline>
+</div>
 </div>
 
 
@@ -214,11 +217,15 @@
 	#content {
 		--dot-color: #{$primary};
 		padding: 2 * $std-margin;
-		@include full-bleed($bg-color: $surface);
+		// what $surface looks like with filter: invert(1)
+		@include full-bleed($bg-color: color.invert($surface));
 		// margin:-10%;
-		background-color: $surface;
+		background-color: color.invert($surface);
 		// backdrop-filter: invert(1);
-		filter: invert(1);
+
+		#inverted {
+			filter: invert(1);
+		}
 
 		h2 {
 			// letter-spacing: 1.5px;
