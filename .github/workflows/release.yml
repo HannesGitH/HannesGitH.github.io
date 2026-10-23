@@ -31,6 +31,7 @@ jobs:
         with:
           name: static
           path: ./build
+          retention-days: 1 # only handed to deploy-web
 
   deploy-web:
     needs: [build]
